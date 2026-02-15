@@ -19,4 +19,14 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    public void RELOAD_SCENE()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void QUIT_GAME()
+    {
+        Application.Quit();
+    }
 }
