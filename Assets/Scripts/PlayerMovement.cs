@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 move;
     private Vector2 mouse;
+
+    private float _rotX;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,7 +34,10 @@ public class PlayerMovement : MonoBehaviour
                               + transform.right * (speed * Time.deltaTime * move.x);
 
         transform.Rotate(0, mouse.x * mouseSpeed * Time.deltaTime, 0);
-        cam.transform.Rotate(-mouse.y * mouseSpeed * Time.deltaTime, 0, 0);
+
+        _rotX -= mouse.y*mouseSpeed * Time.deltaTime;
+        _rotX = Mathf.Clamp(_rotX, -60f, 60f);
+        cam.transform.localRotation = Quaternion.Euler(_rotX, 0, 0);
     }
 
     private void PollInput()

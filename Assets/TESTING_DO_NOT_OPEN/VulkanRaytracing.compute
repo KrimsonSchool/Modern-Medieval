@@ -1,0 +1,70 @@
+#pragma kernel CSMain
+
+RWTexture2D<float4> Result;
+float4x4 _CameraToWorld;
+float4x4 _CameraInverseProjection;
+float4 _Sphere; 
+int _MaxBounces = 8; // Max reflections
+
+struct Ray {
+    float3 origin;
+    float3 direction;
+    float3 energy; // How much light this ray still carries
+};
+
+Ray CreateRay(float3 origin, float3 direction) {
+    Ray ray;
+    ray.origin = origin;
+    ray.direction = direction;
+    ray.energy = float3(1, 1, 1);
+    return ray;
+}
+
+[numthreads(8,8,1)]
+void CSMain (uint3 id : SV_DispatchThreadID) {
+    uint width, height;
+    Result.GetDimensions(width, height);
+    float2 uv = float2((id.xy + 0.5) / float2(width, height) * 2.0 - 1.0);
+
+    // Setup initial Ray
+    float3 origin = mul(_CameraToWorld, float4(0,0,0,1)).xyz;
+    float3 direction = mul(_CameraInverseProjection, float4(uv, 0, 1)).xyz;
+    direction = mul(_CameraToWorld, float4(direction, 0)).xyz;
+    direction = normalize(direction);
+    Ray ray = CreateRay(origin, direction);
+
+    float3 finalColor = float3(0, 0, 0);
+
+    // THE REFLECTION LOOP
+    for (int i = 0; i < _MaxBounces; i++) {
+        float3 oc = ray.origin - _Sphere.xyz;
+        float b = dot(oc, ray.direction);
+        float c = dot(oc, oc) - _Sphere.w * _Sphere.w;
+        float discriminant = b * b - c;
+
+        if (discriminant > 0) {
+            float t = -b - sqrt(discriminant);
+            if (t > 0) {
+                // 1. Hit! Update Ray position to the hit point
+                ray.origin = ray.origin + ray.direction * t;
+                
+                // 2. Calculate Normal and new Reflection direction
+                float3 normal = normalize(ray.origin - _Sphere.xyz);
+                ray.direction = reflect(ray.direction, normal);
+
+                // 3. Lose some energy (e.g., the sphere is 80% reflective)
+                ray.energy *= 0.8;
+                
+                // Add a little "nudge" to prevent the ray from hitting the same surface again
+                ray.origin += normal * 0.001f; 
+            }
+        } else {
+            // 4. Miss! Add sky color and stop bouncing
+            float3 skyColor = float3(0.2, 0.4, 0.8) * ray.energy;
+            finalColor += skyColor;
+            break;
+        }
+    }
+
+    Result[id.xy] = float4(finalColor, 1.0);
+}
