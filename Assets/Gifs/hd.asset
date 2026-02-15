@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6940cdda447048efa58605bd546f9920, type: 3}
+  m_Name: hd
+  m_EditorClassIdentifier: GifForUnity::GifImporter.Gif
+  Frames:
+  - DelayInMs: 100
+    Sprite: {fileID: 21300000, guid: 130809f91c25ce920bbc7494a451477d, type: 3}
+  - DelayInMs: 100
+    Sprite: {fileID: 21300000, guid: e697fa0c34e7f685ba43680e107d6a78, type: 3}
+  - DelayInMs: 100
+    Sprite: {fileID: 21300000, guid: fa11da3f2879c4f96a0585e85448bdae, type: 3}
+  - DelayInMs: 100
+    Sprite: {fileID: 21300000, guid: 775fef6b4b45ad5c2b759cdae2862532, type: 3}
+  - DelayInMs: 100
+    Sprite: {fileID: 21300000, guid: 6adfb1b891aff98e5a3eb88bcd0f2d74, type: 3}
+  - DelayInMs: 100
+    Sprite: {fileID: 21300000, guid: 36ccfd90c4414670f91ee628dda0893c, type: 3}
+  - DelayInMs: 100
+    Sprite: {fileID: 21300000, guid: ee0d71a72bc8722ab99793f13a63f5be, type: 3}
+  - DelayInMs: 100
+    Sprite: {fileID: 21300000, guid: 947c9c96665c1091da32d7f94e90d23b, type: 3}
+  - DelayInMs: 100
+    Sprite: {fileID: 21300000, guid: c323d69b7e9743d89a538d83a090e9cb, type: 3}
+  - DelayInMs: 100
+    Sprite: {fileID: 21300000, guid: e743a5c2c58d2ffb089b0d0cfb34a455, type: 3}
+  - DelayInMs: 100
+    Sprite: {fileID: 21300000, guid: 347f69eb85a90150994914b59ef0054d, type: 3}
+  - DelayInMs: 100
+    Sprite: {fileID: 21300000, guid: affca1898b1673b3f8de1d0e2fe2aa08, type: 3}
+  - DelayInMs: 100
+    Sprite: {fileID: 21300000, guid: 2eb6de9804de927b3ad74849a291971c, type: 3}
+  - DelayInMs: 100
+    Sprite: {fileID: 21300000, guid: f01e656a6d009464c8b0978371b84550, type: 3}
+  - DelayInMs: 100
+    Sprite: {fileID: 21300000, guid: 3684dadff845871ccaf3fab65b73e1c9, type: 3}
