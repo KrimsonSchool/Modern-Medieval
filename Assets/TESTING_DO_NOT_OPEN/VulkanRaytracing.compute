@@ -4,67 +4,83 @@ RWTexture2D<float4> Result;
 float4x4 _CameraToWorld;
 float4x4 _CameraInverseProjection;
 float4 _Sphere; 
-int _MaxBounces = 8; // Max reflections
+float3 _LightDirection;
+int _MaxBounces;
 
 struct Ray {
     float3 origin;
     float3 direction;
-    float3 energy; // How much light this ray still carries
+    float3 energy;
 };
 
-Ray CreateRay(float3 origin, float3 direction) {
-    Ray ray;
-    ray.origin = origin;
-    ray.direction = direction;
-    ray.energy = float3(1, 1, 1);
-    return ray;
+// --- Math Helpers ---
+float intersectSphere(Ray ray, float4 sphere) {
+    float3 oc = ray.origin - sphere.xyz;
+    float b = dot(oc, ray.direction);
+    float c = dot(oc, oc) - sphere.w * sphere.w;
+    float disc = b * b - c;
+    if (disc < 0) return -1.0;
+    return -b - sqrt(disc);
+}
+
+float intersectPlane(Ray ray) {
+    // Plane is at y = -1 (below the sphere)
+    float t = (-1.0 - ray.origin.y) / ray.direction.y;
+    return (t > 0) ? t : -1.0;
 }
 
 [numthreads(8,8,1)]
 void CSMain (uint3 id : SV_DispatchThreadID) {
-    uint width, height;
-    Result.GetDimensions(width, height);
+    uint width, height; Result.GetDimensions(width, height);
     float2 uv = float2((id.xy + 0.5) / float2(width, height) * 2.0 - 1.0);
 
-    // Setup initial Ray
     float3 origin = mul(_CameraToWorld, float4(0,0,0,1)).xyz;
-    float3 direction = mul(_CameraInverseProjection, float4(uv, 0, 1)).xyz;
-    direction = mul(_CameraToWorld, float4(direction, 0)).xyz;
-    direction = normalize(direction);
-    Ray ray = CreateRay(origin, direction);
+    float3 direction = normalize(mul(_CameraToWorld, float4(mul(_CameraInverseProjection, float4(uv, 0, 1)).xyz, 0)).xyz);
+    
+    Ray ray; ray.origin = origin; ray.direction = direction; ray.energy = float3(1, 1, 1);
+    float3 finalColor = 0;
 
-    float3 finalColor = float3(0, 0, 0);
-
-    // THE REFLECTION LOOP
     for (int i = 0; i < _MaxBounces; i++) {
-        float3 oc = ray.origin - _Sphere.xyz;
-        float b = dot(oc, ray.direction);
-        float c = dot(oc, oc) - _Sphere.w * _Sphere.w;
-        float discriminant = b * b - c;
+        float tSphere = intersectSphere(ray, _Sphere);
+        float tPlane = intersectPlane(ray);
+        
+        float t = -1;
+        float3 normal = 0;
+        float3 albedo = 0;
 
-        if (discriminant > 0) {
-            float t = -b - sqrt(discriminant);
-            if (t > 0) {
-                // 1. Hit! Update Ray position to the hit point
-                ray.origin = ray.origin + ray.direction * t;
-                
-                // 2. Calculate Normal and new Reflection direction
-                float3 normal = normalize(ray.origin - _Sphere.xyz);
-                ray.direction = reflect(ray.direction, normal);
+        // Find the closest hit (Sphere vs Plane)
+        if (tSphere > 0 && (tPlane < 0 || tSphere < tPlane)) {
+            t = tSphere;
+            ray.origin += ray.direction * t;
+            normal = normalize(ray.origin - _Sphere.xyz);
+            albedo = float3(1, 0, 0); // Red Sphere
+        } else if (tPlane > 0) {
+            t = tPlane;
+            ray.origin += ray.direction * t;
+            normal = float3(0, 1, 0); // Plane points UP
+            // Checkboard pattern
+            albedo = (frac(ray.origin.x) > 0.5 == frac(ray.origin.z) > 0.5) ? 0.8 : 0.4;
+        }
 
-                // 3. Lose some energy (e.g., the sphere is 80% reflective)
-                ray.energy *= 0.8;
-                
-                // Add a little "nudge" to prevent the ray from hitting the same surface again
-                ray.origin += normal * 0.001f; 
-            }
+        if (t > 0) {
+            // 1. Lighting (Diffuse + Specular)
+            float diff = max(0.1, dot(normal, _LightDirection));
+            
+            // Specular (The "Shiny" bit)
+            float3 viewDir = -direction;
+            float3 halfDir = normalize(_LightDirection + viewDir);
+            float spec = pow(max(0.0, dot(normal, halfDir)), 100.0); // 100 = Shininess
+            
+            finalColor += (albedo * diff + spec) * ray.energy;
+
+            // 2. Reflect for next bounce
+            ray.direction = reflect(ray.direction, normal);
+            ray.energy *= 0.5;
+            ray.origin += normal * 0.001f;
         } else {
-            // 4. Miss! Add sky color and stop bouncing
-            float3 skyColor = float3(0.2, 0.4, 0.8) * ray.energy;
-            finalColor += skyColor;
+            finalColor += float3(0.2, 0.4, 0.8) * ray.energy;
             break;
         }
     }
-
     Result[id.xy] = float4(finalColor, 1.0);
 }

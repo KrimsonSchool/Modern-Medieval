@@ -1,50 +1,51 @@
 using UnityEngine;
+using UnityEngine.UI; // Add this
 
-[ExecuteInEditMode]
 public class RayTracingMaster : MonoBehaviour
 {
     public ComputeShader rayTracingShader;
-    public Vector4 sphereData = new Vector4(0, 0, 5, 1); // x,y,z, radius
+    public RawImage displayUI; // Drag a UI RawImage here
+    public Vector4 sphereData = new Vector4(0, 0, 5, 1);
+    
     private RenderTexture _target;
     private Camera _camera;
 
-    private void Awake() => _camera = GetComponent<Camera>();
-
-    private void OnRenderImage(RenderTexture source, RenderTexture destination)
-    {
-        Render(destination);
+    void Start() {
+        _camera = GetComponent<Camera>();
+        InitRenderTexture();
     }
 
-    private void Render(RenderTexture destination)
+    void Update() // Use Update instead of OnRenderImage
     {
-        // Make sure we have a valid render target
+        if (rayTracingShader == null || displayUI == null) return;
+
         InitRenderTexture();
 
         // Set Shader Parameters
-        rayTracingShader.SetTexture(0, "Result", _target);
+        int kernel = rayTracingShader.FindKernel("CSMain");
+        rayTracingShader.SetTexture(kernel, "Result", _target);
         rayTracingShader.SetMatrix("_CameraToWorld", _camera.cameraToWorldMatrix);
         rayTracingShader.SetMatrix("_CameraInverseProjection", _camera.projectionMatrix.inverse);
         rayTracingShader.SetVector("_Sphere", sphereData);
-        // How many times should the light bounce?
+        rayTracingShader.SetInt("_MaxBounces", 4);
+// Use a fixed light direction (pointing down and away)
+        Vector3 lDir = new Vector3(1, 1, -1).normalized;
+        rayTracingShader.SetVector("_LightDirection", lDir);
         rayTracingShader.SetInt("_MaxBounces", 8);
-
-        // Dispatch the shader (run it on the GPU)
+        // Dispatch
         int threadGroupsX = Mathf.CeilToInt(Screen.width / 8.0f);
         int threadGroupsY = Mathf.CeilToInt(Screen.height / 8.0f);
-        rayTracingShader.Dispatch(0, threadGroupsX, threadGroupsY, 1);
+        rayTracingShader.Dispatch(kernel, threadGroupsX, threadGroupsY, 1);
 
-        // Blit the result to the screen
-        Graphics.Blit(_target, destination);
+        // Display on UI
+        displayUI.texture = _target;
     }
 
-    private void InitRenderTexture()
-    {
-        if (_target == null || _target.width != Screen.width || _target.height != Screen.height)
-        {
+    private void InitRenderTexture() {
+        if (_target == null || _target.width != Screen.width || _target.height != Screen.height) {
             if (_target != null) _target.Release();
-            _target = new RenderTexture(Screen.width, Screen.height, 0,
-                RenderTextureFormat.ARGBFloat, RenderTextureReadWrite.Linear);
-            _target.enableRandomWrite = true;
+            _target = new RenderTexture(Screen.width, Screen.height, 0, RenderTextureFormat.ARGBFloat);
+            _target.enableRandomWrite = true; // CRITICAL for Compute Shaders
             _target.Create();
         }
     }
