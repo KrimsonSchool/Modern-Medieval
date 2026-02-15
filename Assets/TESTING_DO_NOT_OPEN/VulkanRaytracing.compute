@@ -1,86 +1,121 @@
 #pragma kernel CSMain
 
-RWTexture2D<float4> Result;
-float4x4 _CameraToWorld;
-float4x4 _CameraInverseProjection;
-float4 _Sphere; 
-float3 _LightDirection;
-int _MaxBounces;
+struct Triangle {
+    float3 v0, v1, v2;
+    float3 n0, n1, n2;
+    float3 color;
+    float smoothness;
+    float metallic;
+    float3 boundsMin;
+    float3 boundsMax;
+    float3 padding; 
+};
 
 struct Ray {
     float3 origin;
     float3 direction;
-    float3 energy;
 };
 
-// --- Math Helpers ---
-float intersectSphere(Ray ray, float4 sphere) {
-    float3 oc = ray.origin - sphere.xyz;
-    float b = dot(oc, ray.direction);
-    float c = dot(oc, oc) - sphere.w * sphere.w;
-    float disc = b * b - c;
-    if (disc < 0) return -1.0;
-    return -b - sqrt(disc);
+RWTexture2D<float4> Result;
+StructuredBuffer<Triangle> _Triangles;
+
+float4x4 _CameraToWorld;
+float4x4 _CameraInverseProjection;
+float3 _LightDirection;
+int _TriangleCount;
+int _MaxBounces;
+
+// Fast AABB intersection (Slab method)
+bool IntersectAABB(Ray ray, float3 minB, float3 maxB) {
+    float3 t0 = (minB - ray.origin) / ray.direction;
+    float3 t1 = (maxB - ray.origin) / ray.direction;
+    float3 tmin = min(t0, t1);
+    float3 tmax = max(t0, t1);
+    float near = max(max(tmin.x, tmin.y), tmin.z);
+    float far = min(min(tmax.x, tmax.y), tmax.z);
+    return near <= far && far > 0;
 }
 
-float intersectPlane(Ray ray) {
-    // Plane is at y = -1 (below the sphere)
-    float t = (-1.0 - ray.origin.y) / ray.direction.y;
-    return (t > 0) ? t : -1.0;
+
+
+float IntersectTriangle(Ray ray, Triangle tri, out float3 normal) {
+    float3 edge1 = tri.v1 - tri.v0;
+    float3 edge2 = tri.v2 - tri.v0;
+    float3 h = cross(ray.direction, edge2);
+    float a = dot(edge1, h);
+    if (abs(a) < 0.0001f) return -1.0;
+    float f = 1.0 / a;
+    float3 s = ray.origin - tri.v0;
+    float u = f * dot(s, h);
+    if (u < 0.0 || u > 1.0) return -1.0;
+    float3 q = cross(s, edge1);
+    float v = f * dot(ray.direction, q);
+    if (v < 0.0 || u + v > 1.0) return -1.0;
+    float t = f * dot(edge2, q);
+    if (t > 0.0001f) {
+        float w = 1.0 - u - v;
+        normal = normalize(tri.n0 * w + tri.n1 * u + tri.n2 * v);
+        return t;
+    }
+    return -1.0;
 }
 
 [numthreads(8,8,1)]
-void CSMain (uint3 id : SV_DispatchThreadID) {
-    uint width, height; Result.GetDimensions(width, height);
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    uint width, height;
+    Result.GetDimensions(width, height);
+    if (id.x >= width || id.y >= height) return;
+
     float2 uv = float2((id.xy + 0.5) / float2(width, height) * 2.0 - 1.0);
 
-    float3 origin = mul(_CameraToWorld, float4(0,0,0,1)).xyz;
+    float3 origin = mul(_CameraToWorld, float4(0, 0, 0, 1)).xyz;
     float3 direction = normalize(mul(_CameraToWorld, float4(mul(_CameraInverseProjection, float4(uv, 0, 1)).xyz, 0)).xyz);
-    
-    Ray ray; ray.origin = origin; ray.direction = direction; ray.energy = float3(1, 1, 1);
+
+    Ray ray; ray.origin = origin; ray.direction = direction;
     float3 finalColor = 0;
+    float3 energy = 1.0;
 
-    for (int i = 0; i < _MaxBounces; i++) {
-        float tSphere = intersectSphere(ray, _Sphere);
-        float tPlane = intersectPlane(ray);
-        
-        float t = -1;
-        float3 normal = 0;
-        float3 albedo = 0;
+    for (int bounce = 0; bounce < _MaxBounces; bounce++) {
+        float tNearest = 1e30;
+        float3 hitNormal = 0;
+        int hitIndex = -1;
 
-        // Find the closest hit (Sphere vs Plane)
-        if (tSphere > 0 && (tPlane < 0 || tSphere < tPlane)) {
-            t = tSphere;
-            ray.origin += ray.direction * t;
-            normal = normalize(ray.origin - _Sphere.xyz);
-            albedo = float3(1, 0, 0); // Red Sphere
-        } else if (tPlane > 0) {
-            t = tPlane;
-            ray.origin += ray.direction * t;
-            normal = float3(0, 1, 0); // Plane points UP
-            // Checkboard pattern
-            albedo = (frac(ray.origin.x) > 0.5 == frac(ray.origin.z) > 0.5) ? 0.8 : 0.4;
+        for (int i = 0; i < _TriangleCount; i++) {
+            // AABB Culling: Skips triangle math if ray misses the mesh bounds
+            if (IntersectAABB(ray, _Triangles[i].boundsMin, _Triangles[i].boundsMax)) {
+                float3 n;
+                float t = IntersectTriangle(ray, _Triangles[i], n);
+                if (t > 0 && t < tNearest) {
+                    tNearest = t;
+                    hitNormal = n;
+                    hitIndex = i;
+                }
+            }
         }
 
-        if (t > 0) {
-            // 1. Lighting (Diffuse + Specular)
-            float diff = max(0.1, dot(normal, _LightDirection));
+        if (hitIndex != -1) {
+            Triangle tri = _Triangles[hitIndex];
+            ray.origin = ray.origin + ray.direction * tNearest;
             
-            // Specular (The "Shiny" bit)
-            float3 viewDir = -direction;
-            float3 halfDir = normalize(_LightDirection + viewDir);
-            float spec = pow(max(0.0, dot(normal, halfDir)), 100.0); // 100 = Shininess
-            
-            finalColor += (albedo * diff + spec) * ray.energy;
+            float diffuseFactor = max(0.1, dot(hitNormal, _LightDirection));
+            float3 specularColor = lerp(float3(1, 1, 1), tri.color, tri.metallic);
+            float3 diffuseColor = tri.color * (1.0 - tri.metallic);
 
-            // 2. Reflect for next bounce
-            ray.direction = reflect(ray.direction, normal);
-            ray.energy *= 0.5;
-            ray.origin += normal * 0.001f;
+            finalColor += diffuseColor * diffuseFactor * energy * (1.0 - tri.smoothness);
+            energy *= specularColor * tri.smoothness;
+            
+            ray.direction = reflect(ray.direction, hitNormal);
+            ray.origin += hitNormal * 0.001f;
+
+            if (length(energy) < 0.05) break;
         } else {
-            finalColor += float3(0.2, 0.4, 0.8) * ray.energy;
+            // Simple Skybox Gradient
+            float3 skyColor = lerp(float3(0.01, 0.01, 0.02), float3(0.1, 0.2, 0.4), ray.direction.y * 0.5 + 0.5);
+            finalColor += energy * skyColor;
             break;
         }
     }
+
     Result[id.xy] = float4(finalColor, 1.0);
 }
