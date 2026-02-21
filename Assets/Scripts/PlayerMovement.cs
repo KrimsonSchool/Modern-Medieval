@@ -5,7 +5,6 @@ public class PlayerMovement : MonoBehaviour
 {
     private InputSystem_Actions controls;
     private void Awake() => controls = new InputSystem_Actions();
-
     private void OnEnable() => controls.Player.Enable();
     private void OnDisable() => controls.Player.Disable();
 
