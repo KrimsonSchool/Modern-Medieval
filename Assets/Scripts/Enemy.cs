@@ -18,9 +18,13 @@ public class Enemy : MonoBehaviour
 
     NavMeshAgent agent;
     private Vector3 dest;
-    public float aiDistance;
+    public float aiDistanceMin;
+    public float aiDistanceMax;
 
-    public Animator animator;
+    private Animator animator;
+
+    public int attackDamage;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -44,14 +48,22 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        if (Vector3.Distance(transform.position, dest) <= aiDistance)
+        if (Vector3.Distance(transform.position, dest) <= aiDistanceMin)
         {
             agent.SetDestination(transform.position);
+            animator.SetBool("IsMoving", false);
+            animator.SetBool("IsAttacking", true);
+        }
+        else if (Vector3.Distance(transform.position, dest) >= aiDistanceMax)
+        {
+            agent.SetDestination(transform.position);
+            animator.SetBool("IsAttacking", false);
             animator.SetBool("IsMoving", false);
         }
         else
         {
             agent.SetDestination(dest);
+            animator.SetBool("IsAttacking", false);
             animator.SetBool("IsMoving", true);
         }
         
@@ -74,5 +86,11 @@ public class Enemy : MonoBehaviour
     public void SetDist(Vector3 distance)
     {
         dest = distance;
+    }
+
+    public void Attack()
+    {
+        //TODO change to generic health system, have enemy have Targeted object which is used here
+        FindFirstObjectByType<PlayerHealth>().Hurt(attackDamage);
     }
 }
