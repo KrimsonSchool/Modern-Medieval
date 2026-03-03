@@ -1,37 +1,60 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : Health
 {
-    public int baseHealth;
-    private int health;
-    
     public GameObject hurtEffect;
     public float hurtEffectTime;
     float hurtEffectTimer;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        health = baseHealth;
-    }
+    PlayerHolder playerHolder;
 
-    // Update is called once per frame
+    protected override void Start()
+    {
+        playerHolder= GetComponent<PlayerHolder>();
+        hurtEffect = playerHolder.hurtEffect;
+        healthBar = playerHolder.healthBar;
+        base.Start();
+    }
+    
     void Update()
     {
-        if (hurtEffect.activeSelf)
+        if (healthBar == null)
         {
-            hurtEffectTimer += Time.deltaTime;
-            if (hurtEffectTimer >= hurtEffectTime)
+            healthBar = playerHolder.healthBar;
+        }
+        
+        if (hurtEffect != null)
+        {
+            if (hurtEffect.activeSelf)
             {
-                hurtEffect.SetActive(false);
-                hurtEffectTimer = 0;
+                hurtEffectTimer += Time.deltaTime;
+                if (hurtEffectTimer >= hurtEffectTime)
+                {
+                    hurtEffect.SetActive(false);
+                    hurtEffectTimer = 0;
+                }
             }
+        }
+        else
+        {
+            hurtEffect = playerHolder.hurtEffect;
         }
     }
 
-    public void Hurt(int damage)
+    public override bool Hurt(int damage)
     {
-        health -= damage;
-        print("player has: "+health);
+        base.Hurt(damage);
         hurtEffect.SetActive(true);
+        return kill;
+    }
+
+    public override void Death()
+    {
+        FindFirstObjectByType<LayerManager>().Reset();
+    }
+
+    public void ResetPos()
+    {
+        transform.position = new Vector3(0, 1, 0f);
     }
 }
