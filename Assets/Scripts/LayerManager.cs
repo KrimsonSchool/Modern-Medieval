@@ -54,6 +54,7 @@ public class LayerManager : MonoBehaviour
     {
         layerText.text = "Layer " + layer.ToString("D2");
         layerText.GetComponent<Animator>().Play("LayerText");
+        
     }
 
     public void Reset()
