@@ -185,6 +185,8 @@ MonoBehaviour:
   mouseSpeed: 50
   cam: {fileID: 6734680587822248871}
   interactDist: 1
+  heldObject: {fileID: 0}
+  holdPos: {fileID: 5537015584461657957}
   worldManager: {fileID: 0}
 --- !u!114 &1110892632525066615
 MonoBehaviour:
@@ -498,6 +500,37 @@ MonoBehaviour:
   renderScale: 0.5
   maxBounces: 4
   lightDirection: {x: 1, y: 1, z: -1}
+--- !u!1 &5537015584461657957
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3162084884196565627}
+  m_Layer: 0
+  m_Name: HoldPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3162084884196565627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5537015584461657957}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.08399999, z: 0.93}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9044837002044213783}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7163539335733949043
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,6 +567,7 @@ Transform:
   m_Children:
   - {fileID: 6279051420258985177}
   - {fileID: 3502735612297300552}
+  - {fileID: 3162084884196565627}
   m_Father: {fileID: 8393641370593165024}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &6734680587822248871

@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        SetDist(FindFirstObjectByType<PlayerMovement>().transform.position);
+        SetDist(transform.position);
     }
 
     // Update is called once per frame

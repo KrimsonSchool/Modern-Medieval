@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHealth : Health
@@ -7,12 +8,10 @@ public class PlayerHealth : Health
     public float hurtEffectTime;
     float hurtEffectTimer;
     PlayerHolder playerHolder;
-
+    
     protected override void Start()
     {
-        playerHolder= GetComponent<PlayerHolder>();
-        hurtEffect = playerHolder.hurtEffect;
-        healthBar = playerHolder.healthBar;
+        
         base.Start();
     }
     
@@ -55,6 +54,10 @@ public class PlayerHealth : Health
 
     public void ResetPos()
     {
+        playerHolder= GetComponent<PlayerHolder>();
+        hurtEffect = playerHolder.hurtEffect;
+        healthBar = playerHolder.healthBar;
         transform.position = new Vector3(0, 1, 0f);
+        SetHealthBar();
     }
 }

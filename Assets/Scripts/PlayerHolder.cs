@@ -24,11 +24,7 @@ public class PlayerHolder : MonoBehaviour
 
     private void Awake()
     {
-        worldManager = FindFirstObjectByType<WorldManager>();
-        hurtEffect = worldManager.hurtEffect;
-        healthBar = worldManager.healthSlider.GetComponent<Slider>();
-        cooldown = worldManager.cooldownSlider.GetComponent<Slider>();  
-        xpBar = worldManager.xpSlider.GetComponent<Slider>();  
+        OnSceneLoad(SceneManager.GetActiveScene(), LoadSceneMode.Additive);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

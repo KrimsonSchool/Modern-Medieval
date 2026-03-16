@@ -1,3 +1,4 @@
+using System;
 using InputSystemGlobal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
     public float interactDist;
 
     private PlayerHolder playerHold;
+    
+    public GameObject heldObject;
+    public GameObject holdPos;
 
     [HideInInspector] public WorldManager worldManager;
 
@@ -49,6 +53,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (heldObject != null)
+        {
+            heldObject.transform.position = holdPos.transform.position;
+        }
+        
         if (playerHold == null)
         {
             playerHold = GetComponent<PlayerHolder>();
@@ -131,6 +140,17 @@ public class PlayerMovement : MonoBehaviour
                         hit.collider.gameObject.GetComponent<Dialogue>();
                     FindFirstObjectByType<WorldManager>().dialogueBox.GetComponent<DialogueManager>().IncrementDialogue();
                     break;
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("MObject"))
+        {
+            if(heldObject==null)
+            {
+                heldObject = other.gameObject;
             }
         }
     }

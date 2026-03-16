@@ -756,7 +756,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3238828061428350739}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.00000058114523}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0.838, y: 0.094866276, z: 9.91}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_ConstrainProportionsScale: 1
@@ -863,7 +863,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   baseHealth: 5
   healthBar: {fileID: 7920875326292916542}
-  hitLenght: 0.3
+  kill: 0
+  hitLenght: 0.5
   hpText: {fileID: 7305360921662883585, guid: f30b9a84a15a5687e98cfa75b5eeb409, type: 3}
   hpTextPos: {fileID: 1718173747539749274}
   hitFx: {fileID: 2100000, guid: f825e4fee3f54bf64839f90870a361c8, type: 2}
