@@ -48,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
 
         controls.Player.Jump.started += ctx => Jump();
         controls.Player.Interact.started += ctx => Interact();
+        
+        controls.Player.Exit.started += ctx => Exit();
     }
 
     // Update is called once per frame
@@ -153,5 +155,10 @@ public class PlayerMovement : MonoBehaviour
                 heldObject = other.gameObject;
             }
         }
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 }

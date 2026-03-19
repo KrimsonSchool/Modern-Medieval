@@ -865,7 +865,7 @@ MonoBehaviour:
   baseHealth: 5
   healthBar: {fileID: 7920875326292916542}
   kill: 0
-  hitLenght: 0.5
+  hitLenght: 0.25
   hpText: {fileID: 7305360921662883585, guid: f30b9a84a15a5687e98cfa75b5eeb409, type: 3}
   hpTextPos: {fileID: 1718173747539749274}
   hitFx: {fileID: 2100000, guid: f825e4fee3f54bf64839f90870a361c8, type: 2}
