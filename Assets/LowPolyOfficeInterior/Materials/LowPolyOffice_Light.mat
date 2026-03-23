@@ -15,7 +15,11 @@ Material:
   - _DISABLE_SSR_TRANSPARENT
   - _NORMALMAP_TANGENT_SPACE
   m_InvalidKeywords: []
+<<<<<<< HEAD
   m_LightmapFlags: 4
+=======
+  m_LightmapFlags: 1
+>>>>>>> 0fa94618a4bec50fd3d6a99801bebff9a96ebf8f
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2225
@@ -185,8 +189,13 @@ Material:
     - _DstBlend2: 0
     - _EmissiveColorMode: 1
     - _EmissiveExposureWeight: 1
+<<<<<<< HEAD
     - _EmissiveIntensity: 3
     - _EmissiveIntensityUnit: 0
+=======
+    - _EmissiveIntensity: 524288
+    - _EmissiveIntensityUnit: 1
+>>>>>>> 0fa94618a4bec50fd3d6a99801bebff9a96ebf8f
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _EnableGeometricSpecularAA: 0
@@ -274,7 +283,11 @@ Material:
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+<<<<<<< HEAD
     - _EmissiveColor: {r: 2.9360187, g: 1.1151505, b: 0.64199966, a: 3}
+=======
+    - _EmissiveColor: {r: 513106.47, g: 194886.67, b: 112197.57, a: 524288}
+>>>>>>> 0fa94618a4bec50fd3d6a99801bebff9a96ebf8f
     - _EmissiveColorLDR: {r: 0.990566, g: 0.6435126, b: 0.4999555, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}

@@ -5,11 +5,15 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
+  - Door
+  - Npc
+  - MObject
+  - Lock
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - Infront

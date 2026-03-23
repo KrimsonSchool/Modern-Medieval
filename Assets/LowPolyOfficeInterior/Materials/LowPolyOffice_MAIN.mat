@@ -225,7 +225,11 @@ Material:
     - _ReceivesSSRTransparent: 0
     - _RefractionModel: 0
     - _SSRefractionProjectionModel: 0
+<<<<<<< HEAD
     - _Smoothness: 0.05
+=======
+    - _Smoothness: 0.634
+>>>>>>> 0fa94618a4bec50fd3d6a99801bebff9a96ebf8f
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
     - _SpecularAAScreenSpaceVariance: 0.1
