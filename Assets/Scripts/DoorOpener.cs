@@ -15,11 +15,12 @@ public class DoorOpener : MonoBehaviour
     private float timer;
 
     public GameObject[] layLines;
+    public GameObject[] possiblePuzzleSpawns;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         doorStartPos = door.transform.position;
-        
+        possiblePuzzleSpawns[Random.Range(0, possiblePuzzleSpawns.Length)].SetActive(true);
         //  OpenDoor();
     }
 
