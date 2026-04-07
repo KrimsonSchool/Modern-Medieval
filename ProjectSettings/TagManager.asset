@@ -9,6 +9,8 @@ TagManager:
   - Npc
   - MObject
   - Lock
+  - FloorButton
+  - Box
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - Water
   - UI
   - Infront
-  - 
+  - GLORRPO
   - 
   - 
   - 

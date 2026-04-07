@@ -1,5 +1,12 @@
 using UnityEngine;
 
+public enum PuzzleType
+{
+    Fetch,
+    FloorButton,
+    Lever
+}
+
 public class DoorOpener : MonoBehaviour
 {
     public GameObject door;
@@ -16,6 +23,8 @@ public class DoorOpener : MonoBehaviour
 
     public GameObject[] layLines;
     public GameObject[] possiblePuzzleSpawns;
+    
+    public PuzzleType puzzleType;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -47,5 +56,7 @@ public class DoorOpener : MonoBehaviour
         opening = true;
         layLines[0].SetActive(false);
         layLines[1].SetActive(true);
+        
+        GetComponent<Collider>().enabled = false;
     }
 }
