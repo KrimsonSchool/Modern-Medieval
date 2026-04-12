@@ -29,7 +29,10 @@ public class DoorOpener : MonoBehaviour
     void Start()
     {
         doorStartPos = door.transform.position;
-        possiblePuzzleSpawns[Random.Range(0, possiblePuzzleSpawns.Length)].SetActive(true);
+        if (possiblePuzzleSpawns.Length > 0)
+        {
+            possiblePuzzleSpawns[Random.Range(0, possiblePuzzleSpawns.Length)].SetActive(true);
+        }
         //  OpenDoor();
     }
 

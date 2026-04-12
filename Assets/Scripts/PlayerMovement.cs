@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         {
             //interaction ui popup
             //Need array of Interactable tags
-            if (hit.collider.CompareTag("Npc") || hit.collider.CompareTag("Door"))
+            if (hit.collider.CompareTag("Npc") || hit.collider.CompareTag("Door") || hit.collider.CompareTag("Switch"))
             {
                 worldManager.interactUI.SetActive(true);
                 worldManager.interactedObject = hit.collider.gameObject;
@@ -141,6 +141,9 @@ public class PlayerMovement : MonoBehaviour
                     FindFirstObjectByType<WorldManager>().dialogueBox.GetComponent<DialogueManager>().currentDialogue =
                         hit.collider.gameObject.GetComponent<Dialogue>();
                     FindFirstObjectByType<WorldManager>().dialogueBox.GetComponent<DialogueManager>().IncrementDialogue();
+                    break;
+                case "Switch":
+                    hit.collider.gameObject.GetComponent<Switch>().SwitchState();
                     break;
             }
         }
