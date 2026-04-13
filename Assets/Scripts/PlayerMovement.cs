@@ -1,6 +1,7 @@
 using System;
 using InputSystemGlobal;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
@@ -23,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     
     public GameObject heldObject;
     public GameObject holdPos;
+
+    private PlayerInput playerInput;
 
     [HideInInspector] public WorldManager worldManager;
 
@@ -106,6 +109,11 @@ public class PlayerMovement : MonoBehaviour
                 worldManager.interactUI.SetActive(false);
 
             worldManager.interactedObject = null;
+        }
+
+        if (playerInput.actions["Jump"].triggered)
+        {
+
         }
     }
 
