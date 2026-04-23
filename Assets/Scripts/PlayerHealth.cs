@@ -50,6 +50,7 @@ public class PlayerHealth : Health
     public override void Death()
     {
         FindFirstObjectByType<LayerManager>().Reset();
+        base.Reset();
     }
 
     public void ResetPos()

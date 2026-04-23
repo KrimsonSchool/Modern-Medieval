@@ -45,8 +45,12 @@ public class Health : MonoBehaviour
 
     public virtual void SetHealthBar()
     {
-        
         healthBar.maxValue = baseHealth;
         healthBar.value = _health;
+    }
+
+    public virtual void Reset()
+    {
+        _health = baseHealth;
     }
 }

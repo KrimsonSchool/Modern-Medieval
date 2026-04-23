@@ -44,6 +44,7 @@ public class EnemyHealth : Health
 
     public override void Death()
     {
+        FindFirstObjectByType<EnemiesQuest>().killedEnemies++;
         Destroy(gameObject);
     }
 }

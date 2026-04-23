@@ -21,6 +21,10 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         SetDist(transform.position);
+        if (FindFirstObjectByType<EnemiesQuest>() != null)
+        {
+            FindFirstObjectByType<EnemiesQuest>().noOfEnemies++;
+        }
     }
 
     // Update is called once per frame

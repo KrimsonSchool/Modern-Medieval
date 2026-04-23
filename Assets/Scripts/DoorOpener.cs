@@ -57,9 +57,17 @@ public class DoorOpener : MonoBehaviour
     public void OpenDoor()
     {
         opening = true;
-        layLines[0].SetActive(false);
-        layLines[1].SetActive(true);
-        
-        GetComponent<Collider>().enabled = false;
+        if (layLines.Length > 0)
+        {
+            layLines[0].SetActive(false);
+            layLines[1].SetActive(true);
+        }
+
+        TryGetComponent<Collider>(out var col);
+
+        if (col != null)
+        {
+            col.enabled = false;
+        }
     }
 }
