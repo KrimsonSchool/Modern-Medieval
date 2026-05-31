@@ -111,10 +111,10 @@ public class PlayerMovement : MonoBehaviour
             worldManager.interactedObject = null;
         }
 
-        if (playerInput.actions["Jump"].triggered)
+       /* if (playerInput.actions["Jump"].triggered)
         {
-
-        }
+            
+        }*/
     }
 
     private void PollInput()
