@@ -93,10 +93,15 @@ public class PlayerMovement : MonoBehaviour
         {
             //interaction ui popup
             //Need array of Interactable tags
-            if (hit.collider.CompareTag("Npc") || hit.collider.CompareTag("Door") || hit.collider.CompareTag("Switch"))
+            if (hit.collider.CompareTag("Npc") || hit.collider.CompareTag("Door") || hit.collider.CompareTag("Switch")|| hit.collider.CompareTag("Lock"))
             {
                 worldManager.interactUI.SetActive(true);
                 worldManager.interactedObject = hit.collider.gameObject;
+
+                if (hit.collider.CompareTag("Lock"))
+                {
+                    worldManager.interactText.text = "Press [E]\n required key: [" + hit.collider.GetComponent<DoorOpener>().requiredID + "]";
+                }
             }
         }
         else
@@ -153,6 +158,10 @@ public class PlayerMovement : MonoBehaviour
                 case "Switch":
                     hit.collider.gameObject.GetComponent<Switch>().SwitchState();
                     break;
+                case "Lock":
+                    hit.collider.gameObject.GetComponent<DoorOpener>().TryOpenDoor();
+                    
+                    break;
             }
         }
     }
@@ -165,6 +174,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 heldObject = other.gameObject;
             }
+        }
+
+        if (other.CompareTag("Key"))
+        {
+            GetComponent<PlayerInventory>().AddItem(other.gameObject.GetComponent<Key>().obj);
+            Destroy(other.gameObject);
         }
     }
 

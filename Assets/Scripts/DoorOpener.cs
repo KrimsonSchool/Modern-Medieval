@@ -23,8 +23,11 @@ public class DoorOpener : MonoBehaviour
 
     public GameObject[] layLines;
     public GameObject[] possiblePuzzleSpawns;
-    
+
     public PuzzleType puzzleType;
+
+    public int requiredID;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -41,10 +44,10 @@ public class DoorOpener : MonoBehaviour
     {
         if (opening && !open)
         {
-            timer += Time.deltaTime*doorSpeed;
-            if (door.transform.position != (doorStartPos+ doorEndDiff))
+            timer += Time.deltaTime * doorSpeed;
+            if (door.transform.position != (doorStartPos + doorEndDiff))
             {
-                door.transform.position = Vector3.Lerp(doorStartPos, (doorStartPos+ doorEndDiff), timer);
+                door.transform.position = Vector3.Lerp(doorStartPos, (doorStartPos + doorEndDiff), timer);
             }
             else
             {
@@ -68,6 +71,19 @@ public class DoorOpener : MonoBehaviour
         if (col != null)
         {
             col.enabled = false;
+        }
+    }
+
+    public void TryOpenDoor()
+    {
+        PlayerInventory inventory = FindFirstObjectByType<PlayerInventory>();
+        if (inventory.HasItemWithID(requiredID))
+        {
+            
+            //inventory.RemoveItemIndex(inventory.FindItemIdIndex(requiredID));
+            inventory.RemoveItem(requiredID);
+
+            OpenDoor();
         }
     }
 }

@@ -12,6 +12,7 @@ TagManager:
   - FloorButton
   - Box
   - Switch
+  - Key
   layers:
   - Default
   - TransparentFX

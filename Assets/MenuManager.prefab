@@ -1,0 +1,187 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5034793853862842368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5246833243770831033}
+  - component: {fileID: 8555399206024920184}
+  - component: {fileID: 1235455374377589899}
+  m_Layer: 0
+  m_Name: DoorVid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5246833243770831033
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5034793853862842368}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6630870925685965146}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!328 &8555399206024920184
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5034793853862842368}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: 96f89bbe01d41fccf8a687d2cbc4b474, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 0}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 1
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_TimeUpdateMode: 2
+  m_PlaybackSpeed: 0.92
+  m_AudioOutputMode: 2
+  m_TargetAudioSources: []
+  m_DirectAudioVolumes: []
+  m_Url: 
+  m_EnabledAudioTracks: 
+  m_DirectAudioMutes: 
+  m_ControlledAudioTrackCount: 0
+  m_PlayOnAwake: 0
+  m_SkipOnDrop: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
+--- !u!114 &1235455374377589899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5034793853862842368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c94b45264d86229399261527404ce63d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!1 &7935042795475235758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6630870925685965146}
+  - component: {fileID: 398234605114821854}
+  - component: {fileID: 2268115049342534842}
+  - component: {fileID: 7093259612073420645}
+  m_Layer: 0
+  m_Name: MenuManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6630870925685965146
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7935042795475235758}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.72542, y: 2.41665, z: 17.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5246833243770831033}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &398234605114821854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7935042795475235758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f912d650d097962bb4c6ba4ade8d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuManager
+--- !u!114 &2268115049342534842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7935042795475235758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4bbc4c601d3b3e4d82897192b8f3a1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  videoPlayer: {fileID: 8555399206024920184}
+  layerManager: {fileID: 5627599458723084467, guid: 74919a8f15997ff67802b868e5bc4991, type: 3}
+--- !u!114 &7093259612073420645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7935042795475235758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea16da35d5d0b18f99aa962085d59fb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  differences:
+  - {fileID: 0}
+  dialogueBox: {fileID: 0}
+  interactUI: {fileID: 0}
+  interactedObject: {fileID: 0}
+  playerPrefab: {fileID: 570165812345843948, guid: 525c6b7e46d531bd7b9aecae361aecf7, type: 3}
+  hurtEffect: {fileID: 0}
+  healthSlider: {fileID: 0}
+  cooldownSlider: {fileID: 0}
+  xpSlider: {fileID: 0}
+  playerSpawn: {fileID: 0}
+  enemies:
+  - {fileID: 3238828061428350739, guid: 6fb61b34968519bef9bbb2b2770c8c1b, type: 3}
+  - {fileID: 3238828061428350739, guid: 663ab6d6ffef86b819c35e220d5a7ca0, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  worldObjects:
+  - {fileID: 5561190360213772669, guid: 307ec6382e51dff5e95c55cdc6609871, type: 3}
+  - {fileID: 133660, guid: 971412afe90b27640b1c78c0641deec9, type: 3}
+  - {fileID: 169758, guid: 60c6bc14bb0e58c4a99aa8e32d80f308, type: 3}
+  - {fileID: 158108, guid: eab88f6a71881d8468474cc3e3610734, type: 3}
+  - {fileID: 177010, guid: eb999b0b67a4958469eed87f4b9d8d4b, type: 3}
+  - {fileID: 108724, guid: 48e043463d920714684df4f66731eaa4, type: 3}
+  - {fileID: 187152, guid: ae21f9dfbc8404a4a99440237a6af322, type: 3}
+  - {fileID: 140460, guid: cd24b009c944b1848a4b3e5904c18513, type: 3}
+  - {fileID: 113466, guid: 28c6a09d0f7dd13488875bb56d3d0fb3, type: 3}
+  - {fileID: 137454, guid: 5c00c5f03c23f3b44af6d75077362432, type: 3}
+  scenarios:
+  - {fileID: 0}
+  - {fileID: 0}
+  scenarioText: {fileID: 0}

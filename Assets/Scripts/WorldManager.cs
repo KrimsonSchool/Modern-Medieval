@@ -25,6 +25,7 @@ public class WorldManager : MonoBehaviour
     public GameObject[] scenarios;
     
     public TextMeshProUGUI scenarioText;
+    public TextMeshProUGUI interactText;
     
     GameObject player;
     void Start()
