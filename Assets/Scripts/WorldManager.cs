@@ -8,6 +8,7 @@ public class WorldManager : MonoBehaviour
     public GameObject dialogueBox;
     public GameObject interactUI;
 
+    [HideInInspector]
     public GameObject interactedObject;
 
     public GameObject playerPrefab;
@@ -26,7 +27,8 @@ public class WorldManager : MonoBehaviour
     
     public TextMeshProUGUI scenarioText;
     public TextMeshProUGUI interactText;
-    
+
+    public GameObject detectedIndicator;
     GameObject player;
     void Start()
     {

@@ -25,9 +25,13 @@ public class PlayerMovement : MonoBehaviour
     public GameObject heldObject;
     public GameObject holdPos;
 
-    private PlayerInput playerInput;
+    //private PlayerInput playerInput;
 
     [HideInInspector] public WorldManager worldManager;
+
+    private bool spotted;
+    private float spottedTimer;
+    SecurityCamera securityCamera;
 
     private void OnEnable()
     {
@@ -116,10 +120,21 @@ public class PlayerMovement : MonoBehaviour
             worldManager.interactedObject = null;
         }
 
-       /* if (playerInput.actions["Jump"].triggered)
+        if (spotted)
         {
-            
-        }*/
+            spottedTimer += Time.deltaTime;
+
+            if (spottedTimer >= 0.1f)
+            {
+                spottedTimer = 0;
+                securityCamera.detectionPercent += 1;
+            }
+        }
+
+        if (controls.Player.Jump.triggered)
+        {
+            Jump();
+        }
     }
 
     private void PollInput()
@@ -180,6 +195,30 @@ public class PlayerMovement : MonoBehaviour
         {
             GetComponent<PlayerInventory>().AddItem(other.gameObject.GetComponent<Key>().obj);
             Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("Detector"))
+        {
+            worldManager.detectedIndicator.SetActive(true);
+            worldManager.detectedIndicator.GetComponent<Animator>().Play(0);
+            
+            print("spotted");
+            spotted = true;
+            securityCamera = other.gameObject.GetComponentInParent<SecurityCamera>();
+            securityCamera.hasDetected = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Detector"))
+        {
+            worldManager.detectedIndicator.SetActive(true);
+            
+            spotted = false;
+            securityCamera.detectionPercent = 0;
+            securityCamera.hasDetected = false;
+            securityCamera = null;
         }
     }
 

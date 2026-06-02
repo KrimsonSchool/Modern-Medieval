@@ -13,6 +13,7 @@ TagManager:
   - Box
   - Switch
   - Key
+  - Detector
   layers:
   - Default
   - TransparentFX
