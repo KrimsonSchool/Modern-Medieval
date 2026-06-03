@@ -32,17 +32,27 @@ public class WorldManager : MonoBehaviour
     GameObject player;
     void Start()
     {
-        playerSpawn = GameObject.Find("PlayerSpawn");
+        //playerSpawn = GameObject.Find("PlayerSpawn");
         if (playerSpawn == null)
         {
-            playerSpawn = Instantiate(new GameObject(), Vector3.zero, Quaternion.identity);
-            playerSpawn.name = "PlayerSpawn";
+            print("playerSpawn is null");
+            playerSpawn = GameObject.Find("PlayerSpawn");
+            if (playerSpawn == null)
+            {
+                playerSpawn = Instantiate(new GameObject(), Vector3.zero, Quaternion.identity);
+                playerSpawn.name = "PlayerSpawn";
+            }
         }
+
         if (FindFirstObjectByType<PlayerMovement>() == null)
         {
+            print("Spawning at: " + playerSpawn.transform.position +" pos");
             player = Instantiate(playerPrefab, playerSpawn.transform.position, playerSpawn.transform.rotation);
+            player.transform.position =  playerSpawn.transform.position;
+            player.transform.rotation =  playerSpawn.transform.rotation;
         }
         
+        /*
         int rng = Random.Range(0, scenarios.Length);
         string scenarioType = "";
         switch (rng)
@@ -57,7 +67,7 @@ public class WorldManager : MonoBehaviour
 
         scenarioText.text = scenarioType + " type layer.";
         scenarios[rng].SetActive(true);
-        
+        */
         Destroy(playerSpawn.gameObject);
     }
 
