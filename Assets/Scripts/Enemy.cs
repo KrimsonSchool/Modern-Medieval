@@ -29,6 +29,12 @@ public class Enemy : MonoBehaviour
         {
             FindFirstObjectByType<EnemiesQuest>().noOfEnemies++;
         }
+
+        foreach (GameObject p in patrolPoints)
+        {
+            p.GetComponent<MeshRenderer>().enabled = false;
+            p.GetComponent<Collider>().enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -60,6 +66,7 @@ public class Enemy : MonoBehaviour
         else
         {
             agent.SetDestination(patrolPoints[patrolIndex].transform.position);
+            animator.SetBool("IsMoving", true);
             if (Vector3.Distance(transform.position, patrolPoints[patrolIndex].transform.position) <= 1)
             {
                 patrolIndex++;

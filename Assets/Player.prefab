@@ -181,7 +181,7 @@ MonoBehaviour:
   jumpAmount: 2
   mouseSpeed: 50
   cam: {fileID: 6734680587822248871}
-  interactDist: 1
+  interactDist: 2
   heldObject: {fileID: 0}
   holdPos: {fileID: 5537015584461657957}
   worldManager: {fileID: 0}
@@ -269,7 +269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3502735612297300552
 Transform:
   m_ObjectHideFlags: 0

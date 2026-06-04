@@ -22,9 +22,9 @@ public class DoorOpener : MonoBehaviour
     private float timer;
 
     public GameObject[] layLines;
-    public GameObject[] possiblePuzzleSpawns;
+    //public GameObject[] possiblePuzzleSpawns;
 
-    public PuzzleType puzzleType;
+    //public PuzzleType puzzleType;
 
     public int requiredID;
 
@@ -32,10 +32,10 @@ public class DoorOpener : MonoBehaviour
     void Start()
     {
         doorStartPos = door.transform.position;
-        if (possiblePuzzleSpawns.Length > 0)
+        /*if (possiblePuzzleSpawns.Length > 0)
         {
             possiblePuzzleSpawns[Random.Range(0, possiblePuzzleSpawns.Length)].SetActive(true);
-        }
+        }*/
         //  OpenDoor();
     }
 
@@ -66,24 +66,44 @@ public class DoorOpener : MonoBehaviour
             layLines[1].SetActive(true);
         }
 
-        TryGetComponent<Collider>(out var col);
+        /*TryGetComponent<Collider>(out var col);
 
         if (col != null)
         {
             col.enabled = false;
-        }
+        }*/
     }
 
     public void TryOpenDoor()
     {
         PlayerInventory inventory = FindFirstObjectByType<PlayerInventory>();
-        if (inventory.HasItemWithID(requiredID))
+        if (!open)
         {
-            
-            //inventory.RemoveItemIndex(inventory.FindItemIdIndex(requiredID));
-            inventory.RemoveItem(requiredID);
+            if (inventory.HasItemWithID(requiredID))
+            {
+                //inventory.RemoveItemIndex(inventory.FindItemIdIndex(requiredID));
+                inventory.RemoveItem(requiredID);
 
-            OpenDoor();
+                OpenDoor();
+            }
+        }
+        else
+        {
+            PlayerInventory.Object key = new PlayerInventory.Object
+            {
+                id = requiredID,
+                name = "key"
+            };
+            inventory.AddItem(key);
+            open = false;
+            opening = false;
+            if (layLines.Length > 0)
+            {
+                layLines[0].SetActive(true);
+                layLines[1].SetActive(false);
+            }
+            door.transform.position = doorStartPos;
+            timer = 0;
         }
     }
 }

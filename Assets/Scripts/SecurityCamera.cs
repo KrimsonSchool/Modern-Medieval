@@ -29,11 +29,11 @@ public class SecurityCamera : MonoBehaviour
         {
             light.color = Color.white;
         }
-        else if (detectionPercent < 75/detectSpeed)
+        else if (detectionPercent > 1/detectSpeed)
         {
             light.color = Color.yellow;
         }
-        else if (detectionPercent < 100/detectSpeed)
+        else if (detectionPercent >= 75/detectSpeed)
         {
             light.color = Color.red;
         }

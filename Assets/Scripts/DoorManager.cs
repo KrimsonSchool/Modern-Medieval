@@ -9,7 +9,8 @@ public class DoorManager : MonoBehaviour
     
     private bool vidPlaying;
     public GameObject layerManager;
-    
+
+    private string _nextLevel;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,12 +30,13 @@ public class DoorManager : MonoBehaviour
         if (vidPlaying && !videoPlayer.isPlaying)
         {
             FindFirstObjectByType<LayerManager>().layer++;
-            menu.OPEN_SCENE("Demo Level");
+            menu.OPEN_SCENE(_nextLevel);
         }
     }
 
-    public IEnumerator PlayVid()
+    public IEnumerator PlayVid(string nextLevel)
     {
+        _nextLevel = nextLevel;
         videoPlayer.Play();
         yield return new WaitForSeconds(0.1f);
         vidPlaying=true;

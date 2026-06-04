@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         worldManager = FindFirstObjectByType<WorldManager>();
 
@@ -92,9 +92,11 @@ public class PlayerMovement : MonoBehaviour
         {
             GetComponent<Health>().Hurt(2147483647);
         }
+        Debug.DrawLine(cam.transform.position, cam.transform.position + cam.transform.TransformDirection(Vector3.forward) * 1, Color.red);
 
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, interactDist))
+        if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out var hit, interactDist))
         {
+            print("HIT " + hit.collider.tag);
             //interaction ui popup
             //Need array of Interactable tags
             if (hit.collider.CompareTag("Npc") || hit.collider.CompareTag("Door") || hit.collider.CompareTag("Switch")|| hit.collider.CompareTag("Lock"))
@@ -129,8 +131,13 @@ public class PlayerMovement : MonoBehaviour
                 spottedTimer = 0;
                 securityCamera.detectionPercent += 1;
             }
-        }
 
+            if (securityCamera.detectionPercent >= 100 / securityCamera.detectSpeed)
+            {
+                GetComponent<PlayerHealth>().Hurt(999);
+            }
+        }
+ 
         if (controls.Player.Jump.triggered)
         {
             Jump();
@@ -159,7 +166,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Interact()
     {
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, interactDist))
+        if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out var hit, interactDist))
         {
             //print(hit.collider.tag);
             switch (hit.collider.tag)
@@ -206,6 +213,11 @@ public class PlayerMovement : MonoBehaviour
             spotted = true;
             securityCamera = other.gameObject.GetComponentInParent<SecurityCamera>();
             securityCamera.hasDetected = true;
+        }
+
+        if (other.CompareTag("Kill"))
+        {
+            GetComponent<PlayerHealth>().Hurt(999);
         }
     }
 
