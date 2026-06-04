@@ -33,14 +33,14 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _EmissiveIntensity: 524288
+    - _EmissiveIntensity: 0.5
     - _EmissiveIntensityUnit: 1
     - _UseEmissiveIntensity: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 0.80271924, b: 0.6273585, a: 1}
     - _Color: {r: 1, g: 0.80271924, b: 0.6273585, a: 1}
-    - _EmissiveColor: {r: 513106.47, g: 194886.67, b: 112197.57, a: 524288}
-    - _EmissiveColorLDR: {r: 0.990566, g: 0.6435126, b: 0.4999555, a: 1}
+    - _EmissiveColor: {r: 0.4911253, g: 0.33528885, b: 0.106115334, a: 0.5}
+    - _EmissiveColorLDR: {r: 0.99215686, g: 0.8381812, b: 0.49803922, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &4188180274619175717
