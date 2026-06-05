@@ -22,6 +22,8 @@ public class DoorOpener : MonoBehaviour
     private float timer;
 
     public GameObject[] layLines;
+
+    public string typeName;
     //public GameObject[] possiblePuzzleSpawns;
 
     //public PuzzleType puzzleType;
@@ -92,7 +94,7 @@ public class DoorOpener : MonoBehaviour
             PlayerInventory.Object key = new PlayerInventory.Object
             {
                 id = requiredID,
-                name = "key"
+                name = typeName
             };
             inventory.AddItem(key);
             open = false;

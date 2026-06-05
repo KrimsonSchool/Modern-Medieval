@@ -103,10 +103,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 worldManager.interactUI.SetActive(true);
                 worldManager.interactedObject = hit.collider.gameObject;
-
                 if (hit.collider.CompareTag("Lock"))
                 {
-                    worldManager.interactText.text = "Press [E]\n required key: [" + hit.collider.GetComponent<DoorOpener>().requiredID + "]";
+                    string typeName = hit.collider.gameObject.GetComponent<DoorOpener>().typeName;
+                    worldManager.interactText.text = "Press [E]\n required "+typeName+": [" + hit.collider.GetComponent<DoorOpener>().requiredID + "]";
                 }
             }
         }
