@@ -17,6 +17,8 @@ public class Door : MonoBehaviour
     private WorldManager wm;
 
     public float interactDist;
+
+    public string nextLevel;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,7 +39,7 @@ public class Door : MonoBehaviour
         if(wm.interactedObject == gameObject)
         {
             print("Playing vid");
-            StartCoroutine(doorManager.PlayVid());
+            StartCoroutine(doorManager.PlayVid(nextLevel));
         }
     }
 }

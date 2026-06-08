@@ -9,9 +9,11 @@ public class PlayerHealth : Health
     float hurtEffectTimer;
     PlayerHolder playerHolder;
     
+    Vector3 startPos;
+    
     protected override void Start()
     {
-        
+        startPos = transform.position;
         base.Start();
     }
     
@@ -58,7 +60,7 @@ public class PlayerHealth : Health
         playerHolder= GetComponent<PlayerHolder>();
         hurtEffect = playerHolder.hurtEffect;
         healthBar = playerHolder.healthBar;
-        transform.position = new Vector3(0, 1, 0f);
+        transform.position = startPos;
         SetHealthBar();
     }
 }

@@ -19,6 +19,11 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+    
+    public void OPEN_SCENE_INDEX(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
+    }
 
     public void RELOAD_SCENE()
     {
