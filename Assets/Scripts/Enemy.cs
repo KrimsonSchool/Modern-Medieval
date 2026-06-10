@@ -19,11 +19,16 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public GameObject[] patrolPoints;
     private int patrolIndex;
 
+    public float attackSpeed;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+
+        animator.speed = attackSpeed;
+        
         SetDist(transform.position);
         if (FindFirstObjectByType<EnemiesQuest>() != null)
         {
@@ -86,7 +91,6 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
-        //TODO change to generic health system, have enemy have Targeted object which is used here
         FindFirstObjectByType<PlayerHealth>().Hurt(attackDamage);
     }
 }

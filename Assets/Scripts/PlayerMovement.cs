@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public float interactDist;
 
     private PlayerHolder playerHold;
-    
+
     public GameObject heldObject;
     public GameObject holdPos;
 
@@ -32,6 +32,9 @@ public class PlayerMovement : MonoBehaviour
     private bool spotted;
     private float spottedTimer;
     SecurityCamera securityCamera;
+
+    private float movSpeed;
+    private float runSpeed;
 
     private void OnEnable()
     {
@@ -46,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        runSpeed = speed * 1.5f;
+        movSpeed = speed;
         //DontDestroyOnLoad(gameObject);
 
         worldManager = FindFirstObjectByType<WorldManager>();
@@ -55,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
 
         controls.Player.Jump.started += ctx => Jump();
         controls.Player.Interact.started += ctx => Interact();
-        
+
         controls.Player.Exit.started += ctx => Exit();
     }
 
@@ -66,12 +71,12 @@ public class PlayerMovement : MonoBehaviour
         {
             heldObject.transform.position = holdPos.transform.position;
         }
-        
+
         if (playerHold == null)
         {
             playerHold = GetComponent<PlayerHolder>();
         }
-        
+
         if (worldManager == null)
         {
             worldManager = playerHold.worldManager;
@@ -79,8 +84,8 @@ public class PlayerMovement : MonoBehaviour
 
         PollInput();
 
-        transform.position += transform.forward * (speed * Time.deltaTime * move.y)
-                              + transform.right * (speed * Time.deltaTime * move.x);
+        transform.position += transform.forward * (movSpeed * Time.deltaTime * move.y)
+                              + transform.right * (movSpeed * Time.deltaTime * move.x);
 
         transform.Rotate(0, mouse.x * mouseSpeed * Time.deltaTime, 0);
 
@@ -92,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
         {
             GetComponent<Health>().Hurt(2147483647);
         }
+
         Debug.DrawLine(cam.transform.position, cam.transform.position + cam.transform.TransformDirection(Vector3.forward) * 1, Color.red);
 
         if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out var hit, interactDist))
@@ -99,14 +105,14 @@ public class PlayerMovement : MonoBehaviour
             //print("HIT " + hit.collider.tag);
             //interaction ui popup
             //Need array of Interactable tags
-            if (hit.collider.CompareTag("Npc") || hit.collider.CompareTag("Door") || hit.collider.CompareTag("Switch")|| hit.collider.CompareTag("Lock"))
+            if (hit.collider.CompareTag("Npc") || hit.collider.CompareTag("Door") || hit.collider.CompareTag("Switch") || hit.collider.CompareTag("Lock"))
             {
                 worldManager.interactUI.SetActive(true);
                 worldManager.interactedObject = hit.collider.gameObject;
                 if (hit.collider.CompareTag("Lock"))
                 {
                     string typeName = hit.collider.gameObject.GetComponent<DoorOpener>().typeName;
-                    worldManager.interactText.text = "Press [E]\n required "+typeName+": [" + hit.collider.GetComponent<DoorOpener>().requiredID + "]";
+                    worldManager.interactText.text = "Press [E]\n required " + typeName + ": [" + hit.collider.GetComponent<DoorOpener>().requiredID + "]";
                 }
             }
         }
@@ -116,6 +122,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 print("ERROR!!!!!!!!!1");
             }
+
             if (worldManager.interactUI.activeSelf)
                 worldManager.interactUI.SetActive(false);
 
@@ -137,10 +144,22 @@ public class PlayerMovement : MonoBehaviour
                 GetComponent<PlayerHealth>().Hurt(999);
             }
         }
- 
+
         if (controls.Player.Jump.triggered)
         {
             Jump();
+        }
+
+        if (controls.Player.Sprint.inProgress)
+        {
+            movSpeed = runSpeed;
+        }
+        else
+        {
+            if (movSpeed == runSpeed)
+            {
+                movSpeed = speed;
+            }
         }
     }
 
@@ -182,7 +201,7 @@ public class PlayerMovement : MonoBehaviour
                     break;
                 case "Lock":
                     hit.collider.gameObject.GetComponent<DoorOpener>().TryOpenDoor();
-                    
+
                     break;
             }
         }
@@ -192,7 +211,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("MObject"))
         {
-            if(heldObject==null)
+            if (heldObject == null)
             {
                 heldObject = other.gameObject;
             }
@@ -208,7 +227,7 @@ public class PlayerMovement : MonoBehaviour
         {
             worldManager.detectedIndicator.SetActive(true);
             worldManager.detectedIndicator.GetComponent<Animator>().Play(0);
-            
+
             print("spotted");
             spotted = true;
             securityCamera = other.gameObject.GetComponentInParent<SecurityCamera>();
@@ -231,7 +250,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.CompareTag("Detector"))
         {
             worldManager.detectedIndicator.SetActive(true);
-            
+
             spotted = false;
             securityCamera.detectionPercent = 0;
             securityCamera.hasDetected = false;
