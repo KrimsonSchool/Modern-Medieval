@@ -96,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out var hit, interactDist))
         {
-            print("HIT " + hit.collider.tag);
+            //print("HIT " + hit.collider.tag);
             //interaction ui popup
             //Need array of Interactable tags
             if (hit.collider.CompareTag("Npc") || hit.collider.CompareTag("Door") || hit.collider.CompareTag("Switch")|| hit.collider.CompareTag("Lock"))
@@ -218,6 +218,11 @@ public class PlayerMovement : MonoBehaviour
         if (other.CompareTag("Kill"))
         {
             GetComponent<PlayerHealth>().Hurt(999);
+        }
+
+        if (other.CompareTag("TutorialArea"))
+        {
+            other.gameObject.GetComponent<TutorialArea>().Entered();
         }
     }
 

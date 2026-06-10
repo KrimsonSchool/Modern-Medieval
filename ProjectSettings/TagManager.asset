@@ -15,6 +15,7 @@ TagManager:
   - Key
   - Detector
   - Kill
+  - TutorialArea
   layers:
   - Default
   - TransparentFX

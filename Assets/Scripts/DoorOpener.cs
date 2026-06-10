@@ -34,6 +34,11 @@ public class DoorOpener : MonoBehaviour
     void Start()
     {
         doorStartPos = door.transform.position;
+
+        foreach (var lay in layLines)
+        {
+            lay.AddComponent<FaeQue>(); 
+        }
         /*if (possiblePuzzleSpawns.Length > 0)
         {
             possiblePuzzleSpawns[Random.Range(0, possiblePuzzleSpawns.Length)].SetActive(true);

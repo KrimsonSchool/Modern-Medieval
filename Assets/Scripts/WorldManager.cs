@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,8 +31,24 @@ public class WorldManager : MonoBehaviour
 
     public GameObject detectedIndicator;
     GameObject player;
+
+    public Color[] gorbachevTheOmnisiah;
+
+    private void Awake()
+    {
+        gorbachevTheOmnisiah = new Color[6];
+        gorbachevTheOmnisiah[0] = Color.red;
+        gorbachevTheOmnisiah[1] = Color.blue;
+        gorbachevTheOmnisiah[2] = Color.green;
+        gorbachevTheOmnisiah[3] = Color.yellow;
+        gorbachevTheOmnisiah[4] = Color.cyan;
+        gorbachevTheOmnisiah[5] = Color.magenta;
+    }
+
     void Start()
     {
+        
+        
         //playerSpawn = GameObject.Find("PlayerSpawn");
         if (playerSpawn == null)
         {
@@ -46,7 +63,7 @@ public class WorldManager : MonoBehaviour
 
         if (FindFirstObjectByType<PlayerMovement>() == null)
         {
-            print("Spawning at: " + playerSpawn.transform.position +" pos");
+            //print("Spawning at: " + playerSpawn.transform.position +" pos");
             player = Instantiate(playerPrefab, playerSpawn.transform.position, playerSpawn.transform.rotation);
             player.transform.position =  playerSpawn.transform.position;
             player.transform.rotation =  playerSpawn.transform.rotation;
