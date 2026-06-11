@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 23a3b17c9da47474cab3f3c7e316d102
+guid: f0688d9669d771c4b9b794888930467e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -108,78 +108,12 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: MainMenu_DC_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1280
-        height: 720
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 11b70e692e99ea048a884d5cbae984b8
-      internalID: -560673036
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MainMenu_DC_1
-      rect:
-        serializedVersion: 2
-        x: 1280
-        y: 0
-        width: 1280
-        height: 720
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 693e5a24f86e2bb4c9f1234c772a50cb
-      internalID: -712943302
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MainMenu_DC_2
-      rect:
-        serializedVersion: 2
-        x: 2560
-        y: 0
-        width: 1280
-        height: 720
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cfb61134f1b0cd445bdf804289a5dc8c
-      internalID: -194149630
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 56c2a3a36d7873c48978f4dd162c6aca
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -188,10 +122,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      MainMenu_DC_0: -560673036
-      MainMenu_DC_1: -712943302
-      MainMenu_DC_2: -194149630
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
