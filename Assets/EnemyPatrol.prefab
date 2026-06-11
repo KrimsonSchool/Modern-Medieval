@@ -195,7 +195,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4555954050717990524, guid: 01b092be28db2e5369b64f940adbb804, type: 3}
+  - {fileID: -1268758282064500386, guid: e9c01370346029d48a638f2281c64072, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -849,6 +849,7 @@ MonoBehaviour:
   attackDamage: 1
   patrol: 0
   patrolPoints: []
+  attackSpeed: 0
 --- !u!114 &5443967923468306928
 MonoBehaviour:
   m_ObjectHideFlags: 0
