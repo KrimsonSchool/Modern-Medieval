@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: e34cb2f42df697cf687cd238eaad57d8
+=======
+guid: bbc0c7e2c39a13e419f4807ae4004d4b
+>>>>>>> Jaicleanupbranch1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
