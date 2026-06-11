@@ -25,9 +25,13 @@ public class PlayerMovement : MonoBehaviour
     public GameObject heldObject;
     public GameObject holdPos;
 
-    private PlayerInput playerInput;
+    //private PlayerInput playerInput;
 
     [HideInInspector] public WorldManager worldManager;
+
+    private bool spotted;
+    private float spottedTimer;
+    SecurityCamera securityCamera;
 
     private void OnEnable()
     {
@@ -42,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         worldManager = FindFirstObjectByType<WorldManager>();
 
@@ -88,15 +92,22 @@ public class PlayerMovement : MonoBehaviour
         {
             GetComponent<Health>().Hurt(2147483647);
         }
+        Debug.DrawLine(cam.transform.position, cam.transform.position + cam.transform.TransformDirection(Vector3.forward) * 1, Color.red);
 
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, interactDist))
+        if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out var hit, interactDist))
         {
+            print("HIT " + hit.collider.tag);
             //interaction ui popup
             //Need array of Interactable tags
-            if (hit.collider.CompareTag("Npc") || hit.collider.CompareTag("Door") || hit.collider.CompareTag("Switch"))
+            if (hit.collider.CompareTag("Npc") || hit.collider.CompareTag("Door") || hit.collider.CompareTag("Switch")|| hit.collider.CompareTag("Lock"))
             {
                 worldManager.interactUI.SetActive(true);
                 worldManager.interactedObject = hit.collider.gameObject;
+                if (hit.collider.CompareTag("Lock"))
+                {
+                    string typeName = hit.collider.gameObject.GetComponent<DoorOpener>().typeName;
+                    worldManager.interactText.text = "Press [E]\n required "+typeName+": [" + hit.collider.GetComponent<DoorOpener>().requiredID + "]";
+                }
             }
         }
         else
@@ -111,10 +122,26 @@ public class PlayerMovement : MonoBehaviour
             worldManager.interactedObject = null;
         }
 
-       /* if (playerInput.actions["Jump"].triggered)
+        if (spotted)
         {
-            
-        }*/
+            spottedTimer += Time.deltaTime;
+
+            if (spottedTimer >= 0.1f)
+            {
+                spottedTimer = 0;
+                securityCamera.detectionPercent += 1;
+            }
+
+            if (securityCamera.detectionPercent >= 100 / securityCamera.detectSpeed)
+            {
+                GetComponent<PlayerHealth>().Hurt(999);
+            }
+        }
+ 
+        if (controls.Player.Jump.triggered)
+        {
+            Jump();
+        }
     }
 
     private void PollInput()
@@ -139,7 +166,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Interact()
     {
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, interactDist))
+        if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out var hit, interactDist))
         {
             //print(hit.collider.tag);
             switch (hit.collider.tag)
@@ -153,6 +180,10 @@ public class PlayerMovement : MonoBehaviour
                 case "Switch":
                     hit.collider.gameObject.GetComponent<Switch>().SwitchState();
                     break;
+                case "Lock":
+                    hit.collider.gameObject.GetComponent<DoorOpener>().TryOpenDoor();
+                    
+                    break;
             }
         }
     }
@@ -165,6 +196,41 @@ public class PlayerMovement : MonoBehaviour
             {
                 heldObject = other.gameObject;
             }
+        }
+
+        if (other.CompareTag("Key"))
+        {
+            GetComponent<PlayerInventory>().AddItem(other.gameObject.GetComponent<Key>().obj);
+            Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("Detector"))
+        {
+            worldManager.detectedIndicator.SetActive(true);
+            worldManager.detectedIndicator.GetComponent<Animator>().Play(0);
+            
+            print("spotted");
+            spotted = true;
+            securityCamera = other.gameObject.GetComponentInParent<SecurityCamera>();
+            securityCamera.hasDetected = true;
+        }
+
+        if (other.CompareTag("Kill"))
+        {
+            GetComponent<PlayerHealth>().Hurt(999);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Detector"))
+        {
+            worldManager.detectedIndicator.SetActive(true);
+            
+            spotted = false;
+            securityCamera.detectionPercent = 0;
+            securityCamera.hasDetected = false;
+            securityCamera = null;
         }
     }
 

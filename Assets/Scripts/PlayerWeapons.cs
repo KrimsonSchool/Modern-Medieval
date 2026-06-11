@@ -17,6 +17,7 @@ public class PlayerWeapons : MonoBehaviour
 
     public int damage;
 
+    [Tooltip("Smaller number = faster")]
     public float attackSpeed;
     private bool hasAttacked;
 

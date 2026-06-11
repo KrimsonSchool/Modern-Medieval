@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class LayerManager : MonoBehaviour
 {
     public int layer;
-    public TextMeshProUGUI layerText;
+    //public TextMeshProUGUI layerText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,9 +35,11 @@ public class LayerManager : MonoBehaviour
 
     void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
-        layerText = GameObject.Find("LayerText").GetComponent<TextMeshProUGUI>();
+        //layerText = GameObject.Find("LayerText").GetComponent<TextMeshProUGUI>();
         DisplayNewLayer();
 
+        
+        /*
         int rand = Random.Range(0, 3);
         
         switch (rand)
@@ -47,13 +49,13 @@ public class LayerManager : MonoBehaviour
                 FindFirstObjectByType<WorldManager>().differences[0].SetActive(false);
                 break;
             
-        }
+        }*/
     }
     
     public void DisplayNewLayer()
     {
-        layerText.text = "Layer " + layer.ToString("D2");
-        layerText.GetComponent<Animator>().Play("LayerText");
+        //layerText.text = "Layer " + layer.ToString("D2");
+        //layerText.GetComponent<Animator>().Play("LayerText");
         
     }
 
