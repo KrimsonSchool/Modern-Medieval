@@ -34,4 +34,9 @@ public class MenuManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void ENABLE_OBJECT(GameObject obj)
+    {
+        obj.SetActive(true);
+    }
 }
