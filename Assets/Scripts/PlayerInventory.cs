@@ -17,19 +17,29 @@ public class PlayerInventory : MonoBehaviour
 
     private TextMeshProUGUI keysText;
 
+    private PDA pda;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        keysText = GameObject.Find("test_keys").GetComponent<TextMeshProUGUI>();
+        pda = GetComponent<PDA>();
+        keysText = pda.stack;
     }
 
     // Update is called once per frame
     void Update()
     {
-        keysText.text = "";
-        foreach (var obj in inventory)
+        if (pda.menu == PDA.Menus.Inventory)
         {
-            keysText.text += obj.name + " [" + obj.id+"]\n";
+            pda.stackLock = true;
+            keysText.text = "";
+            foreach (var obj in inventory)
+            {
+                keysText.text += obj.name + " [" + obj.id + "]\n";
+            }
+        }
+        else if(pda.stackLock)
+        {
+            pda.stackLock = false;
         }
     }
 

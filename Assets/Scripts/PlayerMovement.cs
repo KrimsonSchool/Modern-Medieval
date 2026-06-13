@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     private float movSpeed;
     private float runSpeed;
 
+    private PDA pda;
+
     private void OnEnable()
     {
         controls.Player.Enable();
@@ -54,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
         //DontDestroyOnLoad(gameObject);
 
         worldManager = FindFirstObjectByType<WorldManager>();
+        pda = GetComponent<PDA>();
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -148,6 +151,11 @@ public class PlayerMovement : MonoBehaviour
         if (controls.Player.Jump.triggered)
         {
             Jump();
+        }
+
+        if (controls.Player.Next.triggered)
+        {
+            pda.selected++;
         }
 
         if (controls.Player.Sprint.inProgress)
