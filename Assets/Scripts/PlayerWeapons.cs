@@ -10,6 +10,8 @@ public class PlayerWeapons : MonoBehaviour
     private void OnEnable() => controls.Player.Enable();
     private void OnDisable() => controls.Player.Disable();
 
+    public GameObject weapon;
+    
     private bool attack;
     public Animator weaponAnimator;
 
@@ -33,6 +35,7 @@ public class PlayerWeapons : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        weapon.SetActive(true);
         playerHolder = GetComponent<PlayerHolder>();
     }
 

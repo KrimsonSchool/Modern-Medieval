@@ -193,11 +193,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 570165812345843948}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 891e49ffa921595e9a70cb82c3b1200c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  weapon: {fileID: 2663407100445787381}
   weaponAnimator: {fileID: 3870385144411500889}
   hitDist: 1
   damage: 1
@@ -258,11 +259,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 570165812345843948}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ab120631a62acd909aabcaa745cab48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pda: {fileID: 6583319057755656566}
   menu: 0
   title: {fileID: 4591493434472531022}
   stack: {fileID: 1080905208346622744}
@@ -845,7 +847,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &391432790181736730
 Transform:
   m_ObjectHideFlags: 0
@@ -1489,6 +1491,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 102960, guid: 11b84f6e8e1190b46b3d40c72c9fe522, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 458314, guid: 11b84f6e8e1190b46b3d40c72c9fe522, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1550,6 +1556,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11b84f6e8e1190b46b3d40c72c9fe522, type: 3}
+--- !u!1 &2663407100445787381 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 102960, guid: 11b84f6e8e1190b46b3d40c72c9fe522, type: 3}
+  m_PrefabInstance: {fileID: 2663407100445759173}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2663407100445878415 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 458314, guid: 11b84f6e8e1190b46b3d40c72c9fe522, type: 3}

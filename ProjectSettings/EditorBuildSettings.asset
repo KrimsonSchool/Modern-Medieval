@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Actual Game Levels/Menu.unity
     guid: 4fcfc2bf167dc9e4ea97f310d6fc98b9
   - enabled: 1
-    path: Assets/Scenes/Actual Game Levels/CombatRoom(KV).unity
-    guid: df920a56b4117c8ec80fbb293144c5d9
+    path: Assets/Scenes/Actual Game Levels/Combat.unity
+    guid: a75198826807829f9b3d467723cd9180
   - enabled: 1
     path: Assets/Scenes/Actual Game Levels/Puzzle.unity
     guid: 1d124be0a009689748a34b3813e8384b

@@ -9,23 +9,25 @@ public class WorldManager : MonoBehaviour
     public GameObject dialogueBox;
     public GameObject interactUI;
 
-    [HideInInspector]
-    public GameObject interactedObject;
+    [HideInInspector] public GameObject interactedObject;
 
     public GameObject playerPrefab;
     public GameObject hurtEffect;
-    
+
     public Slider healthSlider;
     public Slider cooldownSlider;
     public Slider xpSlider;
 
     public GameObject playerSpawn;
+    public bool playerHasWeapon;
+    public bool playerHasPDA;
+
     public GameObject[] enemies;
 
     public GameObject[] worldObjects;
 
     public GameObject[] scenarios;
-    
+
     public TextMeshProUGUI scenarioText;
     public TextMeshProUGUI interactText;
 
@@ -47,8 +49,6 @@ public class WorldManager : MonoBehaviour
 
     void Start()
     {
-        
-        
         //playerSpawn = GameObject.Find("PlayerSpawn");
         if (playerSpawn == null)
         {
@@ -65,10 +65,13 @@ public class WorldManager : MonoBehaviour
         {
             //print("Spawning at: " + playerSpawn.transform.position +" pos");
             player = Instantiate(playerPrefab, playerSpawn.transform.position, playerSpawn.transform.rotation);
-            player.transform.position =  playerSpawn.transform.position;
-            player.transform.rotation =  playerSpawn.transform.rotation;
+            player.transform.position = playerSpawn.transform.position;
+            player.transform.rotation = playerSpawn.transform.rotation;
+
+            player.GetComponent<PDA>().enabled = playerHasPDA;
+            player.GetComponent<PlayerWeapons>().enabled = playerHasWeapon;
         }
-        
+
         /*
         int rng = Random.Range(0, scenarios.Length);
         string scenarioType = "";

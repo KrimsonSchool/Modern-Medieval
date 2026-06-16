@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class PDA : MonoBehaviour
 {
+    public GameObject pda;
+    
     public enum  Menus
     {
         Home,
@@ -27,7 +29,7 @@ public class PDA : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        pda.SetActive(true);
     }
 
     // Update is called once per frame
