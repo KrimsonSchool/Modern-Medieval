@@ -23,7 +23,10 @@ public class DoorOpener : MonoBehaviour
 
     public GameObject[] layLines;
 
-    public string typeName;
+    [Space] public MeshRenderer meshToSetMaterial;
+    public int materialIndex;
+
+    [Space] public string typeName;
     //public GameObject[] possiblePuzzleSpawns;
 
     //public PuzzleType puzzleType;
@@ -37,13 +40,28 @@ public class DoorOpener : MonoBehaviour
 
         foreach (var lay in layLines)
         {
-            lay.AddComponent<FaeQue>(); 
+            lay.AddComponent<FaeQue>();
         }
         /*if (possiblePuzzleSpawns.Length > 0)
         {
             possiblePuzzleSpawns[Random.Range(0, possiblePuzzleSpawns.Length)].SetActive(true);
         }*/
         //  OpenDoor();
+
+        MeshRenderer renderer = meshToSetMaterial.GetComponent<MeshRenderer>();
+
+        Material[] mats = renderer.materials;
+
+        Material matt = new Material(mats[materialIndex]);
+        float ev100Value = 5;
+        float intensity = 0.125f * Mathf.Pow(2f, ev100Value); // Translates to Nits
+        Color colour = FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[requiredID];
+
+        matt.SetColor("_EmissiveColor", colour * intensity);
+
+        mats[materialIndex] = matt;
+
+        renderer.materials = mats;
     }
 
     // Update is called once per frame
@@ -109,6 +127,7 @@ public class DoorOpener : MonoBehaviour
                 layLines[0].SetActive(true);
                 layLines[1].SetActive(false);
             }
+
             door.transform.position = doorStartPos;
             timer = 0;
         }
