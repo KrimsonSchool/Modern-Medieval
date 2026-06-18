@@ -241,3 +241,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   enemyTypes: 0
   random: 1
+  patrolPoints:
+  - {fileID: 0}
+  - {fileID: 0}
