@@ -53,7 +53,7 @@ public class DoorOpener : MonoBehaviour
         Material[] mats = renderer.materials;
 
         Material matt = new Material(mats[materialIndex]);
-        float ev100Value = 5;
+        float ev100Value = 14;
         float intensity = 0.125f * Mathf.Pow(2f, ev100Value); // Translates to Nits
         Color colour = FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[requiredID];
 

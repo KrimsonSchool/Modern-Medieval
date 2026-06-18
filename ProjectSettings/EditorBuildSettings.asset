@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Actual Game Levels/Puzzle.unity
     guid: 1d124be0a009689748a34b3813e8384b
   - enabled: 1
-    path: Assets/Scenes/Actual Game Levels/Level_Stealth Old.unity
+    path: Assets/Scenes/Other Scenes/Level_Stealth Old.unity
     guid: bb44fc683b6591d30bc2f01cb2074249
   - enabled: 1
     path: Assets/Scenes/Actual Game Levels/Level_Platform.unity
