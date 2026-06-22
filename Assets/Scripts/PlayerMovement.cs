@@ -63,7 +63,6 @@ public class PlayerMovement : MonoBehaviour
 
         controls.Player.Jump.started += ctx => Jump();
         controls.Player.Interact.started += ctx => Interact();
-
         controls.Player.Exit.started += ctx => Exit();
     }
 
@@ -115,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
                 if (hit.collider.CompareTag("Lock"))
                 {
                     string typeName = hit.collider.gameObject.GetComponent<DoorOpener>().typeName;
-                    worldManager.interactText.text = "Press [E]\n required " + typeName + ": [" + hit.collider.GetComponent<DoorOpener>().requiredID + "]";
+                    worldManager.interactText.text = "Press ["+controls.Player.Interact.GetBindingDisplayString(0)+"]\n required " + typeName + ": [" + hit.collider.GetComponent<DoorOpener>().requiredID + "]";
                 }
             }
         }
@@ -157,6 +156,10 @@ public class PlayerMovement : MonoBehaviour
         {
             pda.selected++;
         }
+        if (controls.Player.Previous.triggered)
+        {
+            pda.selected--;
+        }
 
         if (controls.Player.Sprint.inProgress)
         {
@@ -193,6 +196,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Interact()
     {
+        //print("Pressed Interact " + Time.time);
         if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out var hit, interactDist))
         {
             //print(hit.collider.tag);

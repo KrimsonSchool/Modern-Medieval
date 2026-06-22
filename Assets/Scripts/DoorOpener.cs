@@ -103,6 +103,13 @@ public class DoorOpener : MonoBehaviour
     public void TryOpenDoor()
     {
         PlayerInventory inventory = FindFirstObjectByType<PlayerInventory>();
+
+        if (opening)
+        {
+            door.transform.position = doorStartPos + doorEndDiff;
+            open = true;
+            opening = false;
+        }
         if (!open)
         {
             if (inventory.HasItemWithID(requiredID))
