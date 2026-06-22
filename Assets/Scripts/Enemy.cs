@@ -21,6 +21,11 @@ public class Enemy : MonoBehaviour
 
     public float attackSpeed;
 
+
+    private bool wander;
+    private bool atWanderLoc=true;
+
+    private Vector3 wanderDest;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -40,6 +45,8 @@ public class Enemy : MonoBehaviour
             p.GetComponent<MeshRenderer>().enabled = false;
             p.GetComponent<Collider>().enabled = false;
         }
+        
+        wanderDest = transform.position;
     }
 
     // Update is called once per frame
@@ -49,18 +56,23 @@ public class Enemy : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, dest) <= aiDistanceMin)
             {
+                wander = false;
                 agent.SetDestination(transform.position);
                 animator.SetBool("IsMoving", false);
                 animator.SetBool("IsAttacking", true);
             }
             else if (Vector3.Distance(transform.position, dest) >= aiDistanceMax)
             {
-                agent.SetDestination(transform.position);
+                //agent.SetDestination(transform.position);
                 animator.SetBool("IsAttacking", false);
                 animator.SetBool("IsMoving", false);
+                
+                //wander
+                wander = true;
             }
             else
             {
+                wander = false;
                 agent.SetDestination(dest);
                 animator.SetBool("IsAttacking", false);
                 animator.SetBool("IsMoving", true);
@@ -81,6 +93,39 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
+
+
+
+        if (wander)
+        {
+            if (!atWanderLoc)
+            {
+                print("Moving to loc");
+                animator.SetBool("IsMoving", true);
+                print(Vector3.Distance(transform.position, wanderDest));
+                if (Vector3.Distance(transform.position, wanderDest)<=0.5f)
+                {
+                    print("at location");
+                    atWanderLoc = true;
+                }
+            }
+            else
+            {
+                print("Selecting location");
+                animator.SetBool("IsMoving", false);
+                Vector3 rng = new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f));
+                wanderDest = transform.position + rng;
+                if (IsDestinationReachable(wanderDest))
+                {
+                    agent.SetDestination(wanderDest);
+                    atWanderLoc = false;
+                }
+                else
+                {
+                    atWanderLoc = true;
+                }
+            }
+        }
     }
 
 
@@ -92,5 +137,17 @@ public class Enemy : MonoBehaviour
     public void Attack()
     {
         FindFirstObjectByType<PlayerHealth>().Hurt(attackDamage);
+    }
+    
+    public bool IsDestinationReachable(Vector3 targetPosition)
+    {
+        NavMeshPath path = new NavMeshPath();
+    
+        if (agent.CalculatePath(targetPosition, path))
+        {
+            return path.status == NavMeshPathStatus.PathComplete;
+        }
+    
+        return false;
     }
 }
