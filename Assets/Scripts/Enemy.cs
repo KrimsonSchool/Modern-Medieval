@@ -26,6 +26,8 @@ public class Enemy : MonoBehaviour
     private bool atWanderLoc=true;
 
     private Vector3 wanderDest;
+
+    [HideInInspector] public bool chase;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -52,46 +54,59 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!patrol)
+        if (!chase)
         {
-            if (Vector3.Distance(transform.position, dest) <= aiDistanceMin)
+            if (!patrol)
             {
-                wander = false;
-                agent.SetDestination(transform.position);
-                animator.SetBool("IsMoving", false);
-                animator.SetBool("IsAttacking", true);
-            }
-            else if (Vector3.Distance(transform.position, dest) >= aiDistanceMax)
-            {
-                //agent.SetDestination(transform.position);
-                animator.SetBool("IsAttacking", false);
-                animator.SetBool("IsMoving", false);
-                
-                //wander
-                wander = true;
+                if (Vector3.Distance(transform.position, dest) <= aiDistanceMin)
+                {
+                    wander = false;
+                    agent.SetDestination(transform.position);
+                    animator.SetBool("IsMoving", false);
+                    animator.SetBool("IsAttacking", true);
+                }
+                else if (Vector3.Distance(transform.position, dest) >= aiDistanceMax)
+                {
+                    //agent.SetDestination(transform.position);
+                    animator.SetBool("IsAttacking", false);
+                    animator.SetBool("IsMoving", false);
+
+                    //wander
+                    wander = true;
+                }
+                else
+                {
+                    wander = false;
+                    agent.SetDestination(dest);
+                    animator.SetBool("IsAttacking", false);
+                    animator.SetBool("IsMoving", true);
+                }
+
+                dest = FindFirstObjectByType<PlayerMovement>().transform.position;
             }
             else
             {
-                wander = false;
-                agent.SetDestination(dest);
-                animator.SetBool("IsAttacking", false);
+                agent.SetDestination(patrolPoints[patrolIndex].transform.position);
                 animator.SetBool("IsMoving", true);
+                if (Vector3.Distance(transform.position, patrolPoints[patrolIndex].transform.position) <= 1)
+                {
+                    patrolIndex++;
+                    if (patrolIndex >= patrolPoints.Length)
+                    {
+                        patrolIndex = 0;
+                    }
+                }
             }
-
-            dest = FindFirstObjectByType<PlayerMovement>().transform.position;
         }
         else
         {
-            agent.SetDestination(patrolPoints[patrolIndex].transform.position);
-            animator.SetBool("IsMoving", true);
-            if (Vector3.Distance(transform.position, patrolPoints[patrolIndex].transform.position) <= 1)
-            {
-                patrolIndex++;
-                if (patrolIndex >= patrolPoints.Length)
-                {
-                    patrolIndex = 0;
-                }
-            }
+            patrol = false;
+            aiDistanceMax = 999;
+            dest = FindFirstObjectByType<PlayerMovement>().transform.position;
+            
+            chase = false;
+            
+            print("I want player, can i reach? " + IsDestinationReachable(dest));
         }
 
 

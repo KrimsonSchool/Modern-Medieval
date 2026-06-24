@@ -299,9 +299,10 @@ MonoBehaviour:
   detectionPercent: 0
   light: {fileID: 510876459}
   hasDetected: 0
-  detectSpeed: 4
+  detectSpeed: 1
   searchSpeed: 1.3
   type: 1
+  alerter: 1
 --- !u!1001 &11859313
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31522,9 +31523,10 @@ MonoBehaviour:
   detectionPercent: 0
   light: {fileID: 380426353}
   hasDetected: 0
-  detectSpeed: 4
+  detectSpeed: 1
   searchSpeed: 1.3
   type: 1
+  alerter: 1
 --- !u!1001 &1149697233
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45105,9 +45107,10 @@ MonoBehaviour:
   detectionPercent: 0
   light: {fileID: 1966060453}
   hasDetected: 0
-  detectSpeed: 4
+  detectSpeed: 1
   searchSpeed: 1.3
   type: 1
+  alerter: 1
 --- !u!1001 &1716632715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50509,9 +50512,10 @@ MonoBehaviour:
   detectionPercent: 0
   light: {fileID: 903232561}
   hasDetected: 0
-  detectSpeed: 4
+  detectSpeed: 1
   searchSpeed: 1.3
   type: 1
+  alerter: 1
 --- !u!1001 &1984994171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58501,9 +58505,10 @@ MonoBehaviour:
   detectionPercent: 0
   light: {fileID: 4915385820077657094}
   hasDetected: 0
-  detectSpeed: 4
+  detectSpeed: 1
   searchSpeed: 1.3
   type: 1
+  alerter: 0
 --- !u!23 &488472499935811125
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -110378,9 +110383,10 @@ MonoBehaviour:
   detectionPercent: 0
   light: {fileID: 3237699338858660327}
   hasDetected: 0
-  detectSpeed: 4
+  detectSpeed: 1
   searchSpeed: 1.3
   type: 1
+  alerter: 0
 --- !u!4 &7943561000696466183
 Transform:
   m_ObjectHideFlags: 0

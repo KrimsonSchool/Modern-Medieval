@@ -138,13 +138,28 @@ public class PlayerMovement : MonoBehaviour
             if (spottedTimer >= 0.1f)
             {
                 spottedTimer = 0;
-                securityCamera.detectionPercent += 1;
+                securityCamera.detectionPercent += 1 + securityCamera.detectSpeed;
             }
 
-            if (securityCamera.detectionPercent >= 100 / securityCamera.detectSpeed)
+            if (securityCamera.alerter)
             {
-                GetComponent<PlayerHealth>().Hurt(999);
+                if (securityCamera.detectionPercent >= 100)
+                {
+                    GameObject[] allEnemy = GameObject.FindGameObjectsWithTag("Enemy");
+                    foreach (var e in allEnemy)
+                    {
+                        e.GetComponent<Enemy>().chase = true;
+                    }
+                }
             }
+            else
+            {
+                if (securityCamera.detectionPercent >= 100)
+                {
+                    GetComponent<PlayerHealth>().Hurt(999);
+                }
+            }
+            
         }
 
         if (controls.Player.Jump.triggered)

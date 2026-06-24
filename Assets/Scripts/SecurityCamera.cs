@@ -9,10 +9,12 @@ public class SecurityCamera : MonoBehaviour
 
     Animator anim;
 
-    public float detectSpeed = 1;
+    public int detectSpeed = 1;
     public float searchSpeed = 1;
     public int type = 0;
 
+    [Space]
+    public bool alerter;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,19 +27,8 @@ public class SecurityCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (detectionPercent < 1)
-        {
-            light.color = Color.white;
-        }
-        else if (detectionPercent > 1/detectSpeed)
-        {
-            light.color = Color.yellow;
-        }
-        else if (detectionPercent >= 75/detectSpeed)
-        {
-            light.color = Color.red;
-        }
-
+        light.color = new Color(1f, 1f - (detectionPercent / 100f), 1f - (detectionPercent / 100f), 1f);
+        
         if (!hasDetected)
         {
             anim.StopPlayback();
@@ -46,5 +37,7 @@ public class SecurityCamera : MonoBehaviour
         {
             anim.StartPlayback();
         }
+        
+        
     }
 }
