@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
@@ -5,39 +6,61 @@ public class MovingPlatform : MonoBehaviour
     [Header("Movement Settings")]
     public Transform pointA;
     public Transform pointB;
-    public float speed = 3.0f;
+
+    public float speed = 3f;
+    public float waitTime = 1f;
 
     private Vector3 targetPosition;
+    private bool isWaiting;
 
-    void Start()
+    private void Start()
     {
-        // Set the initial target to Point B
-        if (pointB != null)
+        if (pointA == null || pointB == null)
+        {
+            Debug.LogError("Moving Platform missing Point A or Point B!");
+            enabled = false;
+            return;
+        }
+
+        targetPosition = pointB.position;
+    }
+
+    private void FixedUpdate()
+    {
+        if (isWaiting) return;
+
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            targetPosition,
+            speed * Time.fixedDeltaTime
+        );
+
+        if (Vector3.Distance(transform.position, targetPosition) < 0.01f)
+        {
+            StartCoroutine(WaitAtEnd());
+        }
+    }
+
+    private IEnumerator WaitAtEnd()
+    {
+        isWaiting = true;
+
+        yield return new WaitForSeconds(waitTime);
+
+        if (targetPosition == pointA.position)
         {
             targetPosition = pointB.position;
         }
-    }
-
-    void FixedUpdate()
-    {
-        if (pointA == null || pointB == null) return;
-
-        // Move the platform toward the target position
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.fixedDeltaTime);
-
-        // Check if the platform has reached the target, then swap targets
-        if (Vector3.Distance(transform.position, targetPosition) < 0.01f)
+        else
         {
-            targetPosition = (targetPosition == pointA.position) ? pointB.position : pointA.position;
+            targetPosition = pointA.position;
         }
-    }
 
-    // --- PLAYER RIDING LOGIC ---
-    // Makes the player a child of the platform so they move with it.
+        isWaiting = false;
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Adjust the tag check if your player uses a different tag (e.g., "Player")
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.transform.SetParent(transform);
