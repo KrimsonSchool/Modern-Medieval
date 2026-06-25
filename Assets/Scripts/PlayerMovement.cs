@@ -38,6 +38,11 @@ public class PlayerMovement : MonoBehaviour
 
     private PDA pda;
 
+    [Space] 
+    public SoundBlaster98 sound;
+
+    private PlayerHolder pholder;
+
     private void OnEnable()
     {
         controls.Player.Enable();
@@ -51,6 +56,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        pholder=GetComponent<PlayerHolder>();
+        
         runSpeed = speed * 1.5f;
         movSpeed = speed;
         //DontDestroyOnLoad(gameObject);
@@ -88,6 +95,11 @@ public class PlayerMovement : MonoBehaviour
 
         transform.position += transform.forward * (movSpeed * Time.deltaTime * move.y)
                               + transform.right * (movSpeed * Time.deltaTime * move.x);
+
+        if (move.x != 0 || move.y != 0)
+        {
+            //sound.TriggerSound(pholder.sounds[1]);
+        }
 
         transform.Rotate(0, mouse.x * mouseSpeed * Time.deltaTime, 0);
 
@@ -205,6 +217,7 @@ public class PlayerMovement : MonoBehaviour
 
             print(hit.distance);
 
+            sound.TriggerSound(pholder.sounds[0]);
             GetComponent<Rigidbody>().AddForce(transform.up * jumpAmount, ForceMode.Impulse);
         }
     }
