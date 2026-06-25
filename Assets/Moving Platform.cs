@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    [Header("Movement Settings")]
-    public Transform pointA;
+    [Header("Movement Settings")] public Transform pointA;
     public Transform pointB;
 
     public float speed = 3f;
@@ -13,8 +12,12 @@ public class MovingPlatform : MonoBehaviour
     private Vector3 targetPosition;
     private bool isWaiting;
 
+    private Rigidbody rb;
+
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
+
         if (pointA == null || pointB == null)
         {
             Debug.LogError("Moving Platform missing Point A or Point B!");
@@ -27,51 +30,32 @@ public class MovingPlatform : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isWaiting) return;
-
-        transform.position = Vector3.MoveTowards(
-            transform.position,
-            targetPosition,
-            speed * Time.fixedDeltaTime
-        );
-
-        if (Vector3.Distance(transform.position, targetPosition) < 0.01f)
+        if (!isWaiting)
         {
-            StartCoroutine(WaitAtEnd());
+            Vector3 direction = (targetPosition - rb.position).normalized;
+            rb.linearVelocity = direction * speed;
+
+            if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
+            {
+                StartCoroutine(WaitAtEnd());
+            }
+        }
+        else
+        {
+            rb.linearVelocity = Vector3.zero;
         }
     }
 
     private IEnumerator WaitAtEnd()
     {
         isWaiting = true;
+        
+        rb.linearVelocity = Vector3.zero;
+        
+        targetPosition = (targetPosition == pointA.position) ? pointB.position : pointA.position;
 
         yield return new WaitForSeconds(waitTime);
 
-        if (targetPosition == pointA.position)
-        {
-            targetPosition = pointB.position;
-        }
-        else
-        {
-            targetPosition = pointA.position;
-        }
-
         isWaiting = false;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.transform.SetParent(transform);
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.transform.SetParent(null);
-        }
     }
 }

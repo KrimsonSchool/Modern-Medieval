@@ -38,10 +38,11 @@ public class PlayerMovement : MonoBehaviour
 
     private PDA pda;
 
-    [Space] 
-    public SoundBlaster98 sound;
+    [Space] public SoundBlaster98 sound;
 
     private PlayerHolder pholder;
+
+    private bool hasJumped;
 
     private void OnEnable()
     {
@@ -56,8 +57,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        pholder=GetComponent<PlayerHolder>();
-        
+        pholder = GetComponent<PlayerHolder>();
+
         runSpeed = speed * 1.5f;
         movSpeed = speed;
         //DontDestroyOnLoad(gameObject);
@@ -126,7 +127,8 @@ public class PlayerMovement : MonoBehaviour
                 if (hit.collider.CompareTag("Lock"))
                 {
                     string typeName = hit.collider.gameObject.GetComponent<DoorOpener>().typeName;
-                    worldManager.interactText.text = "Press ["+controls.Player.Interact.GetBindingDisplayString(0)+"]\n required " + typeName + ": [" + hit.collider.GetComponent<DoorOpener>().requiredID + "]";
+                    worldManager.interactText.text = "Press [" + controls.Player.Interact.GetBindingDisplayString(0) + "]\n required " + typeName + ": [" +
+                                                     hit.collider.GetComponent<DoorOpener>().requiredID + "]";
                 }
             }
         }
@@ -171,18 +173,13 @@ public class PlayerMovement : MonoBehaviour
                     GetComponent<PlayerHealth>().Hurt(999);
                 }
             }
-            
-        }
-
-        if (controls.Player.Jump.triggered)
-        {
-            Jump();
         }
 
         if (controls.Player.Next.triggered)
         {
             pda.selected++;
         }
+
         if (controls.Player.Previous.triggered)
         {
             pda.selected--;
@@ -199,6 +196,21 @@ public class PlayerMovement : MonoBehaviour
                 movSpeed = speed;
             }
         }
+        
+        LayerMask mask = LayerMask.GetMask("Ground");
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out var ground, 1.1f, mask))
+        {
+            //TODO make so can jump out of moving platform...
+            if (ground.collider.gameObject.GetComponent<MovingPlatform>() != null)
+            {
+                GetComponent<Rigidbody>().linearVelocity = ground.collider.gameObject.GetComponent<Rigidbody>().linearVelocity;
+            }
+            
+            if (controls.Player.Jump.triggered)
+            {
+                Jump();
+            }
+        }
     }
 
     private void PollInput()
@@ -209,17 +221,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        LayerMask mask = LayerMask.GetMask("Ground");
+        //.DrawLine(transform.position, transform.position + transform.TransformDirection(Vector3.down) * hit.distance, Color.red);
 
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out var hit, 1.1f, mask))
-        {
-            Debug.DrawLine(transform.position, transform.position + transform.TransformDirection(Vector3.down) * hit.distance, Color.red);
+        //print(hit.distance);
 
-            print(hit.distance);
-
-            sound.TriggerSound(pholder.sounds[0]);
-            GetComponent<Rigidbody>().AddForce(transform.up * jumpAmount, ForceMode.Impulse);
-        }
+        sound.TriggerSound(pholder.sounds[0]);
+        GetComponent<Rigidbody>().AddForce(transform.up * jumpAmount, ForceMode.Impulse);
     }
 
     public void Interact()
