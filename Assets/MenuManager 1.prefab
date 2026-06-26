@@ -3417,6 +3417,21 @@ MonoBehaviour:
   interactText: {fileID: 8969381397718098991}
   detectedIndicator: {fileID: 2725854422381869275}
   gorbachevTheOmnisiah: []
+  sounds:
+  - {fileID: 8300000, guid: 643199de0cc3bc9979291a7fae8c5c51, type: 3}
+  - {fileID: 8300000, guid: d4f0432c513bc2c8790ed857dc85451c, type: 3}
+  - {fileID: 8300000, guid: 12d1772e27d22c80cb9321c78c1b0894, type: 3}
+  - {fileID: 8300000, guid: 674fbc88eadceff30ac6157516e9772e, type: 3}
+  - {fileID: 8300000, guid: b8500ef15e3a7889eb318a4b12c851b6, type: 3}
+  - {fileID: 8300000, guid: cc334431b6524fa009420c7e157c28ba, type: 3}
+  - {fileID: 8300000, guid: bec95aa6b62f1183091edc7008b6fcec, type: 3}
+  - {fileID: 8300000, guid: ebb5a69958aee1232bcac14df6149196, type: 3}
+  - {fileID: 8300000, guid: 9505562a25ccae761a780a653e6a115f, type: 3}
+  - {fileID: 8300000, guid: 087ce7d712c17cc47910e0e1bca90566, type: 3}
+  - {fileID: 8300000, guid: 73ae3e037ddfe00fba8f4cb01e3ed703, type: 3}
+  - {fileID: 8300000, guid: 59016c4736d0bf1d181ca3523053982e, type: 3}
+  - {fileID: 8300000, guid: f73df86a8d2461fa2bca7dc564bad57f, type: 3}
+  - {fileID: 8300000, guid: 9fa819f215d0c823e878dd3d86100c9c, type: 3}
 --- !u!1 &8858528924958818593
 GameObject:
   m_ObjectHideFlags: 0

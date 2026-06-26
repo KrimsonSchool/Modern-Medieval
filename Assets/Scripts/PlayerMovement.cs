@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     private PlayerHolder pholder;
 
-    private bool hasJumped;
+    private bool startRun;
 
     private void OnEnable()
     {
@@ -101,6 +101,16 @@ public class PlayerMovement : MonoBehaviour
 
         if (move.x != 0 || move.y != 0)
         {
+            if (!startRun)
+            {
+                startRun = true;
+                sound.TriggerSound(worldManager.sounds[1]);
+            }
+
+            if (!sound.GetComponent<AudioSource>().isPlaying)
+            {
+                startRun = false;
+            }
             //sound.TriggerSound(pholder.sounds[1]);
         }
 
@@ -227,7 +237,7 @@ public class PlayerMovement : MonoBehaviour
 
         //print(hit.distance);
 
-        sound.TriggerSound(pholder.sounds[0]);
+        sound.TriggerSound(worldManager.sounds[0]);
         GetComponent<Rigidbody>().AddForce(transform.up * jumpAmount, ForceMode.Impulse);
     }
 

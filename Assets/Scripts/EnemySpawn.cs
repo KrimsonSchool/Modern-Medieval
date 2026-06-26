@@ -48,7 +48,7 @@ public class EnemySpawn : MonoBehaviour
         if (enemyTypes == EnemyTypes.Patrol)
         {
             enemy.patrol = true;
-            print("moving [" + patrolPoints.Length+"] points to enemy");
+            //print("moving [" + patrolPoints.Length+"] points to enemy");
             enemy.patrolPoints = new GameObject[patrolPoints.Length];
             enemy.patrolPoints = patrolPoints;
         }

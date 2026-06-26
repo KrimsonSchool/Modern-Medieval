@@ -36,6 +36,8 @@ public class WorldManager : MonoBehaviour
 
     public Color[] gorbachevTheOmnisiah;
 
+    public AudioClip[] sounds;
+
     private void Awake()
     {
         gorbachevTheOmnisiah = new Color[6];
