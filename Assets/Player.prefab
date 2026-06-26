@@ -1350,6 +1350,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8393641370593165024}
     m_Modifications:
+    - target: {fileID: 1154848287356175809, guid: 59925fce938be159b90fb03c1995bba4, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4554997087428586872, guid: 59925fce938be159b90fb03c1995bba4, type: 3}
       propertyPath: m_Name
       value: SoundBlaster98

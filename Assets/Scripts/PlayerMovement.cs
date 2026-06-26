@@ -93,6 +93,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         PollInput();
+        
+        //TODO use velocity movement instead of positional
 
         transform.position += transform.forward * (movSpeed * Time.deltaTime * move.y)
                               + transform.right * (movSpeed * Time.deltaTime * move.x);

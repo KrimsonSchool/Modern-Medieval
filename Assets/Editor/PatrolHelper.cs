@@ -19,7 +19,7 @@ public class PatrolHelper : Editor
             }
         }
 
-        Debug.Log(_enemySpawn.patrolPoints.Length);
+        //Debug.Log(_enemySpawn.patrolPoints.Length);
         if (_enemySpawn.patrolPoints.Length < 2)
         {
             _enemySpawn.patrolPoints = new GameObject[2];
