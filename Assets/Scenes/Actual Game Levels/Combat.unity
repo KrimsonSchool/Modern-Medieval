@@ -7221,6 +7221,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cubicle 2 Demop
       objectReference: {fileID: 0}
+    - target: {fileID: 3763834763586260047, guid: 2e556b831e52713238286174498a18ea, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4241779464097002637, guid: 2e556b831e52713238286174498a18ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -15709,7 +15713,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7922452653307350388, guid: 71993a9f8af314e4482dd28d62aa3709, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17958,7 +17962,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7922452653307350388, guid: 71993a9f8af314e4482dd28d62aa3709, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18802,6 +18806,10 @@ PrefabInstance:
     - target: {fileID: 4554997087428586872, guid: 59925fce938be159b90fb03c1995bba4, type: 3}
       propertyPath: m_Name
       value: SoundBlaster98
+      objectReference: {fileID: 0}
+    - target: {fileID: 4554997087428586872, guid: 59925fce938be159b90fb03c1995bba4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5269206016766873082, guid: 59925fce938be159b90fb03c1995bba4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37266,7 +37274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7922452653307350388, guid: 71993a9f8af314e4482dd28d62aa3709, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -38447,6 +38455,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: elevator cabin
       objectReference: {fileID: 0}
+    - target: {fileID: 1427634015435084, guid: 76e8d021eb5836e49bfcce87afdae867, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4079758420479070, guid: 76e8d021eb5836e49bfcce87afdae867, type: 3}
       propertyPath: m_LocalPosition.x
       value: 66.77366
@@ -39220,6 +39232,10 @@ PrefabInstance:
     - target: {fileID: 2404167425077501926, guid: 542f86968e134ae5a824caad2ed4ca3b, type: 3}
       propertyPath: m_Name
       value: EndDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404167425077501926, guid: 542f86968e134ae5a824caad2ed4ca3b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -42055,7 +42071,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7922452653307350388, guid: 71993a9f8af314e4482dd28d62aa3709, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -43916,6 +43932,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cubicle 1 Deno
       objectReference: {fileID: 0}
+    - target: {fileID: 1603701506240362513, guid: 3ab0f0148dd04dbb686f5dbc9641dd10, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2101730008685010268, guid: 3ab0f0148dd04dbb686f5dbc9641dd10, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -44943,7 +44963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7922452653307350388, guid: 71993a9f8af314e4482dd28d62aa3709, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -51532,6 +51552,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Popup Text 3D
       objectReference: {fileID: 0}
+    - target: {fileID: 5218278876518638180, guid: 8e41d386c088aa3708cf31a55dc1a950, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6063281010372929607, guid: 8e41d386c088aa3708cf31a55dc1a950, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -56888,7 +56912,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7922452653307350388, guid: 71993a9f8af314e4482dd28d62aa3709, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -59298,6 +59322,10 @@ PrefabInstance:
     - target: {fileID: 1252405188602385913, guid: 2262366824be18a4a8eb855bbf01d479, type: 3}
       propertyPath: m_Name
       value: Office_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252405188602385913, guid: 2262366824be18a4a8eb855bbf01d479, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1252405188602385914, guid: 2262366824be18a4a8eb855bbf01d479, type: 3}
       propertyPath: m_LocalPosition.x
