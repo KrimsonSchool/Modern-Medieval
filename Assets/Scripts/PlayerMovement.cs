@@ -140,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     string typeName = hit.collider.gameObject.GetComponent<DoorOpener>().typeName;
                     worldManager.interactText.text = "Press [" + controls.Player.Interact.GetBindingDisplayString(0) + "]\n required " + typeName + ": [" +
-                                                     hit.collider.GetComponent<DoorOpener>().requiredID + "]";
+                                                     FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[hit.collider.GetComponent<DoorOpener>().requiredID].name + "]";
                 }
             }
         }

@@ -10,7 +10,7 @@ public class FaeQue : MonoBehaviour
         GetComponent<Renderer>().material = new Material(GetComponent<Renderer>().material);
         float ev100Value = 21f;
         float intensity = 0.125f * Mathf.Pow(2f, ev100Value); // Translates to Nits
-        Color colour = FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[papa.requiredID];
+        Color colour = FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[papa.requiredID].colour;
         
         GetComponent<Renderer>().material.SetColor("_EmissiveColor", colour * intensity);
     }

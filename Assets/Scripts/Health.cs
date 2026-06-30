@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
 {
     public int baseHealth;
     private int _health;
+    public int HP => _health;
 
     public Slider healthBar;
     public bool kill = false;

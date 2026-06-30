@@ -34,7 +34,7 @@ public class PlayerInventory : MonoBehaviour
             keysText.text = "";
             foreach (var obj in inventory)
             {
-                keysText.text += obj.name + " [" + obj.id + "]\n";
+                keysText.text += obj.name + " [" + FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[obj.id].name + "]\n";
             }
         }
         else if(pda.stackLock)

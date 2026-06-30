@@ -40,6 +40,21 @@ public class PlayerHealth : Health
         {
             hurtEffect = playerHolder.hurtEffect;
         }
+
+        if (HP != baseHealth)
+        {
+            if (!healthBar.gameObject.activeSelf)
+            {
+                healthBar.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            if (healthBar.gameObject.activeSelf)
+            {
+                healthBar.gameObject.SetActive(false);
+            }
+        }
     }
 
     public override bool Hurt(int damage)

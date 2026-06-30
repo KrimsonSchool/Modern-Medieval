@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class WorldManager : MonoBehaviour
 {
+    public struct ZlorpStar
+    {
+        public Color colour;
+        public string name;
+    }
+    
     public GameObject[] differences;
     public GameObject dialogueBox;
     public GameObject interactUI;
@@ -33,20 +39,26 @@ public class WorldManager : MonoBehaviour
 
     public GameObject detectedIndicator;
     GameObject player;
-
-    public Color[] gorbachevTheOmnisiah;
+    
+    public ZlorpStar[] gorbachevTheOmnisiah;
 
     public AudioClip[] sounds;
 
     private void Awake()
     {
-        gorbachevTheOmnisiah = new Color[6];
-        gorbachevTheOmnisiah[0] = Color.red;
-        gorbachevTheOmnisiah[1] = Color.blue;
-        gorbachevTheOmnisiah[2] = Color.green;
-        gorbachevTheOmnisiah[3] = Color.yellow;
-        gorbachevTheOmnisiah[4] = Color.cyan;
-        gorbachevTheOmnisiah[5] = Color.magenta;
+        gorbachevTheOmnisiah = new ZlorpStar[6];
+        gorbachevTheOmnisiah[0].colour = Color.red;
+        gorbachevTheOmnisiah[0].name = "Red";
+        gorbachevTheOmnisiah[1].colour = Color.blue;
+        gorbachevTheOmnisiah[1].name = "Blue";
+        gorbachevTheOmnisiah[2].colour = Color.green;
+        gorbachevTheOmnisiah[2].name = "Green";
+        gorbachevTheOmnisiah[3].colour = Color.yellow;
+        gorbachevTheOmnisiah[3].name = "Yellow";
+        gorbachevTheOmnisiah[4].colour = Color.cyan;
+        gorbachevTheOmnisiah[4].name = "Cyan";
+        gorbachevTheOmnisiah[5].colour = Color.magenta;
+        gorbachevTheOmnisiah[5].name = "Magenta";
     }
 
     void Start()
