@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   speed: 5
-  jumpAmount: 2
+  jumpAmount: 4
   mouseSpeed: 50
   cam: {fileID: 6734680587822248871}
   interactDist: 2

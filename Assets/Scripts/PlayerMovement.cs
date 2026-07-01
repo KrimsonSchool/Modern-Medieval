@@ -44,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool startRun;
 
+    private int isJumping;
+
     private void OnEnable()
     {
         controls.Player.Enable();
@@ -69,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        controls.Player.Jump.started += ctx => Jump();
+        //controls.Player.Jump.started += ctx => Jump();
         controls.Player.Interact.started += ctx => Interact();
         controls.Player.Exit.started += ctx => Exit();
     }
@@ -220,18 +222,24 @@ public class PlayerMovement : MonoBehaviour
         }
         
         LayerMask mask = LayerMask.GetMask("Ground");
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out var ground, 1.1f, mask))
+        float detDis = 1.1f;
+        
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out var ground, detDis, mask))
         {
-            //TODO make so can jump out of moving platform...
-            if (ground.collider.gameObject.GetComponent<MovingPlatform>() != null)
-            {
-                GetComponent<Rigidbody>().linearVelocity = ground.collider.gameObject.GetComponent<Rigidbody>().linearVelocity;
-            }
+            Debug.DrawLine(transform.position, transform.position + transform.TransformDirection(Vector3.down) * detDis, Color.red);
             
+            isJumping --;
+            //TODO make so can jump out of moving platform...
             if (controls.Player.Jump.triggered)
             {
                 Jump();
             }
+            
+            if (ground.collider.gameObject.GetComponent<MovingPlatform>() != null && isJumping<1)
+            {
+                GetComponent<Rigidbody>().linearVelocity = ground.collider.gameObject.GetComponent<Rigidbody>().linearVelocity;
+            }
+            
         }
     }
 
@@ -247,7 +255,10 @@ public class PlayerMovement : MonoBehaviour
 
         //print(hit.distance);
 
+        isJumping = 100;
+
         sound.TriggerSound(worldManager.sounds[0]);
+        GetComponent<Rigidbody>().linearVelocity = new Vector3(GetComponent<Rigidbody>().linearVelocity.x, 0, GetComponent<Rigidbody>().linearVelocity.z);
         GetComponent<Rigidbody>().AddForce(transform.up * jumpAmount, ForceMode.Impulse);
     }
 

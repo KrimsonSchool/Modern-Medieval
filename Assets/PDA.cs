@@ -70,7 +70,7 @@ public class PDA : MonoBehaviour
             {
                 stack.text = "";
                 //stackLock = true;
-                stack.text = "Press [E] or [Q] to cycle menus";
+                stack.text = "Press [E] or [Q] to cycle menus\n[TAB] to lower or raise";
             }
             else if (menu == Menus.Map)
             {
