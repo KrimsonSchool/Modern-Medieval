@@ -30,16 +30,13 @@ public class PlayerInventory : MonoBehaviour
     {
         if (pda.menu == PDA.Menus.Inventory)
         {
-            pda.stackLock = true;
+            pda.stack.text = "";
+            //pda.stackLock = true;
             keysText.text = "";
             foreach (var obj in inventory)
             {
                 keysText.text += obj.name + " [" + FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[obj.id].name + "]\n";
             }
-        }
-        else if(pda.stackLock)
-        {
-            pda.stackLock = false;
         }
     }
 

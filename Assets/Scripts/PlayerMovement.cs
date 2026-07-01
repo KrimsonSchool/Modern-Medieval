@@ -132,15 +132,20 @@ public class PlayerMovement : MonoBehaviour
             //print("HIT " + hit.collider.tag);
             //interaction ui popup
             //Need array of Interactable tags
-            if (hit.collider.CompareTag("Npc") || hit.collider.CompareTag("Door") || hit.collider.CompareTag("Switch") || hit.collider.CompareTag("Lock"))
+            if (hit.collider.CompareTag("Npc") || hit.collider.CompareTag("Door") || hit.collider.CompareTag("Switch") || hit.collider.CompareTag("Lock") || hit.collider.CompareTag("Pickup"))
             {
                 worldManager.interactUI.SetActive(true);
                 worldManager.interactedObject = hit.collider.gameObject;
+                
                 if (hit.collider.CompareTag("Lock"))
                 {
                     string typeName = hit.collider.gameObject.GetComponent<DoorOpener>().typeName;
                     worldManager.interactText.text = "Press [" + controls.Player.Interact.GetBindingDisplayString(0) + "]\n required " + typeName + ": [" +
                                                      FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[hit.collider.GetComponent<DoorOpener>().requiredID].name + "]";
+                }
+                if (hit.collider.CompareTag("Pickup"))
+                {
+                    worldManager.interactText.text = "Press [" + controls.Player.Interact.GetBindingDisplayString(0) + "] to pickup\n" + hit.collider.gameObject.name;
                 }
             }
         }
@@ -208,6 +213,11 @@ public class PlayerMovement : MonoBehaviour
                 movSpeed = speed;
             }
         }
+
+        if (controls.Player.Change.triggered)
+        {
+            pda.up = !pda.up;
+        }
         
         LayerMask mask = LayerMask.GetMask("Ground");
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out var ground, 1.1f, mask))
@@ -260,7 +270,9 @@ public class PlayerMovement : MonoBehaviour
                     break;
                 case "Lock":
                     hit.collider.gameObject.GetComponent<DoorOpener>().TryOpenDoor();
-
+                    break;
+                case "Pickup":
+                    hit.collider.gameObject.GetComponent<Pickup>().PickupItem();
                     break;
             }
         }

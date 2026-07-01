@@ -16,6 +16,7 @@ TagManager:
   - Detector
   - Kill
   - TutorialArea
+  - Pickup
   layers:
   - Default
   - TransparentFX

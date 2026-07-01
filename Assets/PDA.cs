@@ -11,7 +11,7 @@ public class PDA : MonoBehaviour
         Home,
         Inventory,
         Map,
-        Tutorials
+        Goals
     }
 
     public Menus menu;
@@ -23,13 +23,24 @@ public class PDA : MonoBehaviour
     [HideInInspector]
     public int selected;
 
-    [HideInInspector]
-    public bool stackLock;
+    //[HideInInspector]
+    //public bool stackLock;
+
+    [HideInInspector] public bool up=true;
+
+    public Vector3 pdaPosOrigin;
+    public Vector3 pdaPosDown;
     //needs to contain: Inventory -> keys, Map, 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         pda.SetActive(true);
+        up = true;
+        
+        pdaPosOrigin = pda.transform.localPosition;
+        pdaPosDown = pda.transform.localPosition + Vector3.down * 0.5f;
+        
+        pda.transform.localPosition = pdaPosDown;
     }
 
     // Update is called once per frame
@@ -48,29 +59,44 @@ public class PDA : MonoBehaviour
         
         menu = (Menus)selected;
 
-        if (!stackLock)
-        {
+        //if (!stackLock)
+        //{
             imgStack.enabled = false;
-            stack.text = "";
+            //stack.text = "";
+            //print("RESAINFG");
+            
             
             if (menu == Menus.Home)
             {
-                stackLock = true;
+                stack.text = "";
+                //stackLock = true;
                 stack.text = "Press [E] or [Q] to cycle menus";
-            }
-            else if (menu == Menus.Tutorials)
-            {
-                stackLock = true;
-                stack.text = "[WASD] to move\nMouse to look around";
             }
             else if (menu == Menus.Map)
             {
-                stackLock = true;
+                stack.text = "";
+                //stackLock = true;
                 imgStack.enabled = true;
             }
             else
             {
-                stackLock = false;
+                //stackLock = false;
+            }
+        //}
+
+        if (up)
+        {
+            if (pda.transform.localPosition != pdaPosOrigin)
+            {
+                pda.transform.localPosition = Vector3.MoveTowards(pda.transform.localPosition, pdaPosOrigin, Time.deltaTime);
+                //pda.transform.localPosition = pdaPosOrigin;
+            }
+        }
+        else
+        {
+            if (pda.transform.localPosition != pdaPosDown)
+            {
+                pda.transform.localPosition = Vector3.MoveTowards(pda.transform.localPosition, pdaPosDown, Time.deltaTime);
             }
         }
 

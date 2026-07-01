@@ -273,7 +273,9 @@ MonoBehaviour:
   stack: {fileID: 1080905208346622744}
   imgStack: {fileID: 369181903387968413}
   selected: 0
-  stackLock: 0
+  up: 0
+  pdaPosOrigin: {x: -0.4092, y: -0.13, z: 0.4271}
+  pdaPosDown: {x: -0.4092, y: -0.13, z: 0.4271}
 --- !u!1 &1032918187462058278
 GameObject:
   m_ObjectHideFlags: 0

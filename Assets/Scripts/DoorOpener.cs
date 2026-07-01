@@ -55,14 +55,18 @@ public class DoorOpener : MonoBehaviour
         Material matt = new Material(mats[materialIndex]);
         float ev100Value = 14;
         float intensity = 0.125f * Mathf.Pow(2f, ev100Value); // Translates to Nits
-        Color colour = FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[requiredID].colour;
+        if (requiredID != -1)
+        {
+            Color colour = FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[requiredID].colour;
 
-        GetComponent<Renderer>().material.color = colour;
-        matt.SetColor("_EmissiveColor", colour * intensity);
 
-        mats[materialIndex] = matt;
+            GetComponent<Renderer>().material.color = colour;
+            matt.SetColor("_EmissiveColor", colour * intensity);
 
-        renderer.materials = mats;
+            mats[materialIndex] = matt;
+
+            renderer.materials = mats;
+        }
     }
 
     // Update is called once per frame
@@ -110,6 +114,7 @@ public class DoorOpener : MonoBehaviour
             open = true;
             opening = false;
         }
+
         if (!open)
         {
             if (inventory.HasItemWithID(requiredID))

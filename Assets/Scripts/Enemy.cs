@@ -103,18 +103,18 @@ public class Enemy : MonoBehaviour
             {
                 if (!atWanderLoc)
                 {
-                    print("Moving to loc");
+                    //print("Moving to loc");
                     animator.SetBool("IsMoving", true);
-                    print(Vector3.Distance(transform.position, wanderDest));
+                    //print(Vector3.Distance(transform.position, wanderDest));
                     if (Vector3.Distance(transform.position, wanderDest)<=0.5f)
                     {
-                        print("at location");
+                        //print("at location");
                         atWanderLoc = true;
                     }
                 }
                 else
                 {
-                    print("Selecting location");
+                    //print("Selecting location");
                     animator.SetBool("IsMoving", false);
                     Vector3 rng = new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f));
                     wanderDest = transform.position + rng;
