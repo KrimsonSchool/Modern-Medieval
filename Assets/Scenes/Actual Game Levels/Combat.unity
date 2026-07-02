@@ -44166,7 +44166,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3536683570244357890, guid: cf3bbe908def76947ba5acd82063f9db, type: 3}
+      propertyPath: playerHasPDA
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536683570244357890, guid: cf3bbe908def76947ba5acd82063f9db, type: 3}
       propertyPath: playerHasWeapon
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536683570244357890, guid: cf3bbe908def76947ba5acd82063f9db, type: 3}
+      propertyPath: playerHasKeyboard
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4072788265071358607, guid: cf3bbe908def76947ba5acd82063f9db, type: 3}

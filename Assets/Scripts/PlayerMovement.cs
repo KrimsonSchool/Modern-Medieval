@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerHolder pholder;
 
     private bool startRun;
+    private float walkTimer;
 
     private int isJumping;
 
@@ -79,6 +80,16 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (startRun)
+        {
+            walkTimer+=Time.deltaTime;
+            if (walkTimer > 0.25f)
+            {
+                walkTimer = 0;
+                startRun = false;
+            }
+        }
+        
         if (heldObject != null)
         {
             heldObject.transform.position = holdPos.transform.position;
@@ -107,12 +118,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 startRun = true;
                 sound.TriggerSound(worldManager.sounds[1]);
-            }
-
-            if (!sound.GetComponent<AudioSource>().isPlaying)
-            {
-                startRun = false;
-            }
+            } 
             //sound.TriggerSound(pholder.sounds[1]);
         }
 

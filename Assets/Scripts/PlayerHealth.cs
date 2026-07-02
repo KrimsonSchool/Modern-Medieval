@@ -11,8 +11,15 @@ public class PlayerHealth : Health
     
     Vector3 startPos;
     
+    WorldManager worldManager;
+    
+    [Space] SoundBlaster98 sound;
+    
     protected override void Start()
     {
+        sound = FindFirstObjectByType<SoundBlaster98>();
+        worldManager = FindFirstObjectByType<WorldManager>();
+        
         startPos = transform.position;
         base.Start();
     }
@@ -59,6 +66,8 @@ public class PlayerHealth : Health
 
     public override bool Hurt(int damage)
     {
+        sound.TriggerSound(worldManager.sounds[2]);
+        
         base.Hurt(damage);
         hurtEffect.SetActive(true);
         return kill;

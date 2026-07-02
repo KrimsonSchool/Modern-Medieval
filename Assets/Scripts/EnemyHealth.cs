@@ -14,8 +14,13 @@ public class EnemyHealth : Health
     public GameObject hpTextPos;
     public Material hitFx;
 
+    WorldManager worldManager;
+    SoundBlaster98 sound;
     protected override void Start()
     {
+        sound = FindFirstObjectByType<SoundBlaster98>();
+        worldManager = FindFirstObjectByType<WorldManager>();
+        
         base.Start();
         currentMat = GetComponentInChildren<SkinnedMeshRenderer>().material;
     }    
@@ -34,6 +39,9 @@ public class EnemyHealth : Health
 
     public override bool Hurt(int damage)
     {
+        sound.TriggerSound(worldManager.sounds[5]);
+
+        
         base.Hurt(damage);
         GetComponentInChildren<SkinnedMeshRenderer>().material = hitFx;
         HpText txt = Instantiate(hpText, hpTextPos.transform.position, Quaternion.identity).GetComponent<HpText>();

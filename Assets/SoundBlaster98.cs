@@ -19,7 +19,10 @@ public class SoundBlaster98 : MonoBehaviour
 
     public void TriggerSound(AudioClip clip)
     {
-        audio.Stop();
-        audio.PlayOneShot(clip);
+        GameObject sounder = new GameObject();
+        sounder.AddComponent<AudioSource>();
+        sounder.GetComponent<AudioSource>().clip = clip;
+        sounder.GetComponent<AudioSource>().Play();
+        sounder.AddComponent<KillOnStop>();
     }
 }
