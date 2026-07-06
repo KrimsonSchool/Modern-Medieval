@@ -33,10 +33,20 @@ public class DoorOpener : MonoBehaviour
 
     public int requiredID;
 
+    public bool mult;
+    public DoorOpener multDad;
+    public GameObject[] orbOfTheAncients;
+    public bool[] unlocked;
+
+    private int unlockedAm;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        doorStartPos = door.transform.position;
+        if (door!=null)
+        {
+            doorStartPos = door.transform.position;
+        }
 
         foreach (var lay in layLines)
         {
@@ -68,11 +78,32 @@ public class DoorOpener : MonoBehaviour
             renderer.materials = mats;
         }
     }
-
-    // Update is called once per frame
     void Update()
     {
-        if (opening && !open)
+        if (mult)
+        {
+            unlockedAm = 0;
+            for (int i = 0; i < unlocked.Length; i++)
+            {
+                if (unlocked[i])
+                {
+                    unlockedAm++;
+
+                    if (orbOfTheAncients[i] != null)
+                    {
+                        SetColour(orbOfTheAncients[i].GetComponent<MeshRenderer>(), i);
+                    }
+                }
+            }
+
+            if (unlockedAm >= unlocked.Length)
+            {
+                print("opening door, " + timer);
+                OpenDoor();
+            }
+        }
+
+        if (opening && !open && door!=null)
         {
             timer += Time.deltaTime * doorSpeed;
             if (door.transform.position != (doorStartPos + doorEndDiff))
@@ -108,7 +139,7 @@ public class DoorOpener : MonoBehaviour
     {
         PlayerInventory inventory = FindFirstObjectByType<PlayerInventory>();
 
-        if (opening)
+        if (opening && door != null)
         {
             door.transform.position = doorStartPos + doorEndDiff;
             open = true;
@@ -121,8 +152,14 @@ public class DoorOpener : MonoBehaviour
             {
                 //inventory.RemoveItemIndex(inventory.FindItemIdIndex(requiredID));
                 inventory.RemoveItem(requiredID);
-
-                OpenDoor();
+                if (mult)
+                {
+                    multDad.unlocked[requiredID] = true;
+                }
+                else
+                {
+                    OpenDoor();
+                }
             }
         }
         else
@@ -144,5 +181,25 @@ public class DoorOpener : MonoBehaviour
             door.transform.position = doorStartPos;
             timer = 0;
         }
+    }
+
+    public void SetColour(MeshRenderer ren, int index)
+    {
+
+        Material[] mats = ren.materials;
+
+        Material matt = new Material(mats[0]);
+        float ev100Value = 14;
+        float intensity = 0.125f * Mathf.Pow(2f, ev100Value); // Translates to Nits
+        
+        Color colour = FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[index].colour;
+
+
+        GetComponent<Renderer>().material.color = colour;
+        matt.SetColor("_EmissiveColor", colour * intensity);
+
+        mats[0] = matt;
+
+        ren.materials = mats;
     }
 }
