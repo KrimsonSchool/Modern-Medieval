@@ -444,13 +444,10 @@ MonoBehaviour:
   materialIndex: 1
   typeName: Keycard
   requiredID: 0
-  mult: 1
-  multDad: {fileID: 1393880390167039985}
-  orbOfTheAncients:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  unlocked: 000000
+  mult: 0
+  multDad: {fileID: 0}
+  orbOfTheAncients: []
+  unlocked: 
 --- !u!65 &7638803112394594963
 BoxCollider:
   m_ObjectHideFlags: 0
