@@ -9,8 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: LowPolyOffice_MAIN
   m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
-  m_Parent: {fileID: 2100000, guid: 239792e553fe34bb0abeb05ffa1962f8, type: 2}
-  m_ModifiedSerializedProperties: 16
+  m_Parent: {fileID: 2100000, guid: 481cde16dd133ea41a04c47282e2a400, type: 2}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _DISABLE_SSR_TRANSPARENT
   - _NORMALMAP_TANGENT_SPACE
@@ -32,11 +32,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseColorMap:
-        m_Texture: {fileID: 2800000, guid: f807879dd2b99044fa454336efdb23d6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6b90c56b28d0948bcb2b52e595007871, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f807879dd2b99044fa454336efdb23d6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6b90c56b28d0948bcb2b52e595007871, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
