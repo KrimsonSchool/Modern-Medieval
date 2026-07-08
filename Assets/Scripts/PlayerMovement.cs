@@ -144,28 +144,41 @@ public class PlayerMovement : MonoBehaviour
             //print("HIT " + hit.collider.tag);
             //interaction ui popup
             //Need array of Interactable tags
-            if (hit.collider.CompareTag("Npc") || hit.collider.CompareTag("Door") || hit.collider.CompareTag("Switch") || hit.collider.CompareTag("Lock") ||
-                hit.collider.CompareTag("Pickup"))
+            if (!hit.collider.CompareTag("Player"))
             {
-                worldManager.interactUI.SetActive(true);
-                worldManager.interactedObject = hit.collider.gameObject;
-
-                if (hit.collider.CompareTag("Lock"))
+                if (hit.collider.CompareTag("Npc") || hit.collider.CompareTag("Door") || hit.collider.CompareTag("Switch") || hit.collider.CompareTag("Lock") ||
+                    hit.collider.CompareTag("Pickup"))
                 {
-                    string typeName = hit.collider.gameObject.GetComponent<DoorOpener>().typeName;
-                    worldManager.interactText.text = "Press [" + interactKey + "]\n required " + typeName + ": [" +
-                                                     FindFirstObjectByType<WorldManager>()
-                                                         .gorbachevTheOmnisiah[hit.collider.GetComponent<DoorOpener>().requiredID].name + "]";
-                }
+                    worldManager.interactUI.SetActive(true);
+                    worldManager.interactedObject = hit.collider.gameObject;
 
-                if (hit.collider.CompareTag("Pickup"))
-                {
-                    worldManager.interactText.text = "Press [" + interactKey + "] to pickup\n" + hit.collider.gameObject.name;
+                    if (hit.collider.CompareTag("Lock"))
+                    {
+                        DoorOpener DO = hit.collider.gameObject.GetComponent<DoorOpener>();
+
+                        if (DO.HasKey())
+                        {
+                            string typeName = DO.typeName;
+                            worldManager.interactText.text = "Press [" + interactKey + "]\n to retrieve " + typeName + ": [" +
+                                                             FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[DO.requiredID].name + "]";
+                        }
+                        else
+                        {
+                            string typeName = DO.typeName;
+                            worldManager.interactText.text = "Press [" + interactKey + "]\n required " + typeName + ": [" +
+                                                             FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[DO.requiredID].name + "]";
+                        }
+                    }
+
+                    if (hit.collider.CompareTag("Pickup"))
+                    {
+                        worldManager.interactText.text = "Press [" + interactKey + "] to pickup\n" + hit.collider.gameObject.name;
+                    }
                 }
-            }
-            else
-            {
-                worldManager.interactText.text = "Press [" + interactKey + "]";
+                else
+                {
+                    worldManager.interactText.text = "Press [" + interactKey + "]";
+                }
             }
         }
         else

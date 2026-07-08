@@ -40,6 +40,8 @@ public class DoorOpener : MonoBehaviour
 
     private int unlockedAm;
 
+    private bool hasKey;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -83,7 +85,7 @@ public class DoorOpener : MonoBehaviour
         if (mult)
         {
             unlockedAm = 0;
-            for (int i = 0; i < unlocked.Length; i++)
+            for (int i = 0; i < orbOfTheAncients.Length; i++)
             {
                 if (unlocked[i])
                 {
@@ -92,6 +94,13 @@ public class DoorOpener : MonoBehaviour
                     if (orbOfTheAncients[i] != null)
                     {
                         SetColour(orbOfTheAncients[i].GetComponent<MeshRenderer>(), i);
+                    }
+                }
+                else
+                {
+                    if (orbOfTheAncients[i] != null)
+                    {
+                        SetColour(orbOfTheAncients[i].GetComponent<MeshRenderer>(), -1);
                     }
                 }
             }
@@ -121,11 +130,7 @@ public class DoorOpener : MonoBehaviour
     public void OpenDoor()
     {
         opening = true;
-        if (layLines.Length > 0)
-        {
-            layLines[0].SetActive(false);
-            layLines[1].SetActive(true);
-        }
+        
 
         /*TryGetComponent<Collider>(out var col);
 
@@ -139,17 +144,28 @@ public class DoorOpener : MonoBehaviour
     {
         PlayerInventory inventory = FindFirstObjectByType<PlayerInventory>();
 
-        if (opening && door != null)
+        if (opening)
         {
-            door.transform.position = doorStartPos + doorEndDiff;
+            if (door != null)
+            {
+                door.transform.position = doorStartPos + doorEndDiff;
+            }
+
             open = true;
             opening = false;
         }
 
-        if (!open)
+        if (!hasKey)
         {
             if (inventory.HasItemWithID(requiredID))
             {
+                if (layLines.Length > 0)
+                {
+                    layLines[0].SetActive(false);
+                    layLines[1].SetActive(true);
+                }
+                
+                hasKey = true;
                 //inventory.RemoveItemIndex(inventory.FindItemIdIndex(requiredID));
                 inventory.RemoveItem(requiredID);
                 if (mult)
@@ -170,6 +186,13 @@ public class DoorOpener : MonoBehaviour
                 name = typeName
             };
             inventory.AddItem(key);
+
+            if (mult)
+            {
+                multDad.unlocked[requiredID] = false;
+            }
+
+            hasKey = false;
             open = false;
             opening = false;
             if (layLines.Length > 0)
@@ -186,20 +209,44 @@ public class DoorOpener : MonoBehaviour
     public void SetColour(MeshRenderer ren, int index)
     {
 
-        Material[] mats = ren.materials;
+        if (index != -1)
+        {
+            Material[] mats = ren.materials;
 
-        Material matt = new Material(mats[0]);
-        float ev100Value = 14;
-        float intensity = 0.125f * Mathf.Pow(2f, ev100Value); // Translates to Nits
-        
-        Color colour = FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[index].colour;
+            Material matt = new Material(mats[0]);
+            float ev100Value = 14;
+            float intensity = 0.125f * Mathf.Pow(2f, ev100Value); // Translates to Nits
+
+            Color colour = FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[index].colour;
 
 
-        GetComponent<Renderer>().material.color = colour;
-        matt.SetColor("_EmissiveColor", colour * intensity);
+            GetComponent<Renderer>().material.color = colour;
+            matt.SetColor("_EmissiveColor", colour * intensity);
 
-        mats[0] = matt;
+            mats[0] = matt;
 
-        ren.materials = mats;
+            ren.materials = mats;
+        }
+        else
+        {
+            Material[] mats = ren.materials;
+
+            Material matt = new Material(mats[0]);
+
+            Color colour = Color.gray;
+
+
+            GetComponent<Renderer>().material.color = colour;
+            matt.SetColor("_EmissiveColor", colour);
+
+            mats[0] = matt;
+
+            ren.materials = mats;
+        }
+    }
+
+    public bool HasKey()
+    {
+        return hasKey;
     }
 }
