@@ -11,7 +11,7 @@ public class MenuManager : MonoBehaviour
     {
         if (mouseAvailable)
         {
-            Cursor.visible = true;
+            Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Confined;
         }
     }
