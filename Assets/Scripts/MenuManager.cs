@@ -50,4 +50,10 @@ public class MenuManager : MonoBehaviour
         obj.SetActive(true);
         FindFirstObjectByType<SoundBlaster98>().TriggerSound(clooornk);
     }
+    
+    public void DISABLE_OBJECT(GameObject obj)
+    {
+        obj.SetActive(false);
+        FindFirstObjectByType<SoundBlaster98>().TriggerSound(clooornk);
+    }
 }

@@ -18503,6 +18503,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawn
       objectReference: {fileID: 0}
+    - target: {fileID: 7922452653307350388, guid: 71993a9f8af314e4482dd28d62aa3709, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19765,6 +19769,10 @@ PrefabInstance:
     - target: {fileID: 7922452653307350388, guid: 71993a9f8af314e4482dd28d62aa3709, type: 3}
       propertyPath: m_Name
       value: EnemySpawn (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7922452653307350388, guid: 71993a9f8af314e4482dd28d62aa3709, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -33389,6 +33397,10 @@ PrefabInstance:
     - target: {fileID: 7922452653307350388, guid: 71993a9f8af314e4482dd28d62aa3709, type: 3}
       propertyPath: m_Name
       value: EnemySpawn (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7922452653307350388, guid: 71993a9f8af314e4482dd28d62aa3709, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -67848,6 +67860,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawn (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7922452653307350388, guid: 71993a9f8af314e4482dd28d62aa3709, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -72208,6 +72224,10 @@ MonoBehaviour:
   materialIndex: 0
   typeName: 
   requiredID: -1
+  mult: 0
+  multDad: {fileID: 0}
+  orbOfTheAncients: []
+  unlocked: 
 --- !u!1 &404295800336848146
 GameObject:
   m_ObjectHideFlags: 0

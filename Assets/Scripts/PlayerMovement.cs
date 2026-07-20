@@ -79,6 +79,8 @@ public class PlayerMovement : MonoBehaviour
         //controls.Player.Jump.started += ctx => Jump();
         controls.Player.Interact.started += ctx => Interact();
         controls.Player.Exit.started += ctx => Exit();
+        
+        mouseSpeed = PlayerPrefs.GetInt("sensitivity");
     }
 
     // Update is called once per frame
@@ -371,6 +373,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Exit()
     {
-        Application.Quit();
+        //Application.Quit();
+        SceneManager.LoadScene("Menu");
     }
 }
