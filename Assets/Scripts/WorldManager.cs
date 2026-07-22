@@ -28,6 +28,8 @@ public class WorldManager : MonoBehaviour
     public bool playerHasWeapon;
     public bool playerHasKeyboard;
     public bool playerHasPDA;
+    public int mapNo;
+    public Texture map;
 
     public GameObject[] enemies;
 
@@ -84,6 +86,8 @@ public class WorldManager : MonoBehaviour
             player.transform.rotation = playerSpawn.transform.rotation;
 
             player.GetComponent<PDA>().enabled = playerHasPDA;
+            player.GetComponent<PDA>().map = map;
+            player.GetComponent<PDA>().mapNo = mapNo;
             player.GetComponent<PlayerWeapons>().enabled = playerHasWeapon;
             player.GetComponent<PlayerWeapons>().hasKeyboard = playerHasKeyboard;
         }

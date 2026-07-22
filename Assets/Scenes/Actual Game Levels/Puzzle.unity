@@ -6387,6 +6387,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3536683570244357890, guid: cf3bbe908def76947ba5acd82063f9db, type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 2800000, guid: 02b3faecf3e482c11acdb9860511756c, type: 3}
+    - target: {fileID: 3536683570244357890, guid: cf3bbe908def76947ba5acd82063f9db, type: 3}
+      propertyPath: mapNo
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536683570244357890, guid: cf3bbe908def76947ba5acd82063f9db, type: 3}
       propertyPath: playerHasPDA
       value: 1
       objectReference: {fileID: 0}
