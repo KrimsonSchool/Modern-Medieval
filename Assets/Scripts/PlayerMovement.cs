@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         //controls.Player.Jump.started += ctx => Jump();
         controls.Player.Interact.started += ctx => Interact();
         controls.Player.Exit.started += ctx => Exit();
-        
+
         mouseSpeed = PlayerPrefs.GetInt("sensitivity");
     }
 
@@ -338,13 +338,22 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.CompareTag("Detector"))
         {
-            worldManager.detectedIndicator.SetActive(true);
-            worldManager.detectedIndicator.GetComponent<Animator>().Play(0);
+            RaycastHit hit;
+            Vector3 direction = transform.position - other.transform.position;
 
-            print("spotted");
-            spotted = true;
-            securityCamera = other.gameObject.GetComponentInParent<SecurityCamera>();
-            securityCamera.hasDetected = true;
+            if (Physics.Raycast(other.transform.position, direction, out hit, Mathf.Infinity))
+            {
+                if (hit.collider.CompareTag("Player"))
+                {
+                    worldManager.detectedIndicator.SetActive(true);
+                    worldManager.detectedIndicator.GetComponent<Animator>().Play(0);
+
+                    print("spotted");
+                    spotted = true;
+                    securityCamera = other.gameObject.GetComponentInParent<SecurityCamera>();
+                    securityCamera.hasDetected = true;
+                }
+            }
         }
 
         if (other.CompareTag("Kill"))
