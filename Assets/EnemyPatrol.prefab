@@ -849,7 +849,7 @@ MonoBehaviour:
   attackDamage: 1
   patrol: 0
   patrolPoints: []
-  attackSpeed: 0
+  attackSpeed: 1
   chase: 0
 --- !u!114 &5443967923468306928
 MonoBehaviour:

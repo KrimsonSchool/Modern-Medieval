@@ -37,7 +37,5 @@ public class SecurityCamera : MonoBehaviour
         {
             anim.StartPlayback();
         }
-        
-        
     }
 }

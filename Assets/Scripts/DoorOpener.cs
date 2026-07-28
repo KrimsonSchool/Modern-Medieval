@@ -33,10 +33,22 @@ public class DoorOpener : MonoBehaviour
 
     public int requiredID;
 
+    public bool mult;
+    public DoorOpener multDad;
+    public GameObject[] orbOfTheAncients;
+    public bool[] unlocked;
+
+    private int unlockedAm;
+
+    private bool hasKey;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        doorStartPos = door.transform.position;
+        if (door!=null)
+        {
+            doorStartPos = door.transform.position;
+        }
 
         foreach (var lay in layLines)
         {
@@ -55,20 +67,52 @@ public class DoorOpener : MonoBehaviour
         Material matt = new Material(mats[materialIndex]);
         float ev100Value = 14;
         float intensity = 0.125f * Mathf.Pow(2f, ev100Value); // Translates to Nits
-        Color colour = FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[requiredID];
+        if (requiredID != -1)
+        {
+            Color colour = FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[requiredID].colour;
 
-        GetComponent<Renderer>().material.color = colour;
-        matt.SetColor("_EmissiveColor", colour * intensity);
 
-        mats[materialIndex] = matt;
+            GetComponent<Renderer>().material.color = colour;
+            matt.SetColor("_EmissiveColor", colour * intensity);
 
-        renderer.materials = mats;
+            mats[materialIndex] = matt;
+
+            renderer.materials = mats;
+        }
     }
-
-    // Update is called once per frame
     void Update()
     {
-        if (opening && !open)
+        if (mult)
+        {
+            unlockedAm = 0;
+            for (int i = 0; i < orbOfTheAncients.Length; i++)
+            {
+                if (unlocked[i])
+                {
+                    unlockedAm++;
+
+                    if (orbOfTheAncients[i] != null)
+                    {
+                        SetColour(orbOfTheAncients[i].GetComponent<MeshRenderer>(), i);
+                    }
+                }
+                else
+                {
+                    if (orbOfTheAncients[i] != null)
+                    {
+                        SetColour(orbOfTheAncients[i].GetComponent<MeshRenderer>(), -1);
+                    }
+                }
+            }
+
+            if (unlockedAm >= unlocked.Length)
+            {
+                print("opening door, " + timer);
+                OpenDoor();
+            }
+        }
+
+        if (opening && !open && door!=null)
         {
             timer += Time.deltaTime * doorSpeed;
             if (door.transform.position != (doorStartPos + doorEndDiff))
@@ -86,11 +130,7 @@ public class DoorOpener : MonoBehaviour
     public void OpenDoor()
     {
         opening = true;
-        if (layLines.Length > 0)
-        {
-            layLines[0].SetActive(false);
-            layLines[1].SetActive(true);
-        }
+        
 
         /*TryGetComponent<Collider>(out var col);
 
@@ -106,18 +146,36 @@ public class DoorOpener : MonoBehaviour
 
         if (opening)
         {
-            door.transform.position = doorStartPos + doorEndDiff;
+            if (door != null)
+            {
+                door.transform.position = doorStartPos + doorEndDiff;
+            }
+
             open = true;
             opening = false;
         }
-        if (!open)
+
+        if (!hasKey)
         {
             if (inventory.HasItemWithID(requiredID))
             {
+                if (layLines.Length > 0)
+                {
+                    layLines[0].SetActive(false);
+                    layLines[1].SetActive(true);
+                }
+                
+                hasKey = true;
                 //inventory.RemoveItemIndex(inventory.FindItemIdIndex(requiredID));
                 inventory.RemoveItem(requiredID);
-
-                OpenDoor();
+                if (mult)
+                {
+                    multDad.unlocked[requiredID] = true;
+                }
+                else
+                {
+                    OpenDoor();
+                }
             }
         }
         else
@@ -128,6 +186,13 @@ public class DoorOpener : MonoBehaviour
                 name = typeName
             };
             inventory.AddItem(key);
+
+            if (mult)
+            {
+                multDad.unlocked[requiredID] = false;
+            }
+
+            hasKey = false;
             open = false;
             opening = false;
             if (layLines.Length > 0)
@@ -139,5 +204,49 @@ public class DoorOpener : MonoBehaviour
             door.transform.position = doorStartPos;
             timer = 0;
         }
+    }
+
+    public void SetColour(MeshRenderer ren, int index)
+    {
+
+        if (index != -1)
+        {
+            Material[] mats = ren.materials;
+
+            Material matt = new Material(mats[0]);
+            float ev100Value = 14;
+            float intensity = 0.125f * Mathf.Pow(2f, ev100Value); // Translates to Nits
+
+            Color colour = FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[index].colour;
+
+
+            GetComponent<Renderer>().material.color = colour;
+            matt.SetColor("_EmissiveColor", colour * intensity);
+
+            mats[0] = matt;
+
+            ren.materials = mats;
+        }
+        else
+        {
+            Material[] mats = ren.materials;
+
+            Material matt = new Material(mats[0]);
+
+            Color colour = Color.gray;
+
+
+            GetComponent<Renderer>().material.color = colour;
+            matt.SetColor("_EmissiveColor", colour);
+
+            mats[0] = matt;
+
+            ren.materials = mats;
+        }
+    }
+
+    public bool HasKey()
+    {
+        return hasKey;
     }
 }

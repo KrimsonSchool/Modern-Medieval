@@ -38,10 +38,16 @@ public class PlayerMovement : MonoBehaviour
 
     private PDA pda;
 
-    [Space] 
-    public SoundBlaster98 sound;
+    [Space] public SoundBlaster98 sound;
 
     private PlayerHolder pholder;
+
+    private bool startRun;
+    private float walkTimer;
+
+    private int isJumping;
+
+    private string interactKey;
 
     private void OnEnable()
     {
@@ -56,8 +62,10 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        pholder=GetComponent<PlayerHolder>();
-        
+        interactKey = controls.Player.Interact.GetBindingDisplayString(0);
+
+        pholder = GetComponent<PlayerHolder>();
+
         runSpeed = speed * 1.5f;
         movSpeed = speed;
         //DontDestroyOnLoad(gameObject);
@@ -68,14 +76,26 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        controls.Player.Jump.started += ctx => Jump();
+        //controls.Player.Jump.started += ctx => Jump();
         controls.Player.Interact.started += ctx => Interact();
         controls.Player.Exit.started += ctx => Exit();
+
+        mouseSpeed = PlayerPrefs.GetInt("sensitivity");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (startRun)
+        {
+            walkTimer += Time.deltaTime;
+            if (walkTimer > 0.25f)
+            {
+                walkTimer = 0;
+                startRun = false;
+            }
+        }
+
         if (heldObject != null)
         {
             heldObject.transform.position = holdPos.transform.position;
@@ -93,11 +113,18 @@ public class PlayerMovement : MonoBehaviour
 
         PollInput();
 
+        //TODO use velocity movement instead of positional
+
         transform.position += transform.forward * (movSpeed * Time.deltaTime * move.y)
                               + transform.right * (movSpeed * Time.deltaTime * move.x);
 
         if (move.x != 0 || move.y != 0)
         {
+            if (!startRun)
+            {
+                startRun = true;
+                sound.TriggerSound(worldManager.sounds[1]);
+            }
             //sound.TriggerSound(pholder.sounds[1]);
         }
 
@@ -119,14 +146,40 @@ public class PlayerMovement : MonoBehaviour
             //print("HIT " + hit.collider.tag);
             //interaction ui popup
             //Need array of Interactable tags
-            if (hit.collider.CompareTag("Npc") || hit.collider.CompareTag("Door") || hit.collider.CompareTag("Switch") || hit.collider.CompareTag("Lock"))
+            if (!hit.collider.CompareTag("Player"))
             {
-                worldManager.interactUI.SetActive(true);
-                worldManager.interactedObject = hit.collider.gameObject;
-                if (hit.collider.CompareTag("Lock"))
+                if (hit.collider.CompareTag("Npc") || hit.collider.CompareTag("Door") || hit.collider.CompareTag("Switch") || hit.collider.CompareTag("Lock") ||
+                    hit.collider.CompareTag("Pickup"))
                 {
-                    string typeName = hit.collider.gameObject.GetComponent<DoorOpener>().typeName;
-                    worldManager.interactText.text = "Press ["+controls.Player.Interact.GetBindingDisplayString(0)+"]\n required " + typeName + ": [" + hit.collider.GetComponent<DoorOpener>().requiredID + "]";
+                    worldManager.interactUI.SetActive(true);
+                    worldManager.interactedObject = hit.collider.gameObject;
+
+                    if (hit.collider.CompareTag("Lock"))
+                    {
+                        DoorOpener DO = hit.collider.gameObject.GetComponent<DoorOpener>();
+
+                        if (DO.HasKey())
+                        {
+                            string typeName = DO.typeName;
+                            worldManager.interactText.text = "Press [" + interactKey + "]\n to retrieve " + typeName + ": [" +
+                                                             FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[DO.requiredID].name + "]";
+                        }
+                        else
+                        {
+                            string typeName = DO.typeName;
+                            worldManager.interactText.text = "Press [" + interactKey + "]\n required " + typeName + ": [" +
+                                                             FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[DO.requiredID].name + "]";
+                        }
+                    }
+
+                    if (hit.collider.CompareTag("Pickup"))
+                    {
+                        worldManager.interactText.text = "Press [" + interactKey + "] to pickup\n" + hit.collider.gameObject.name;
+                    }
+                }
+                else
+                {
+                    worldManager.interactText.text = "Press [" + interactKey + "]";
                 }
             }
         }
@@ -171,18 +224,13 @@ public class PlayerMovement : MonoBehaviour
                     GetComponent<PlayerHealth>().Hurt(999);
                 }
             }
-            
-        }
-
-        if (controls.Player.Jump.triggered)
-        {
-            Jump();
         }
 
         if (controls.Player.Next.triggered)
         {
             pda.selected++;
         }
+
         if (controls.Player.Previous.triggered)
         {
             pda.selected--;
@@ -199,6 +247,31 @@ public class PlayerMovement : MonoBehaviour
                 movSpeed = speed;
             }
         }
+
+        if (controls.Player.Change.triggered)
+        {
+            pda.up = !pda.up;
+        }
+
+        LayerMask mask = LayerMask.GetMask("Ground");
+        float detDis = 1.1f;
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out var ground, detDis, mask))
+        {
+            Debug.DrawLine(transform.position, transform.position + transform.TransformDirection(Vector3.down) * detDis, Color.red);
+
+            isJumping--;
+            //TODO make so can jump out of moving platform...
+            if (controls.Player.Jump.triggered)
+            {
+                Jump();
+            }
+
+            if (ground.collider.gameObject.GetComponent<MovingPlatform>() != null && isJumping < 1)
+            {
+                GetComponent<Rigidbody>().linearVelocity = ground.collider.gameObject.GetComponent<Rigidbody>().linearVelocity;
+            }
+        }
     }
 
     private void PollInput()
@@ -209,17 +282,15 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        LayerMask mask = LayerMask.GetMask("Ground");
+        //.DrawLine(transform.position, transform.position + transform.TransformDirection(Vector3.down) * hit.distance, Color.red);
 
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out var hit, 1.1f, mask))
-        {
-            Debug.DrawLine(transform.position, transform.position + transform.TransformDirection(Vector3.down) * hit.distance, Color.red);
+        //print(hit.distance);
 
-            print(hit.distance);
+        isJumping = 100;
 
-            sound.TriggerSound(pholder.sounds[0]);
-            GetComponent<Rigidbody>().AddForce(transform.up * jumpAmount, ForceMode.Impulse);
-        }
+        sound.TriggerSound(worldManager.sounds[0]);
+        GetComponent<Rigidbody>().linearVelocity = new Vector3(GetComponent<Rigidbody>().linearVelocity.x, 0, GetComponent<Rigidbody>().linearVelocity.z);
+        GetComponent<Rigidbody>().AddForce(transform.up * jumpAmount, ForceMode.Impulse);
     }
 
     public void Interact()
@@ -241,7 +312,9 @@ public class PlayerMovement : MonoBehaviour
                     break;
                 case "Lock":
                     hit.collider.gameObject.GetComponent<DoorOpener>().TryOpenDoor();
-
+                    break;
+                case "Pickup":
+                    hit.collider.gameObject.GetComponent<Pickup>().PickupItem();
                     break;
             }
         }
@@ -265,13 +338,22 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.CompareTag("Detector"))
         {
-            worldManager.detectedIndicator.SetActive(true);
-            worldManager.detectedIndicator.GetComponent<Animator>().Play(0);
+            RaycastHit hit;
+            Vector3 direction = transform.position - other.transform.position;
 
-            print("spotted");
-            spotted = true;
-            securityCamera = other.gameObject.GetComponentInParent<SecurityCamera>();
-            securityCamera.hasDetected = true;
+            if (Physics.Raycast(other.transform.position, direction, out hit, Mathf.Infinity))
+            {
+                if (hit.collider.CompareTag("Player"))
+                {
+                    worldManager.detectedIndicator.SetActive(true);
+                    worldManager.detectedIndicator.GetComponent<Animator>().Play(0);
+
+                    print("spotted");
+                    spotted = true;
+                    securityCamera = other.gameObject.GetComponentInParent<SecurityCamera>();
+                    securityCamera.hasDetected = true;
+                }
+            }
         }
 
         if (other.CompareTag("Kill"))
@@ -300,6 +382,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Exit()
     {
-        Application.Quit();
+        //Application.Quit();
+        SceneManager.LoadScene("Menu");
     }
 }

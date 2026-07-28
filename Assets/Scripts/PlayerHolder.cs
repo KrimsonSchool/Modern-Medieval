@@ -11,8 +11,6 @@ public class PlayerHolder : MonoBehaviour
     public GameObject hurtEffect;
     public WorldManager worldManager;
 
-    public AudioClip[] sounds;
-
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoad;

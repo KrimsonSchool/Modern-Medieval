@@ -183,6 +183,15 @@ namespace InputSystemGlobal
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Change"",
+                    ""type"": ""Button"",
+                    ""id"": ""236ebbef-0b08-4a3a-900a-aeeea60e9064"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -579,6 +588,17 @@ namespace InputSystemGlobal
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""343f86a7-13f7-44b1-b0a1-ed8f2e46ad78"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Change"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1176,6 +1196,7 @@ namespace InputSystemGlobal
             m_Player_Next = m_Player.FindAction("Next", throwIfNotFound: true);
             m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
             m_Player_Exit = m_Player.FindAction("Exit", throwIfNotFound: true);
+            m_Player_Change = m_Player.FindAction("Change", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1279,6 +1300,7 @@ namespace InputSystemGlobal
         private readonly InputAction m_Player_Next;
         private readonly InputAction m_Player_Sprint;
         private readonly InputAction m_Player_Exit;
+        private readonly InputAction m_Player_Change;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player".
         /// </summary>
@@ -1330,6 +1352,10 @@ namespace InputSystemGlobal
             /// Provides access to the underlying input action "Player/Exit".
             /// </summary>
             public InputAction @Exit => m_Wrapper.m_Player_Exit;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/Change".
+            /// </summary>
+            public InputAction @Change => m_Wrapper.m_Player_Change;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -1386,6 +1412,9 @@ namespace InputSystemGlobal
                 @Exit.started += instance.OnExit;
                 @Exit.performed += instance.OnExit;
                 @Exit.canceled += instance.OnExit;
+                @Change.started += instance.OnChange;
+                @Change.performed += instance.OnChange;
+                @Change.canceled += instance.OnChange;
             }
 
             /// <summary>
@@ -1427,6 +1456,9 @@ namespace InputSystemGlobal
                 @Exit.started -= instance.OnExit;
                 @Exit.performed -= instance.OnExit;
                 @Exit.canceled -= instance.OnExit;
+                @Change.started -= instance.OnChange;
+                @Change.performed -= instance.OnChange;
+                @Change.canceled -= instance.OnChange;
             }
 
             /// <summary>
@@ -1797,6 +1829,13 @@ namespace InputSystemGlobal
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnExit(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Change" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnChange(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

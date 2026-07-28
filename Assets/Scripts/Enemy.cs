@@ -87,6 +87,7 @@ public class Enemy : MonoBehaviour
             else
             {
                 agent.SetDestination(patrolPoints[patrolIndex].transform.position);
+                animator.SetBool("IsAttacking", false);
                 animator.SetBool("IsMoving", true);
                 if (Vector3.Distance(transform.position, patrolPoints[patrolIndex].transform.position) <= 1)
                 {
@@ -94,6 +95,37 @@ public class Enemy : MonoBehaviour
                     if (patrolIndex >= patrolPoints.Length)
                     {
                         patrolIndex = 0;
+                    }
+                }
+            }
+            
+            if (wander)
+            {
+                if (!atWanderLoc)
+                {
+                    //print("Moving to loc");
+                    animator.SetBool("IsMoving", true);
+                    //print(Vector3.Distance(transform.position, wanderDest));
+                    if (Vector3.Distance(transform.position, wanderDest)<=0.5f)
+                    {
+                        //print("at location");
+                        atWanderLoc = true;
+                    }
+                }
+                else
+                {
+                    //print("Selecting location");
+                    animator.SetBool("IsMoving", false);
+                    Vector3 rng = new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f));
+                    wanderDest = transform.position + rng;
+                    if (IsDestinationReachable(wanderDest))
+                    {
+                        agent.SetDestination(wanderDest);
+                        atWanderLoc = false;
+                    }
+                    else
+                    {
+                        atWanderLoc = true;
                     }
                 }
             }
@@ -109,38 +141,6 @@ public class Enemy : MonoBehaviour
             print("I want player, can i reach? " + IsDestinationReachable(dest));
         }
 
-
-
-        if (wander)
-        {
-            if (!atWanderLoc)
-            {
-                print("Moving to loc");
-                animator.SetBool("IsMoving", true);
-                print(Vector3.Distance(transform.position, wanderDest));
-                if (Vector3.Distance(transform.position, wanderDest)<=0.5f)
-                {
-                    print("at location");
-                    atWanderLoc = true;
-                }
-            }
-            else
-            {
-                print("Selecting location");
-                animator.SetBool("IsMoving", false);
-                Vector3 rng = new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f));
-                wanderDest = transform.position + rng;
-                if (IsDestinationReachable(wanderDest))
-                {
-                    agent.SetDestination(wanderDest);
-                    atWanderLoc = false;
-                }
-                else
-                {
-                    atWanderLoc = true;
-                }
-            }
-        }
     }
 
 
