@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1b69379849a3b0b4fb813987667110ed
+guid: 55d967cacb9bb1d40946267dcfedc3b0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stonks_0
+      name: HR_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 2
-        width: 800
-        height: 800
+        y: 0
+        width: 250
+        height: 250
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,8 +125,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 515d6aa473afcc44b8158feadc80997d
-      internalID: -348538644
+      spriteID: bfd4c9394025d194abc181500d8716fa
+      internalID: 1719076945
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 4abd13a031082e342b5c2ee544c4f40a
+    spriteID: 7841c963140c2464c89961ed3d142093
     internalID: 0
     vertices: []
     indices: 
@@ -145,7 +145,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      stonks_0: -348538644
+      HR_0: 1719076945
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
