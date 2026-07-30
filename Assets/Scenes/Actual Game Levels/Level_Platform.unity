@@ -7229,6 +7229,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Wood_Platform_01
       objectReference: {fileID: 0}
+    - target: {fileID: 156114, guid: 480822748dfc6ba478baf6bc23e905e2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 473050, guid: 480822748dfc6ba478baf6bc23e905e2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.8839998
@@ -8851,6 +8855,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Tiles_01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 137298, guid: 9830f561f80768b4f92139c1c15bc835, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 450008, guid: 9830f561f80768b4f92139c1c15bc835, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.22414
@@ -8986,6 +8994,10 @@ PrefabInstance:
     - target: {fileID: 120130, guid: 7779d84bca4e95b43a2e3232298a0aa5, type: 3}
       propertyPath: m_Name
       value: SM_Env_Pillar_Round_Simple_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 120130, guid: 7779d84bca4e95b43a2e3232298a0aa5, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 494450, guid: 7779d84bca4e95b43a2e3232298a0aa5, type: 3}
       propertyPath: m_LocalScale.x
@@ -9658,6 +9670,10 @@ PrefabInstance:
     - target: {fileID: 166194, guid: 603b0181429de4546be274f2b6c57679, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Flat_Platform_Large_04 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 166194, guid: 603b0181429de4546be274f2b6c57679, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 423904, guid: 603b0181429de4546be274f2b6c57679, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12076,6 +12092,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Wall_Pillar_Large_01_Texture (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 190274, guid: 0111670a5d8992d489eb05a7303ba038, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 436056, guid: 0111670a5d8992d489eb05a7303ba038, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.3960009
@@ -12262,9 +12282,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1232461090}
     m_Modifications:
+    - target: {fileID: 1079846368293366, guid: a9601c421be01af42bdaca1eec89db93, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1505153307955398, guid: a9601c421be01af42bdaca1eec89db93, type: 3}
       propertyPath: m_Name
       value: Fridge Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505153307955398, guid: a9601c421be01af42bdaca1eec89db93, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4314512955678160, guid: a9601c421be01af42bdaca1eec89db93, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13085,6 +13113,10 @@ PrefabInstance:
     - target: {fileID: 6516915673000365788, guid: e9bd4d9c123cb4f93a5dba371dc01dd2, type: 3}
       propertyPath: m_Name
       value: Stairs_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516915673000365788, guid: e9bd4d9c123cb4f93a5dba371dc01dd2, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13984,6 +14016,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Minetrack_Bridge_Broken_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 112134, guid: 1e7cc353830e2d6409a9b84abc744fd8, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 424770, guid: 1e7cc353830e2d6409a9b84abc744fd8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.056999
@@ -14694,6 +14730,10 @@ PrefabInstance:
     - target: {fileID: 107008, guid: 2588e2bfd2b0f56439d00c74f64a34c7, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Brick_Simple_09 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 107008, guid: 2588e2bfd2b0f56439d00c74f64a34c7, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 449446, guid: 2588e2bfd2b0f56439d00c74f64a34c7, type: 3}
       propertyPath: m_LocalScale.x
@@ -16494,6 +16534,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Minetrack_Bridge_Broken_01
       objectReference: {fileID: 0}
+    - target: {fileID: 112134, guid: 1e7cc353830e2d6409a9b84abc744fd8, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 424770, guid: 1e7cc353830e2d6409a9b84abc744fd8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.504
@@ -17013,6 +17057,10 @@ PrefabInstance:
     - target: {fileID: 107008, guid: 2588e2bfd2b0f56439d00c74f64a34c7, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Brick_Simple_09 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 107008, guid: 2588e2bfd2b0f56439d00c74f64a34c7, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 449446, guid: 2588e2bfd2b0f56439d00c74f64a34c7, type: 3}
       propertyPath: m_LocalScale.x
@@ -17752,6 +17800,10 @@ PrefabInstance:
     - target: {fileID: 129630, guid: 276be0eeb7d45eb4eada49334e36062d, type: 3}
       propertyPath: m_Name
       value: SM_Env_Pillar_Round_02 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 129630, guid: 276be0eeb7d45eb4eada49334e36062d, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 489622, guid: 276be0eeb7d45eb4eada49334e36062d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18895,6 +18947,10 @@ PrefabInstance:
     - target: {fileID: 166194, guid: 603b0181429de4546be274f2b6c57679, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Flat_Platform_Large_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 166194, guid: 603b0181429de4546be274f2b6c57679, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 423904, guid: 603b0181429de4546be274f2b6c57679, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23277,7 +23333,7 @@ Transform:
   m_GameObject: {fileID: 899452885}
   serializedVersion: 2
   m_LocalRotation: {x: 3.2260044e-23, y: 3.58158e-40, z: 1.1102232e-17, w: 1}
-  m_LocalPosition: {x: -12.22, y: 14.251489, z: 23.7}
+  m_LocalPosition: {x: -12.146, y: 14.251489, z: 23.377}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23308,7 +23364,7 @@ Transform:
   m_GameObject: {fileID: 902392692}
   serializedVersion: 2
   m_LocalRotation: {x: 3.2260044e-23, y: 3.58158e-40, z: 1.1102232e-17, w: 1}
-  m_LocalPosition: {x: -12.292, y: 7.547, z: 23.794}
+  m_LocalPosition: {x: -12.225, y: 7.547, z: 24.237}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23638,6 +23694,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Tiles_Pentagram_01
       objectReference: {fileID: 0}
+    - target: {fileID: 101228, guid: 2f8bac6b7bae5254bbf64855f6613f5e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 479558, guid: 2f8bac6b7bae5254bbf64855f6613f5e, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -23652,7 +23712,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 479558, guid: 2f8bac6b7bae5254bbf64855f6613f5e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.473
       objectReference: {fileID: 0}
     - target: {fileID: 479558, guid: 2f8bac6b7bae5254bbf64855f6613f5e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -23660,7 +23720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 479558, guid: 2f8bac6b7bae5254bbf64855f6613f5e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 479558, guid: 2f8bac6b7bae5254bbf64855f6613f5e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -23774,10 +23834,10 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &939494306 stripped
 GameObject:
@@ -24653,6 +24713,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Brick_Simple_09 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 107008, guid: 2588e2bfd2b0f56439d00c74f64a34c7, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 449446, guid: 2588e2bfd2b0f56439d00c74f64a34c7, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -24726,6 +24790,10 @@ PrefabInstance:
     - target: {fileID: 129364, guid: 729795c66a7df17458f5d93979a67196, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Flat_Platform_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 129364, guid: 729795c66a7df17458f5d93979a67196, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 440920, guid: 729795c66a7df17458f5d93979a67196, type: 3}
       propertyPath: m_LocalPosition.x
@@ -29722,6 +29790,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Tiles_Pentagram_01
       objectReference: {fileID: 0}
+    - target: {fileID: 101228, guid: 2f8bac6b7bae5254bbf64855f6613f5e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 479558, guid: 2f8bac6b7bae5254bbf64855f6613f5e, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -29744,7 +29816,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 479558, guid: 2f8bac6b7bae5254bbf64855f6613f5e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.86
+      value: -0.51
       objectReference: {fileID: 0}
     - target: {fileID: 479558, guid: 2f8bac6b7bae5254bbf64855f6613f5e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -29858,10 +29930,10 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1001 &999635623
 PrefabInstance:
@@ -30588,6 +30660,10 @@ PrefabInstance:
     - target: {fileID: 107008, guid: 2588e2bfd2b0f56439d00c74f64a34c7, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Brick_Simple_09 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 107008, guid: 2588e2bfd2b0f56439d00c74f64a34c7, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 449446, guid: 2588e2bfd2b0f56439d00c74f64a34c7, type: 3}
       propertyPath: m_LocalScale.x
@@ -32815,6 +32891,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Brick_Simple_09 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 107008, guid: 2588e2bfd2b0f56439d00c74f64a34c7, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 449446, guid: 2588e2bfd2b0f56439d00c74f64a34c7, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -32915,6 +32995,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_SpiralStairs_02
       objectReference: {fileID: 0}
+    - target: {fileID: 108808, guid: 94d8010a6fb36e349af40ab4fae8b972, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 440340, guid: 94d8010a6fb36e349af40ab4fae8b972, type: 3}
       propertyPath: m_LocalScale.z
       value: -1
@@ -32985,6 +33069,10 @@ PrefabInstance:
     - target: {fileID: 129630, guid: 276be0eeb7d45eb4eada49334e36062d, type: 3}
       propertyPath: m_Name
       value: SM_Env_Pillar_Round_02 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 129630, guid: 276be0eeb7d45eb4eada49334e36062d, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 489622, guid: 276be0eeb7d45eb4eada49334e36062d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -33406,6 +33494,10 @@ PrefabInstance:
     - target: {fileID: 137298, guid: 9830f561f80768b4f92139c1c15bc835, type: 3}
       propertyPath: m_Name
       value: SM_Env_Tiles_01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 137298, guid: 9830f561f80768b4f92139c1c15bc835, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 450008, guid: 9830f561f80768b4f92139c1c15bc835, type: 3}
       propertyPath: m_LocalScale.y
@@ -34403,6 +34495,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fda9277fabaeb454183d277b8ce114f6, type: 3}
       propertyPath: m_Name
       value: Floor5_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fda9277fabaeb454183d277b8ce114f6, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -35584,6 +35680,10 @@ PrefabInstance:
     - target: {fileID: 156114, guid: 480822748dfc6ba478baf6bc23e905e2, type: 3}
       propertyPath: m_Name
       value: SM_Env_Wood_Platform_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 156114, guid: 480822748dfc6ba478baf6bc23e905e2, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 473050, guid: 480822748dfc6ba478baf6bc23e905e2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37933,6 +38033,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Pillar_Square_08
       objectReference: {fileID: 0}
+    - target: {fileID: 165136, guid: 4ea2c25a7dabbf04c9e40bc05a5c78da, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 454048, guid: 4ea2c25a7dabbf04c9e40bc05a5c78da, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -39848,6 +39952,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Brick_Simple_09
       objectReference: {fileID: 0}
+    - target: {fileID: 107008, guid: 2588e2bfd2b0f56439d00c74f64a34c7, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 449446, guid: 2588e2bfd2b0f56439d00c74f64a34c7, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -40456,6 +40564,10 @@ PrefabInstance:
     - target: {fileID: 6543501190351239168, guid: 7197e404df2c14585bd65886d4e87f59, type: 3}
       propertyPath: m_Name
       value: Box_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6543501190351239168, guid: 7197e404df2c14585bd65886d4e87f59, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -48060,6 +48172,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Stool_01
       objectReference: {fileID: 0}
+    - target: {fileID: 195432, guid: 077e585196f15914fa6e50566e92f321, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 446898, guid: 077e585196f15914fa6e50566e92f321, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.052
@@ -50085,6 +50201,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1550335607 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: c3ac80ca2885e8d429afc8547b976d9f, type: 3}
+  m_PrefabInstance: {fileID: 1659606021}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1552821411
 Mesh:
   m_ObjectHideFlags: 0
@@ -50602,6 +50723,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 280375835894c42d19bb7b157e5fce56, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1560231206}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 280375835894c42d19bb7b157e5fce56, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1560231209}
   m_SourcePrefab: {fileID: 100100000, guid: 280375835894c42d19bb7b157e5fce56, type: 3}
 --- !u!4 &1560231203 stripped
 Transform:
@@ -50625,10 +50749,32 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 2.5000005, y: 3, z: 0.15000102}
   m_Center: {x: 0, y: 1.5, z: 0.00000049173843}
+--- !u!64 &1560231209
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621050748}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4112032689203216152, guid: 280375835894c42d19bb7b157e5fce56, type: 3}
 --- !u!1001 &1562633842
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51595,6 +51741,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MemoBoard_02
       objectReference: {fileID: 0}
+    - target: {fileID: 8904750679126900909, guid: 0a46204c3b50c4734a1b2cbb078b09b1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -52032,6 +52182,10 @@ PrefabInstance:
     - target: {fileID: 137298, guid: 9830f561f80768b4f92139c1c15bc835, type: 3}
       propertyPath: m_Name
       value: SM_Env_Tiles_01 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 137298, guid: 9830f561f80768b4f92139c1c15bc835, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 450008, guid: 9830f561f80768b4f92139c1c15bc835, type: 3}
       propertyPath: m_LocalScale.y
@@ -53018,6 +53172,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Box_01
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 18d2ac91540310927a08703a7239141e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 18d2ac91540310927a08703a7239141e, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -53399,6 +53557,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MemoBoard_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1448461045008900772, guid: 1910db78ea0954a57b8975de4dc181c2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -53415,6 +53577,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: c3ac80ca2885e8d429afc8547b976d9f, type: 3}
       propertyPath: m_Name
       value: SM_Env_Wall_Round_01 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c3ac80ca2885e8d429afc8547b976d9f, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c3ac80ca2885e8d429afc8547b976d9f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -53463,13 +53629,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: c3ac80ca2885e8d429afc8547b976d9f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1659606025}
   m_SourcePrefab: {fileID: 100100000, guid: c3ac80ca2885e8d429afc8547b976d9f, type: 3}
 --- !u!4 &1659606022 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: c3ac80ca2885e8d429afc8547b976d9f, type: 3}
   m_PrefabInstance: {fileID: 1659606021}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &1659606025
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550335607}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: c3ac80ca2885e8d429afc8547b976d9f, type: 3}
 --- !u!1001 &1659715655
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53481,6 +53672,10 @@ PrefabInstance:
     - target: {fileID: 129630, guid: 276be0eeb7d45eb4eada49334e36062d, type: 3}
       propertyPath: m_Name
       value: SM_Env_Pillar_Round_02 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 129630, guid: 276be0eeb7d45eb4eada49334e36062d, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 489622, guid: 276be0eeb7d45eb4eada49334e36062d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -53738,6 +53933,10 @@ PrefabInstance:
     - target: {fileID: 137298, guid: 9830f561f80768b4f92139c1c15bc835, type: 3}
       propertyPath: m_Name
       value: SM_Env_Tiles_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 137298, guid: 9830f561f80768b4f92139c1c15bc835, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 450008, guid: 9830f561f80768b4f92139c1c15bc835, type: 3}
       propertyPath: m_LocalScale.y
@@ -57763,6 +57962,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1232461090}
     m_Modifications:
+    - target: {fileID: 315997732541024710, guid: 13a5e820491ae42ec9857949e633791d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927918009928731990, guid: 13a5e820491ae42ec9857949e633791d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6209199694125239771, guid: 13a5e820491ae42ec9857949e633791d, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -57818,6 +58025,10 @@ PrefabInstance:
     - target: {fileID: 6728468646441310049, guid: 13a5e820491ae42ec9857949e633791d, type: 3}
       propertyPath: m_Name
       value: Clock_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595510707408529836, guid: 13a5e820491ae42ec9857949e633791d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -59352,7 +59563,7 @@ Transform:
   m_GameObject: {fileID: 1947127660}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.805, y: -0.245, z: 1.992}
+  m_LocalPosition: {x: 2.557, y: -0.245, z: 1.756}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -63330,6 +63541,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Brick_Simple_09 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 107008, guid: 2588e2bfd2b0f56439d00c74f64a34c7, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 449446, guid: 2588e2bfd2b0f56439d00c74f64a34c7, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -65458,7 +65673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   interactDist: 2
-  nextLevel: Menu
+  nextLevel: Boss
 --- !u!4 &893367517099165287
 Transform:
   m_ObjectHideFlags: 0
@@ -65932,6 +66147,10 @@ PrefabInstance:
     - target: {fileID: 6416281200872095995, guid: 911efc283ff884f55b187f9443a34486, type: 3}
       propertyPath: m_Name
       value: BookCase2_C3 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6416281200872095995, guid: 911efc283ff884f55b187f9443a34486, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
