@@ -163,6 +163,8 @@ public class DoorOpener : MonoBehaviour
                 {
                     layLines[0].SetActive(false);
                     layLines[1].SetActive(true);
+                    
+                    //TODO for laylines 1 to length set active
                 }
                 
                 hasKey = true;
