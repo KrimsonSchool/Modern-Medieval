@@ -17,6 +17,7 @@ public class AudiophileMegaMixer3000 : MonoBehaviour
                 name = "Glorp Node"
             };
             glorpNode.AddComponent<AudioSource>().clip = clip;
+            glorpNode.AddComponent<AudioSource>().volume = PlayerPrefs.GetInt("audio")/100f;
             glorpNode.GetComponent<AudioSource>().loop = true;
             glorpNode.GetComponent<AudioSource>().Play();
         }

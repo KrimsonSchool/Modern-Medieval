@@ -9,6 +9,7 @@ public class SoundBlaster98 : MonoBehaviour
     void Start()
     {
         audio = GetComponent<AudioSource>();
+        audio.volume = PlayerPrefs.GetInt("audio")/100f;
     }
 
     // Update is called once per frame
