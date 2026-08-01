@@ -226,16 +226,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (controls.Player.Next.triggered)
-        {
-            pda.selected++;
-        }
-
-        if (controls.Player.Previous.triggered)
-        {
-            pda.selected--;
-        }
-
         if (controls.Player.Sprint.inProgress)
         {
             movSpeed = runSpeed;

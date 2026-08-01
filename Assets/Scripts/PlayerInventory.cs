@@ -11,33 +11,30 @@ public class PlayerInventory : MonoBehaviour
         public string name;
         public GameObject prefab;
     }
-    
+
 
     public List<Object> inventory;
 
-    private TextMeshProUGUI keysText;
+    string keysText;
 
     private PDA pda;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         pda = GetComponent<PDA>();
-        keysText = pda.stack;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (pda.menu == PDA.Menus.Inventory)
+        keysText = "";
+        foreach (var obj in inventory)
         {
-            pda.stack.text = "";
-            //pda.stackLock = true;
-            keysText.text = "";
-            foreach (var obj in inventory)
-            {
-                keysText.text += obj.name + " [" + FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[obj.id].name + "]\n";
-            }
+            keysText += obj.name + " [" + FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[obj.id].name + "] ";
         }
+
+        pda.stack.text = keysText;
     }
 
     public void AddItem(Object item)
@@ -49,7 +46,7 @@ public class PlayerInventory : MonoBehaviour
     {
         inventory.RemoveAt(index);
     }
-    
+
     public void RemoveItem(int id)
     {
         inventory.Remove(inventory[inventory.FindIndex(x => x.id == id)]);
@@ -64,6 +61,7 @@ public class PlayerInventory : MonoBehaviour
                 return true;
             }
         }
+
         return false;
     }
 
@@ -76,6 +74,7 @@ public class PlayerInventory : MonoBehaviour
                 return i;
             }
         }
+
         return -1;
     }
 }
