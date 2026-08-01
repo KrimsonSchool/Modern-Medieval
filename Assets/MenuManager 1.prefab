@@ -1128,7 +1128,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.000022888, y: -0.000030518}
-  m_SizeDelta: {x: 79.9558, y: 217.4798}
+  m_SizeDelta: {x: 296, y: 296}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5149810891580807654
 CanvasRenderer:
@@ -1158,7 +1158,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 09e4c6a7d75923945afe43953ef58ad2, type: 3}
+  m_Sprite: {fileID: 465639713, guid: f974e62592318406da2c550a4a79671b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1402,7 +1402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &257943655078867560
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1619,7 +1619,7 @@ MonoBehaviour:
   m_text: DETECTED!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1290fcf3609f2ec27a761c51ab74435d, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_sharedMaterial: {fileID: -3324923571612016344, guid: 1290fcf3609f2ec27a761c51ab74435d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1643,7 +1643,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 134.8
+  m_fontSize: 36.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2546,7 +2546,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4951421657883385906
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3397,6 +3397,8 @@ MonoBehaviour:
   playerHasWeapon: 0
   playerHasKeyboard: 0
   playerHasPDA: 0
+  mapNo: 0
+  map: {fileID: 0}
   enemies:
   - {fileID: 0}
   - {fileID: 3238828061428350739, guid: 6fb61b34968519bef9bbb2b2770c8c1b, type: 3}
