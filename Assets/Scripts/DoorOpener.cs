@@ -41,10 +41,16 @@ public class DoorOpener : MonoBehaviour
     private int unlockedAm;
 
     private bool hasKey;
+    
+    WorldManager worldManager;
+    SoundBlaster98 sound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        sound = FindFirstObjectByType<SoundBlaster98>();
+        worldManager = FindFirstObjectByType<WorldManager>();
+        
         if (door!=null)
         {
             doorStartPos = door.transform.position;
@@ -123,6 +129,8 @@ public class DoorOpener : MonoBehaviour
             {
                 open = true;
                 opening = false;
+                
+                sound.TriggerSound(worldManager.sounds[8]);
             }
         }
     }
@@ -219,7 +227,7 @@ public class DoorOpener : MonoBehaviour
             float ev100Value = 14;
             float intensity = 0.125f * Mathf.Pow(2f, ev100Value); // Translates to Nits
 
-            Color colour = FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[index].colour;
+            Color colour = worldManager.gorbachevTheOmnisiah[index].colour;
 
 
             GetComponent<Renderer>().material.color = colour;

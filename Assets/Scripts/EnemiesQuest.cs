@@ -8,10 +8,11 @@ public class EnemiesQuest : MonoBehaviour
     public TextMeshProUGUI enemiesQuestText;
 
     private PDA pda;
-    
+
     WorldManager worldManager;
-    
+
     [Space] SoundBlaster98 sound;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,21 +26,13 @@ public class EnemiesQuest : MonoBehaviour
     {
         if (pda != null)
         {
-            if (pda.menu == PDA.Menus.Goals)
-            {
-                pda.stack.text = "";
-                print("on goals menu");
-                //pda.stackLock = true;
-                print("stack was: "+pda.stack.text);
-                pda.stack.text = "Enemies killed: " + killedEnemies +"/" + noOfEnemies;
-                print("stack is now: "+pda.stack.text);
-            }
+            pda.title.text = "Enemies killed: " + killedEnemies + "/" + noOfEnemies;
         }
         else
         {
             pda = FindFirstObjectByType<PDA>();
         }
-        
+
         if (killedEnemies >= noOfEnemies)
         {
             sound.TriggerSound(worldManager.sounds[6]);

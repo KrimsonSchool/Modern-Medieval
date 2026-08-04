@@ -342,11 +342,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pda: {fileID: 6583319057755656566}
-  menu: 0
   title: {fileID: 4591493434472531022}
   stack: {fileID: 1080905208346622744}
   imgStack: {fileID: 369181903387968413}
-  selected: 0
   up: 0
   pdaPosOrigin: {x: -0.4092, y: -0.13, z: 0.4271}
   pdaPosDown: {x: -0.4092, y: -0.13, z: 0.4271}
@@ -372,7 +370,7 @@ GameObject:
   - component: {fileID: 5955518475824706979}
   - component: {fileID: 4591493434472531022}
   m_Layer: 0
-  m_Name: text title
+  m_Name: Goal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -386,7 +384,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1032918187462058278}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -394,8 +392,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.538}
-  m_SizeDelta: {x: 1, y: 0.1929}
+  m_AnchoredPosition: {x: -0, y: 0.552}
+  m_SizeDelta: {x: 1, y: 0.1649}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5955518475824706979
 CanvasRenderer:
@@ -425,7 +423,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '> Inventory'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -455,12 +453,12 @@ MonoBehaviour:
   m_fontSize: 0.15
   m_fontSizeBase: 0.15
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 0
   m_fontSizeMax: 999
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -509,7 +507,7 @@ GameObject:
   - component: {fileID: 338132462700102748}
   - component: {fileID: 1080905208346622744}
   m_Layer: 0
-  m_Name: text stack
+  m_Name: Inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -523,7 +521,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4890069151681245734}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.000000049256}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -531,8 +529,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: -0.096475}
-  m_SizeDelta: {x: 1, y: 1.0761}
+  m_AnchoredPosition: {x: 0, y: -0.5751}
+  m_SizeDelta: {x: 1, y: 0.1188}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &338132462700102748
 CanvasRenderer:
@@ -562,20 +560,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Key1
-
-    Key2
-
-    Key3
-
-    Key4
-
-    Key5
-
-    Key6
-
-    Some extra
-    text...'
+  m_text: Red key, blue key, old key, new key
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -602,15 +587,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.1
-  m_fontSizeBase: 0.1
+  m_fontSize: 0.04
+  m_fontSizeBase: 0.04
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
   m_fontSizeMax: 999
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -1146,7 +1131,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7171004755362035486}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.000000031155}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.00136578, y: 0.00136578, z: 0.00136578}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -1155,8 +1140,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.000018108}
-  m_SizeDelta: {x: 732.18, y: 929.09}
+  m_AnchoredPosition: {x: -0, y: -0.0213}
+  m_SizeDelta: {x: 732.18, y: 722.0671}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1920960731874168471
 CanvasRenderer:

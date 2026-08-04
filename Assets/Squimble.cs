@@ -12,7 +12,6 @@ public class Squimble : MonoBehaviour
 
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -38,8 +37,10 @@ public class Squimble : MonoBehaviour
 
         foreach (GameObject obj in objects)
         {
+#if UNITY_EDITOR
             Undo.RecordObject(obj.transform, "Move Object");
-            obj.transform.position += new  Vector3(Random.Range(-diff.x, diff.x), Random.Range(-diff.y, diff.y), Random.Range(-diff.z, diff.z));
+#endif
+            obj.transform.position += new Vector3(Random.Range(-diff.x, diff.x), Random.Range(-diff.y, diff.y), Random.Range(-diff.z, diff.z));
         }
     }
 }
