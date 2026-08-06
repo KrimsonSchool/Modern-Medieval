@@ -35,7 +35,7 @@ public class Boss : MonoBehaviour
         healthSlider.value = health;
         healthSliderVis.value = health;
         
-        //SpawnKey();
+        SpawnKey();
         Search();
     }
 
@@ -48,7 +48,14 @@ public class Boss : MonoBehaviour
                 attackTimer += Time.deltaTime;
                 if (attackTimer >= 9)
                 {
+                    if (attackIndex >= 2)
+                    {
+                        attackIndex = 0;
+                        Search();
+                        break;
+                    }
                     Attack();
+                    attackIndex++;
                     attackTimer = 0;
                 }
                 break;
@@ -65,7 +72,6 @@ public class Boss : MonoBehaviour
                     // }
                     Search();
                     attackTimer = 0;
-                    attackIndex++;
                 }
                 break;
         }
@@ -88,6 +94,8 @@ public class Boss : MonoBehaviour
         {
             SceneManager.LoadScene("Credits");
         }
+        
+        SpawnKey();
     }
 
     public void Attack()
@@ -99,9 +107,9 @@ public class Boss : MonoBehaviour
     public void Search()
     {
         print("Searching");
-        transform.eulerAngles = new Vector3(0, Random.Range(0, 360), 0);
+        //transform.eulerAngles = new Vector3(0, Random.Range(0, 360), 0);
+        StartCoroutine(LerpRotation(Quaternion.Euler(0, Random.Range(0f, 360f), 0), 1f));
         stage=0;
-        SpawnKey();
     }
 
     public void SpawnKey()
@@ -115,6 +123,15 @@ public class Boss : MonoBehaviour
         Instantiate(boom, poTerSpawns[rng2].transform.position, Quaternion.identity);
         poTerSpawns.Remove(poTerSpawns[rng2]);
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    //AI CODE GARBAGE - too lazy :(
 
     private IEnumerator AnimateSlider(Slider slider, float startValue, float endValue, float duration)
     {
@@ -130,5 +147,15 @@ public class Boss : MonoBehaviour
         }
 
         slider.value = endValue;
+    }
+    private IEnumerator LerpRotation(Quaternion target, float duration)
+    {
+        Quaternion start = transform.rotation;
+        for (float t = 0; t < duration; t += Time.deltaTime)
+        {
+            transform.rotation = Quaternion.Slerp(start, target, t / duration);
+            yield return null;
+        }
+        transform.rotation = target;
     }
 }

@@ -22,7 +22,7 @@ EditorBuildSettings:
     guid: d83fa2075484fe742b5d73ad0f3fce66
   - enabled: 1
     path: Assets/Scenes/Actual Game Levels/Boss.unity
-    guid: e38380adea1c3012eb59c748e78b9c63
+    guid: 08a47f1d7b60a2b4482f4b57c4062b73
   - enabled: 1
     path: Assets/Scenes/Actual Game Levels/Credits.unity
     guid: ef544cb02fed3060e83b6a027428ef5e
