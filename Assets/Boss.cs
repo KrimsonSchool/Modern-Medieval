@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
@@ -23,15 +24,19 @@ public class Boss : MonoBehaviour
     
     public GameObject boom;
 
+    private Animator anim;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        anim = GetComponent<Animator>();
+        
         _maxHealth = health;
 
         healthSlider.value = health;
         healthSliderVis.value = health;
         
-        SpawnKey();
+        //SpawnKey();
+        Search();
     }
 
     // Update is called once per frame
@@ -41,7 +46,7 @@ public class Boss : MonoBehaviour
         {
             case 0:
                 attackTimer += Time.deltaTime;
-                if (attackTimer >= 5)
+                if (attackTimer >= 9)
                 {
                     Attack();
                     attackTimer = 0;
@@ -49,14 +54,15 @@ public class Boss : MonoBehaviour
                 break;
             case 1:
                 attackTimer += Time.deltaTime;
-                if (attackTimer >= 10)
+                if (attackTimer >= 5)
                 {
-                    if (attackIndex >= 3)
-                    {
-                        SpawnKey();
-                        stage++;
-                        break;
-                    }
+                    // if (attackIndex >= 3)
+                    // {
+                    //     
+                    //     stage = 0;
+                    //     attackIndex = 0;
+                    //     break;
+                    // }
                     Search();
                     attackTimer = 0;
                     attackIndex++;
@@ -67,21 +73,35 @@ public class Boss : MonoBehaviour
 
     public void Hurt()
     {
-        health -= 25;
+        health -= 33;
         healthSlider.value = health;
-        StartCoroutine(AnimateSlider(healthSliderVis, healthSliderVis.value, healthSliderVis.value - 25f, 1));
+        StartCoroutine(AnimateSlider(healthSliderVis, healthSliderVis.value, healthSliderVis.value - 33f, 1));
 
         stage++;
+
+        if (stage > 1)
+        {
+            stage = 0;
+        }
+
+        if (health <= 0)
+        {
+            SceneManager.LoadScene("Credits");
+        }
     }
 
     public void Attack()
     {
         print("Attacking");
+        anim.SetTrigger("PlayAttack");
     }
 
     public void Search()
     {
         print("Searching");
+        transform.eulerAngles = new Vector3(0, Random.Range(0, 360), 0);
+        stage=0;
+        SpawnKey();
     }
 
     public void SpawnKey()

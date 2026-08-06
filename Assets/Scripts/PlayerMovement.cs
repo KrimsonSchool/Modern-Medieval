@@ -350,6 +350,10 @@ public class PlayerMovement : MonoBehaviour
         {
             GetComponent<PlayerHealth>().Hurt(999);
         }
+        if (other.CompareTag("BDam"))
+        {
+            GetComponent<PlayerHealth>().Hurt(4);
+        }
 
         if (other.CompareTag("TutorialArea"))
         {

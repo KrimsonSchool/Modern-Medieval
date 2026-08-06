@@ -848,6 +848,7 @@ MonoBehaviour:
   patrol: 0
   patrolPoints: []
   attackSpeed: 2
+  chase: 0
 --- !u!114 &5443967923468306928
 MonoBehaviour:
   m_ObjectHideFlags: 0
