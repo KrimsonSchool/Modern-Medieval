@@ -1,6 +1,7 @@
 using InputSystemGlobal;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Credits : MonoBehaviour
 {      
@@ -30,7 +31,7 @@ public class Credits : MonoBehaviour
     {
         if (controls.Player.Exit.triggered)
         {
-            gameObject.SetActive(false);
+            SceneManager.LoadScene(0);
         }
     }
 }
