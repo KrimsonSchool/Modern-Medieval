@@ -609,7 +609,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1595713312}
+  m_Mesh: {fileID: 1652442718}
 --- !u!33 &21565641
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -15548,10 +15548,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5989779242565072580, guid: 1cc61efe645d816bc967066cc5a85559, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cc61efe645d816bc967066cc5a85559, type: 3}
 --- !u!1 &278365113
 GameObject:
@@ -24582,10 +24579,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5989779242565072580, guid: 1cc61efe645d816bc967066cc5a85559, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cc61efe645d816bc967066cc5a85559, type: 3}
 --- !u!1 &737325466
 GameObject:
@@ -43319,71 +43313,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1170985409}
   m_Mesh: {fileID: 4490489353150321939, guid: 8eaa21cb6f9f043878beb633cee815e5, type: 3}
---- !u!1001 &1178960497
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4391387129965657053, guid: 95959c958cbea9c4e91d28b8e9407d27, type: 3}
-      propertyPath: weight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4391387129965657053, guid: 95959c958cbea9c4e91d28b8e9407d27, type: 3}
-      propertyPath: m_IsGlobal
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5074113229579449842, guid: 95959c958cbea9c4e91d28b8e9407d27, type: 3}
-      propertyPath: m_Name
-      value: Office Volume
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115117046124238788, guid: 95959c958cbea9c4e91d28b8e9407d27, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.9139042
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115117046124238788, guid: 95959c958cbea9c4e91d28b8e9407d27, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -6.9122148
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115117046124238788, guid: 95959c958cbea9c4e91d28b8e9407d27, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 32.88131
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115117046124238788, guid: 95959c958cbea9c4e91d28b8e9407d27, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115117046124238788, guid: 95959c958cbea9c4e91d28b8e9407d27, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115117046124238788, guid: 95959c958cbea9c4e91d28b8e9407d27, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115117046124238788, guid: 95959c958cbea9c4e91d28b8e9407d27, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115117046124238788, guid: 95959c958cbea9c4e91d28b8e9407d27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115117046124238788, guid: 95959c958cbea9c4e91d28b8e9407d27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115117046124238788, guid: 95959c958cbea9c4e91d28b8e9407d27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 95959c958cbea9c4e91d28b8e9407d27, type: 3}
 --- !u!1 &1186877726
 GameObject:
   m_ObjectHideFlags: 0
@@ -45810,10 +45739,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5989779242565072580, guid: 1cc61efe645d816bc967066cc5a85559, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cc61efe645d816bc967066cc5a85559, type: 3}
 --- !u!1 &1294737286
 GameObject:
@@ -65765,10 +65691,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5989779242565072580, guid: 1cc61efe645d816bc967066cc5a85559, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cc61efe645d816bc967066cc5a85559, type: 3}
 --- !u!65 &1877924749
 BoxCollider:
@@ -104711,10 +104634,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5989779242565072580, guid: 1cc61efe645d816bc967066cc5a85559, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cc61efe645d816bc967066cc5a85559, type: 3}
 --- !u!4 &7447208494870938879
 Transform:
@@ -109314,4 +109234,3 @@ SceneRoots:
   - {fileID: 1873970715}
   - {fileID: 269358830}
   - {fileID: 1804791337}
-  - {fileID: 1178960497}
