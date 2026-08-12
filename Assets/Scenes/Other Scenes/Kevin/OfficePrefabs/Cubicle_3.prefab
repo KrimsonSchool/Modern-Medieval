@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5357707674736315037}
+  - component: {fileID: 7237883842920052306}
   m_Layer: 0
   m_Name: Cubicle_3
   m_TagString: Untagged
@@ -101,6 +102,27 @@ Transform:
   - {fileID: 220867344726341670}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7237883842920052306
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3680327631441746601}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.9754295, y: 2.1458108, z: 3.649479}
+  m_Center: {x: -1.9381695, y: 0.57290566, z: -0.22582817}
 --- !u!1001 &53502740717890061
 PrefabInstance:
   m_ObjectHideFlags: 0
