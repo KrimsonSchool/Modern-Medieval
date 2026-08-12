@@ -25,9 +25,18 @@ public class Boss : MonoBehaviour
     public GameObject boom;
 
     private Animator anim;
+
+    private float posY;
+
+    private List<GameObject> enemySpawns = new ();
+    public GameObject adds;
+
+    public GameObject addsManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        posY=transform.position.y;
+        
         anim = GetComponent<Animator>();
         
         _maxHealth = health;
@@ -37,6 +46,15 @@ public class Boss : MonoBehaviour
         
         SpawnKey();
         Search();
+
+        GameObject[] ec = FindObjectsByType<GameObject>(FindObjectsSortMode.None);
+        foreach (var c in ec)
+        {
+            if (c.name == "AddCluster")
+            {
+                enemySpawns.Add(c.gameObject);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -75,6 +93,14 @@ public class Boss : MonoBehaviour
                 }
                 break;
         }
+
+        if (transform.position.y > posY)
+        {
+            print("dragon is at " +  transform.position.y+", should be at "+posY);
+            addsManager.SetActive(false);
+            transform.position = new Vector3(transform.position.x, posY, transform.position.z);
+            SpawnKey();
+        }
     }
 
     public void Hurt()
@@ -95,7 +121,10 @@ public class Boss : MonoBehaviour
             SceneManager.LoadScene("Credits");
         }
         
-        SpawnKey();
+        anim.SetTrigger("PlayDamage");
+        
+        SpawnAds();
+        //SpawnKey();
     }
 
     public void Attack()
@@ -123,8 +152,24 @@ public class Boss : MonoBehaviour
         Instantiate(boom, poTerSpawns[rng2].transform.position, Quaternion.identity);
         poTerSpawns.Remove(poTerSpawns[rng2]);
     }
-    
-    
+
+    public void SpawnAds()
+    {
+        int rng = Random.Range(0, enemySpawns.Count);
+        for (int i = 0; i < Random.Range(3, 7); i++)
+        {
+            GameObject ad = Instantiate(adds, enemySpawns[rng].transform.position, Quaternion.identity);
+            ad.GetComponent<Enemy>().chase = true;
+            ad.GetComponent<EnemyHealth>().baseHealth = 3;
+
+            ad.transform.localScale = new Vector3(1, 1, 1);
+        }
+
+        addsManager.GetComponent<EnemiesQuest>().killedEnemies = 0;
+        addsManager.GetComponent<EnemiesQuest>().noOfEnemies = 0;
+        addsManager.GetComponent<EnemiesQuest>().enabled=true;
+        addsManager.SetActive(true);
+    }
     
     
     
