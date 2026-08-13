@@ -282,6 +282,8 @@ MonoBehaviour:
   abilityCooldown: {fileID: 0}
   xpBar: {fileID: 0}
   hasKeyboard: 0
+  blood: {fileID: 141433446842962269, guid: 2c959b7666665790ab4a0001a86cb9d9, type: 3}
+  cam: {fileID: 6734680587822248871}
 --- !u!114 &522649187303152935
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -39,6 +39,10 @@ public class PlayerWeapons : MonoBehaviour
     WorldManager worldManager;
     
     [Space] SoundBlaster98 sound;
+
+    public GameObject blood;    
+    public Camera cam;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -91,11 +95,12 @@ public class PlayerWeapons : MonoBehaviour
             weaponAnimator.Play("WeaponAttack");
             
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, hitDist))
+            if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out hit, hitDist))
             {
                 GameObject hitObj = hit.collider.gameObject;
                 if (hitObj.CompareTag("Enemy"))
                 {
+                    Instantiate(blood, hit.point,  Quaternion.LookRotation(hit.normal));
                     if (hitObj.GetComponent<Health>().Hurt(damage))
                     {
                         xp++;

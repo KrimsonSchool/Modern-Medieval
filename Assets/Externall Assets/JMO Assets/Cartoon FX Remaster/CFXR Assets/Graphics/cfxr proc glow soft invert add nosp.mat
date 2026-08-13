@@ -11,7 +11,9 @@ Material:
   m_Shader: {fileID: 211, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _ALPHABLEND_ON
+  - _COLORCOLOR_ON
   m_InvalidKeywords:
   - _CFXR_DITHERED_SHADOWS_OFF
   - _CFXR_GLOW_POW_P0
@@ -21,8 +23,9 @@ Material:
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
   disabledShaderPasses:
   - GRABPASS
   m_LockedProperties: 
@@ -58,7 +61,7 @@ Material:
     - _CameraFadingEnabled: 0
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 1
-    - _ColorMode: 0
+    - _ColorMode: 4
     - _Cull: 2
     - _Cutoff: 0.5
     - _DissolveSmooth: 0.1
@@ -66,7 +69,7 @@ Material:
     - _DistortionEnabled: 0
     - _DistortionStrength: 1
     - _DistortionStrengthScaled: 0
-    - _DstBlend: 0
+    - _DstBlend: 1
     - _EmissionEnabled: 0
     - _FlipbookMode: 0
     - _GlowMax: 0
@@ -78,7 +81,7 @@ Material:
     - _InvertDissolveTex: 0
     - _LightingEnabled: 0
     - _MaxValue: 2
-    - _Mode: 0
+    - _Mode: 4
     - _RingTopOffset: 0.05
     - _ShadowStrength: 1
     - _SoftParticlesEnabled: 0
@@ -86,13 +89,13 @@ Material:
     - _SoftParticlesFadeDistanceNear: 0
     - _SoftParticlesFarFadeDistance: 1
     - _SoftParticlesNearFadeDistance: 0
-    - _SrcBlend: 1
+    - _SrcBlend: 5
     - _SubGlowMax: 6.7
     - _SubGlowMin: -2.47
     - _UseDissolve: 0
     - _UseSG: 1
     - _UseSP: 0
-    - _ZWrite: 1
+    - _ZWrite: 0
     m_Colors:
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
