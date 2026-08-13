@@ -3503,7 +3503,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 12d1772e27d22c80cb9321c78c1b0894, type: 3}
   - {fileID: 8300000, guid: bec95aa6b62f1183091edc7008b6fcec, type: 3}
   - {fileID: 8300000, guid: e899c87af9b9f38f5bb42d768a8981a0, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 6dba233858ad997b1ac3201942a0b4c0, type: 3}
+  - {fileID: 8300000, guid: 06c713a1150c50364ab1663e6473827b, type: 3}
   - {fileID: 8300000, guid: b8500ef15e3a7889eb318a4b12c851b6, type: 3}
   - {fileID: 8300000, guid: ebb5a69958aee1232bcac14df6149196, type: 3}
 --- !u!1 &8858528924958818593
