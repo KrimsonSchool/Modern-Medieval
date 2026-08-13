@@ -32,9 +32,15 @@ public class Boss : MonoBehaviour
     public GameObject adds;
 
     public GameObject addsManager;
+
+    private WorldManager world;
+    SoundBlaster98 sound;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
+    {        
+        sound = FindFirstObjectByType<SoundBlaster98>();
+        world = FindFirstObjectByType<WorldManager>();
+        
         posY=transform.position.y;
         
         anim = GetComponent<Animator>();
@@ -105,6 +111,7 @@ public class Boss : MonoBehaviour
 
     public void Hurt()
     {
+        sound.TriggerSound(world.sounds[10]);
         health -= 33;
         healthSlider.value = health;
         StartCoroutine(AnimateSlider(healthSliderVis, healthSliderVis.value, healthSliderVis.value - 33f, 1));
@@ -143,6 +150,7 @@ public class Boss : MonoBehaviour
 
     public void SpawnKey()
     {
+        sound.TriggerSound(world.sounds[7]);
         int rng = Random.Range(0, cardSpawns.Length);
         Instantiate(card, cardSpawns[rng].transform.position, cardSpawns[rng].transform.rotation);
         Instantiate(boom, cardSpawns[rng].transform.position, Quaternion.identity);
@@ -170,8 +178,11 @@ public class Boss : MonoBehaviour
         addsManager.GetComponent<EnemiesQuest>().enabled=true;
         addsManager.SetActive(true);
     }
-    
-    
+
+    public void PlayFireSound()
+    {
+        sound.TriggerSound(world.sounds[9]);
+    }
     
     
     

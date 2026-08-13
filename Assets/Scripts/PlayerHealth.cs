@@ -66,7 +66,7 @@ public class PlayerHealth : Health
 
     public override bool Hurt(int damage)
     {
-        sound.TriggerSound(worldManager.sounds[2]);
+        sound.TriggerSound(worldManager.sounds[6]);
         
         base.Hurt(damage);
         hurtEffect.SetActive(true);

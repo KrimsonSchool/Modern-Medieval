@@ -85,7 +85,7 @@ public class PlayerWeapons : MonoBehaviour
         
         if (attack && !hasAttacked)
         {
-            sound.TriggerSound(worldManager.sounds[3]);
+            sound.TriggerSound(worldManager.sounds[2]);
             hasAttacked = true;
             attackTimer = 0;
             weaponAnimator.Play("WeaponAttack");

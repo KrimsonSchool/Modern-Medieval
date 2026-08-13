@@ -39,7 +39,7 @@ public class EnemyHealth : Health
 
     public override bool Hurt(int damage)
     {
-        sound.TriggerSound(worldManager.sounds[5]);
+        sound.TriggerSound(worldManager.sounds[4]);
 
         
         base.Hurt(damage);

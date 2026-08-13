@@ -130,7 +130,7 @@ public class DoorOpener : MonoBehaviour
                 open = true;
                 opening = false;
                 
-                sound.TriggerSound(worldManager.sounds[8]);
+                sound.TriggerSound(worldManager.sounds[12]);
             }
         }
     }

@@ -35,7 +35,7 @@ public class EnemiesQuest : MonoBehaviour
 
         if (killedEnemies >= noOfEnemies)
         {
-            sound.TriggerSound(worldManager.sounds[6]);
+            sound.TriggerSound(worldManager.sounds[12]);
             GetComponent<DoorOpener>().OpenDoor();
             enabled = false;
         }
