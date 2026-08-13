@@ -10,6 +10,9 @@ public class PlayerWeapons : MonoBehaviour
     private void OnEnable() => controls.Player.Enable();
     private void OnDisable() => controls.Player.Disable();
 
+    public GameObject weapon;
+    public GameObject keyboard;
+    
     private bool attack;
     public Animator weaponAnimator;
 
@@ -17,6 +20,7 @@ public class PlayerWeapons : MonoBehaviour
 
     public int damage;
 
+    [Tooltip("Smaller number = faster")]
     public float attackSpeed;
     private bool hasAttacked;
 
@@ -29,9 +33,26 @@ public class PlayerWeapons : MonoBehaviour
 
     private float xpMax=5;
     private int xp;
+
+    [HideInInspector] public bool hasKeyboard;
+    
+    WorldManager worldManager;
+    
+    [Space] SoundBlaster98 sound;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        sound = FindFirstObjectByType<SoundBlaster98>();
+        worldManager = FindFirstObjectByType<WorldManager>();
+        
+        if (hasKeyboard)
+        {
+            keyboard.SetActive(true);
+        }
+        else
+        {
+            weapon.SetActive(true);
+        }
         playerHolder = GetComponent<PlayerHolder>();
     }
 
@@ -64,6 +85,7 @@ public class PlayerWeapons : MonoBehaviour
         
         if (attack && !hasAttacked)
         {
+            sound.TriggerSound(worldManager.sounds[3]);
             hasAttacked = true;
             attackTimer = 0;
             weaponAnimator.Play("WeaponAttack");

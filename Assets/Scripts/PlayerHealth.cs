@@ -9,9 +9,18 @@ public class PlayerHealth : Health
     float hurtEffectTimer;
     PlayerHolder playerHolder;
     
+    Vector3 startPos;
+    
+    WorldManager worldManager;
+    
+    [Space] SoundBlaster98 sound;
+    
     protected override void Start()
     {
+        sound = FindFirstObjectByType<SoundBlaster98>();
+        worldManager = FindFirstObjectByType<WorldManager>();
         
+        startPos = transform.position;
         base.Start();
     }
     
@@ -38,10 +47,27 @@ public class PlayerHealth : Health
         {
             hurtEffect = playerHolder.hurtEffect;
         }
+
+        if (HP != baseHealth)
+        {
+            if (!healthBar.gameObject.activeSelf)
+            {
+                healthBar.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            if (healthBar.gameObject.activeSelf)
+            {
+                healthBar.gameObject.SetActive(false);
+            }
+        }
     }
 
     public override bool Hurt(int damage)
     {
+        sound.TriggerSound(worldManager.sounds[2]);
+        
         base.Hurt(damage);
         hurtEffect.SetActive(true);
         return kill;
@@ -58,7 +84,7 @@ public class PlayerHealth : Health
         playerHolder= GetComponent<PlayerHolder>();
         hurtEffect = playerHolder.hurtEffect;
         healthBar = playerHolder.healthBar;
-        transform.position = new Vector3(0, 1, 0f);
+        transform.position = startPos;
         SetHealthBar();
     }
 }

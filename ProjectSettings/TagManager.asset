@@ -12,6 +12,13 @@ TagManager:
   - FloorButton
   - Box
   - Switch
+  - Key
+  - Detector
+  - Kill
+  - TutorialArea
+  - Pickup
+  - FxTemporaire
+  - BDam
   layers:
   - Default
   - TransparentFX
