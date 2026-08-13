@@ -32,10 +32,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7579334714783955432}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.48152086, y: 0.47100002}
+  m_AnchorMax: {x: 0.5164792, y: 0.52900004}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 128, y: 128}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4622919418371440990
 CanvasRenderer:
@@ -3472,6 +3472,7 @@ MonoBehaviour:
   playerHasPDA: 0
   mapNo: 0
   map: {fileID: 0}
+  HardCodedGoal: 
   enemies:
   - {fileID: 0}
   - {fileID: 3238828061428350739, guid: 6fb61b34968519bef9bbb2b2770c8c1b, type: 3}
