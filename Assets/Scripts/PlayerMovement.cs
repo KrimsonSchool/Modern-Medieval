@@ -321,7 +321,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (other.CompareTag("Key"))
-        {
+        {sound.TriggerSound(worldManager.sounds[8]);
             GetComponent<PlayerInventory>().AddItem(other.gameObject.GetComponent<Key>().obj);
             Destroy(other.gameObject);
         }
@@ -348,6 +348,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.CompareTag("Kill"))
         {
+            sound.TriggerSound(worldManager.sounds[5]);
             GetComponent<PlayerHealth>().Hurt(999);
         }
         if (other.CompareTag("BDam"))

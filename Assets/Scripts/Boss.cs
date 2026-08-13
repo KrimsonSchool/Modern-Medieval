@@ -176,6 +176,7 @@ public class Boss : MonoBehaviour
         addsManager.GetComponent<EnemiesQuest>().killedEnemies = 0;
         addsManager.GetComponent<EnemiesQuest>().noOfEnemies = 0;
         addsManager.GetComponent<EnemiesQuest>().enabled=true;
+        addsManager.GetComponent<DoorOpener>().ResetDoor();
         addsManager.SetActive(true);
     }
 
