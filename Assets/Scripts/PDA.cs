@@ -46,11 +46,11 @@ public class PDA : MonoBehaviour
         worldBottomLeft = new Vector2[4];
         worldTopRight = new Vector2[4];
 
-        worldBottomLeft[0] = new Vector2(7.463f, -70.036f);
-        worldTopRight[0] = new Vector2(37.17892f, -29.90228f);
+        worldBottomLeft[0] = new Vector2(6.96f, -3.769f);
+        worldTopRight[0] = new Vector2(36.678f, 36.402f);
 
-        worldBottomLeft[1] = new Vector2(17.8352f, 22.1441f);
-        worldTopRight[1] = new Vector2(-12.09684f, -18.26811f);
+        worldBottomLeft[1] = new Vector2(28.37f, 32.751f);
+        worldTopRight[1] = new Vector2(-1.263f, -7.378f);
 
         worldBottomLeft[2] = new Vector2(35.1913f, -14.23739f);
         worldTopRight[2] = new Vector2(76.6822357f, 18.1978474f);
