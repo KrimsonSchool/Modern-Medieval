@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8629690078938220095}
   - component: {fileID: 1718820330259139533}
   - component: {fileID: 3528695075605068775}
+  - component: {fileID: -2465009924508128698}
   m_Layer: 0
   m_Name: SM_Env_Rune_Rounded_05
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -153,3 +154,17 @@ MonoBehaviour:
   respawnDelay: 3
   shakeIntensity: 0.03
   hideWhileRespawning: 1
+--- !u!114 &-2465009924508128698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9017bceebea57a84c91aa0bb809b1a66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobHeight: 0.15
+  bobSpeed: 1.5
