@@ -12,7 +12,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _ALPHABLEND_ON
+  - _ALPHAPREMULTIPLY_ON
   - _COLORCOLOR_ON
   m_InvalidKeywords:
   - _
@@ -94,7 +94,7 @@ Material:
     - _DistortionStrength: 1
     - _DistortionStrengthScaled: 0
     - _DoubleDissolve: 0
-    - _DstBlend: 1
+    - _DstBlend: 10
     - _EdgeFadePow: 1
     - _EmissionEnabled: 0
     - _FadeAlongU: 0
@@ -105,7 +105,7 @@ Material:
     - _InvertDissolveTex: 0
     - _LightingEnabled: 0
     - _LightingWorldPosStrength: 0.2
-    - _Mode: 4
+    - _Mode: 3
     - _OVERLAYBLEND: 0
     - _OVERLAYTEX: 0
     - _ReceivedShadowsStrength: 0.5
@@ -117,7 +117,7 @@ Material:
     - _SoftParticlesFadeDistanceNear: 0
     - _SoftParticlesFarFadeDistance: 1
     - _SoftParticlesNearFadeDistance: 0
-    - _SrcBlend: 5
+    - _SrcBlend: 1
     - _UVDistortionAdd: 0
     - _UseAlphaClip: 0
     - _UseBackLighting: 0

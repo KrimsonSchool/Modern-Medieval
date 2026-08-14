@@ -23,6 +23,7 @@ public class Boss : MonoBehaviour
     public List<GameObject> poTerSpawns;
     
     public GameObject boom;
+    public GameObject glow;
 
     private Animator anim;
 
@@ -132,6 +133,9 @@ public class Boss : MonoBehaviour
         
         SpawnAds();
         //SpawnKey();
+        
+        //boss cant attack anymore
+        stage = 3;
     }
 
     public void Attack()
@@ -150,19 +154,32 @@ public class Boss : MonoBehaviour
 
     public void SpawnKey()
     {
+        FindFirstObjectByType<PlayerWeapons>().HideWeapons();
+        
         sound.TriggerSound(world.sounds[7]);
         int rng = Random.Range(0, cardSpawns.Length);
-        Instantiate(card, cardSpawns[rng].transform.position, cardSpawns[rng].transform.rotation);
+        GameObject car = Instantiate(card, cardSpawns[rng].transform.position, cardSpawns[rng].transform.rotation);
         Instantiate(boom, cardSpawns[rng].transform.position, Quaternion.identity);
+        GameObject glom = Instantiate(glow, cardSpawns[rng].transform.position, Quaternion.identity);
+        glom.transform.parent = car.transform;
         
         int rng2 = Random.Range(0, poTerSpawns.Count);
-        Instantiate(poTer, poTerSpawns[rng2].transform.position, poTerSpawns[rng2].transform.rotation);
+        GameObject pot = Instantiate(poTer, poTerSpawns[rng2].transform.position, poTerSpawns[rng2].transform.rotation);
         Instantiate(boom, poTerSpawns[rng2].transform.position, Quaternion.identity);
+        GameObject gloo = Instantiate(glow, poTerSpawns[rng2].transform.position, Quaternion.identity);
+        gloo.transform.localScale = new Vector3(1, 1, 1);
+        pot.GetComponentInChildren<DoorOpener>().layLines[0] = gloo;
         poTerSpawns.Remove(poTerSpawns[rng2]);
+        
+        //boss can now attack again
+        stage = 0;
     }
 
     public void SpawnAds()
     {
+        FindFirstObjectByType<PlayerWeapons>().enabled=true;
+        FindFirstObjectByType<PlayerWeapons>().ShowWeapon();
+        
         int rng = Random.Range(0, enemySpawns.Count);
         for (int i = 0; i < Random.Range(3, 7); i++)
         {

@@ -116,4 +116,28 @@ public class PlayerWeapons : MonoBehaviour
             }
         }
     }
+
+    public void HideWeapons()
+    {
+        if (hasKeyboard)
+        {
+            keyboard.SetActive(false);
+        }
+        else
+        {
+            weapon.SetActive(false);
+        }
+    }
+
+    public void ShowWeapon()
+    {
+        if (hasKeyboard)
+        {
+            keyboard.SetActive(true);
+        }
+        else
+        {
+            weapon.SetActive(true);
+        }
+    }
 }

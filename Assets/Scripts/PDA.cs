@@ -55,6 +55,9 @@ public class PDA : MonoBehaviour
         worldBottomLeft[2] = new Vector2(35.1913f, -14.23739f);
         worldTopRight[2] = new Vector2(76.6822357f, 18.1978474f);
 
+        worldBottomLeft[3] = new Vector2(20.52f, -34.04f);
+        worldTopRight[3] = new Vector2(-25.05f, 38.67f);
+
         imgStack.texture = map;
     }
 
