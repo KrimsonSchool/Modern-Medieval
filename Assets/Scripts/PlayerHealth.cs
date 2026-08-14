@@ -75,6 +75,17 @@ public class PlayerHealth : Health
 
     public override void Death()
     {
+        sound.TriggerSound(worldManager.sounds[5]);
+        GetComponent<PlayerMovement>().enabled = false;
+        worldManager.Death();
+        
+        enabled=false;
+        //FindFirstObjectByType<LayerManager>().Reset();
+        //base.Reset();
+    }
+
+    public void Resets()
+    {
         FindFirstObjectByType<LayerManager>().Reset();
         base.Reset();
     }

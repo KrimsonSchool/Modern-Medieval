@@ -321,7 +321,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (other.CompareTag("Key"))
-        {sound.TriggerSound(worldManager.sounds[8]);
+        {sound.TriggerSound(worldManager.sounds[13]);
             GetComponent<PlayerInventory>().AddItem(other.gameObject.GetComponent<Key>().obj);
             Destroy(other.gameObject);
         }

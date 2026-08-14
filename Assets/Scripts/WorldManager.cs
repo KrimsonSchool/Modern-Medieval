@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class WorldManager : MonoBehaviour
@@ -47,6 +48,8 @@ public class WorldManager : MonoBehaviour
     public ZlorpStar[] gorbachevTheOmnisiah;
 
     public AudioClip[] sounds;
+
+    public GameObject deathScreen;
 
     private void Awake()
     {
@@ -115,5 +118,22 @@ public class WorldManager : MonoBehaviour
 
     void Update()
     {
+    }
+
+    public void Death()
+    {
+        deathScreen.SetActive(true);
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+    }
+
+    public void Retry()
+    {
+        FindAnyObjectByType<PlayerHealth>().Resets();
+    }
+
+    public void Quit()
+    {
+        SceneManager.LoadScene(0);
     }
 }
