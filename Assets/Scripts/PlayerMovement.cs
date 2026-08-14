@@ -123,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
             if (!startRun)
             {
                 startRun = true;
-                sound.TriggerSound(worldManager.sounds[1]);
+                sound.TriggerSound(worldManager.sounds[0]);
             }
             //sound.TriggerSound(pholder.sounds[1]);
         }
@@ -278,7 +278,7 @@ public class PlayerMovement : MonoBehaviour
 
         isJumping = 100;
 
-        sound.TriggerSound(worldManager.sounds[0]);
+        sound.TriggerSound(worldManager.sounds[1]);
         GetComponent<Rigidbody>().linearVelocity = new Vector3(GetComponent<Rigidbody>().linearVelocity.x, 0, GetComponent<Rigidbody>().linearVelocity.z);
         GetComponent<Rigidbody>().AddForce(transform.up * jumpAmount, ForceMode.Impulse);
     }
@@ -321,7 +321,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (other.CompareTag("Key"))
-        {
+        {sound.TriggerSound(worldManager.sounds[8]);
             GetComponent<PlayerInventory>().AddItem(other.gameObject.GetComponent<Key>().obj);
             Destroy(other.gameObject);
         }
@@ -348,6 +348,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.CompareTag("Kill"))
         {
+            sound.TriggerSound(worldManager.sounds[5]);
             GetComponent<PlayerHealth>().Hurt(999);
         }
         if (other.CompareTag("BDam"))

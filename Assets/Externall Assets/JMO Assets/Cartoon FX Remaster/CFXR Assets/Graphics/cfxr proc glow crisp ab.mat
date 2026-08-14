@@ -11,13 +11,16 @@ Material:
   m_Shader: {fileID: 211, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _ALPHABLEND_ON
+  - _COLORCOLOR_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
   disabledShaderPasses:
   - DistortionVectors
   - MOTIONVECTORS
@@ -79,7 +82,7 @@ Material:
     - _CameraFadingEnabled: 0
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 1
-    - _ColorMode: 0
+    - _ColorMode: 4
     - _Cull: 2
     - _CullMode: 2
     - _Cutoff: 0.5
@@ -105,7 +108,7 @@ Material:
     - _DistortionVectorScale: 2
     - _DoubleSidedEnable: 0
     - _DoubleSidedGIMode: 0
-    - _DstBlend: 0
+    - _DstBlend: 1
     - _EmissionEnabled: 0
     - _EmissiveExposureWeight: 1
     - _EmissiveIntensity: 1
@@ -122,7 +125,7 @@ Material:
     - _InvertDissolveTex: 0
     - _LightingEnabled: 0
     - _MaxValue: 1
-    - _Mode: 0
+    - _Mode: 4
     - _OpaqueCullMode: 2
     - _RingTopOffset: 0.05
     - _ShadowStrength: 0.5
@@ -131,7 +134,7 @@ Material:
     - _SoftParticlesFadeDistanceNear: 0
     - _SoftParticlesFarFadeDistance: 1
     - _SoftParticlesNearFadeDistance: 0
-    - _SrcBlend: 1
+    - _SrcBlend: 5
     - _StencilRef: 0
     - _StencilRefDepth: 1
     - _StencilRefDistortionVec: 4
@@ -154,7 +157,7 @@ Material:
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestModeDistortion: 4
     - _ZTestTransparent: 4
-    - _ZWrite: 1
+    - _ZWrite: 0
     m_Colors:
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 1, g: 0, b: 0, a: 1}

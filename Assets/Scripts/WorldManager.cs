@@ -30,6 +30,7 @@ public class WorldManager : MonoBehaviour
     public bool playerHasPDA;
     public int mapNo;
     public Texture map;
+    public string HardCodedGoal;
 
     public GameObject[] enemies;
 
@@ -88,6 +89,7 @@ public class WorldManager : MonoBehaviour
             player.GetComponent<PDA>().enabled = playerHasPDA;
             player.GetComponent<PDA>().map = map;
             player.GetComponent<PDA>().mapNo = mapNo;
+            player.GetComponent<PDA>().title.text = HardCodedGoal;
             player.GetComponent<PlayerWeapons>().enabled = playerHasWeapon;
             player.GetComponent<PlayerWeapons>().hasKeyboard = playerHasKeyboard;
         }
