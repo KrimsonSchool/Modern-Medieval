@@ -348,8 +348,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.CompareTag("Kill"))
         {
+            Pity fd = FindFirstObjectByType<Pity>();
             sound.TriggerSound(worldManager.sounds[5]);
-            GetComponent<PlayerHealth>().Hurt(999);
+            GetComponent<PlayerHealth>().Hurt(fd.fallDmg);
+            GetComponent<PlayerHealth>().ResetPos();
+            fd.UpdateDamage();
         }
         if (other.CompareTag("BDam"))
         {
