@@ -3,7 +3,7 @@ using UnityEngine;
 
 /// <summary>
 /// Platform that shakes as a warning, then falls once the player has stood on it
-/// too long, and respawns back at its start position after a delay — Crash Bandicoot style.
+/// too long, and respawns back at its start position after a delay ï¿½ Crash Bandicoot style.
 /// Requires a Rigidbody (any mass) and a Collider on this object, and the player's
 /// collider/rigidbody must be tagged "Player".
 /// </summary>
@@ -11,19 +11,17 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class FallingPlatform : MonoBehaviour
 {
-    [Header("Timing")]
-    [Tooltip("How long the player can stand on the platform before it starts to fall.")]
-    [SerializeField] private float fallDelay = 1.5f;
+    [Header("Timing")] [Tooltip("How long the player can stand on the platform before it starts to fall.")] [SerializeField]
+    private float fallDelay = 1.5f;
 
-    [Tooltip("How long the platform stays 'fallen' before it resets.")]
-    [SerializeField] private float respawnDelay = 3f;
+    [Tooltip("How long the platform stays 'fallen' before it resets.")] [SerializeField]
+    private float respawnDelay = 3f;
 
-    [Header("Warning Shake")]
-    [SerializeField] private float shakeIntensity = 0.03f;
+    [Header("Warning Shake")] [SerializeField]
+    private float shakeIntensity = 0.03f;
 
-    [Header("Respawn Visuals")]
-    [Tooltip("Hide the platform completely while it's away, like a Crash box popping back in.")]
-    [SerializeField] private bool hideWhileRespawning = true;
+    [Header("Respawn Visuals")] [Tooltip("Hide the platform completely while it's away, like a Crash box popping back in.")] [SerializeField]
+    private bool hideWhileRespawning = true;
 
     private Vector3 startPosition;
     private Quaternion startRotation;
@@ -69,6 +67,11 @@ public class FallingPlatform : MonoBehaviour
 
     private IEnumerator FallSequence()
     {
+        if (GetComponent<PlatformBob>() != null)
+        {
+            GetComponent<PlatformBob>().enabled = false;
+        }
+
         Vector3 restPosition = transform.position;
         float timer = 0f;
 
@@ -88,19 +91,26 @@ public class FallingPlatform : MonoBehaviour
         isFalling = true;
         rb.isKinematic = false;
 
+        print("making kinematic");
         yield return new WaitForSeconds(respawnDelay);
 
+        print(rb.isKinematic);
         RespawnPlatform();
     }
 
     private void RespawnPlatform()
     {
+        if (GetComponent<PlatformBob>() != null)
+        {
+            GetComponent<PlatformBob>().enabled = true;
+        }
+
         if (hideWhileRespawning)
         {
             SetVisible(false);
         }
 
-        rb.linearVelocity = Vector3.zero;   // Unity 6+. If you're on an older Unity version, use rb.velocity instead.
+        rb.linearVelocity = Vector3.zero; // Unity 6+. If you're on an older Unity version, use rb.velocity instead.
         rb.angularVelocity = Vector3.zero;
         rb.isKinematic = true;
 
@@ -122,6 +132,7 @@ public class FallingPlatform : MonoBehaviour
         {
             r.enabled = visible;
         }
+
         col.enabled = visible;
     }
 }
