@@ -71,25 +71,29 @@ public class DoorOpener : MonoBehaviour
         }*/
         //  OpenDoor();
 
-        MeshRenderer renderer = meshToSetMaterial.GetComponent<MeshRenderer>();
-
-        Material[] mats = renderer.materials;
-
-        Material matt = new Material(mats[materialIndex]);
-        float ev100Value = 14;
-        float intensity = 0.125f * Mathf.Pow(2f, ev100Value); // Translates to Nits
-        if (requiredID != -1)
+        if (meshToSetMaterial != null)
         {
-            Color colour = FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[requiredID].colour;
+            MeshRenderer renderer = meshToSetMaterial.GetComponent<MeshRenderer>();
+
+            Material[] mats = renderer.materials;
+
+            Material matt = new Material(mats[materialIndex]);
+            float ev100Value = 14;
+            float intensity = 0.125f * Mathf.Pow(2f, ev100Value); // Translates to Nits
+            if (requiredID != -1)
+            {
+                Color colour = FindFirstObjectByType<WorldManager>().gorbachevTheOmnisiah[requiredID].colour;
 
 
-            GetComponent<Renderer>().material.color = colour;
-            matt.SetColor("_EmissiveColor", colour * intensity);
+                GetComponent<Renderer>().material.color = colour;
+                matt.SetColor("_EmissiveColor", colour * intensity);
 
-            mats[materialIndex] = matt;
+                mats[materialIndex] = matt;
 
-            renderer.materials = mats;
+                renderer.materials = mats;
+            }
         }
+        
     }
     void Update()
     {

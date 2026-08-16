@@ -76002,6 +76002,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1223455625}
+    - target: {fileID: 3163146557372535806, guid: 7d1714603f9d44e4d84c7b50f84b5290, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3166555211101201685, guid: 7d1714603f9d44e4d84c7b50f84b5290, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -76274,6 +76278,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 3945982835792077115, guid: 7d1714603f9d44e4d84c7b50f84b5290, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 1290fcf3609f2ec27a761c51ab74435d, type: 2}
     - target: {fileID: 3957053248521681545, guid: 7d1714603f9d44e4d84c7b50f84b5290, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -76297,6 +76305,14 @@ PrefabInstance:
     - target: {fileID: 3983777811978947598, guid: 7d1714603f9d44e4d84c7b50f84b5290, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3991472828988598738, guid: 7d1714603f9d44e4d84c7b50f84b5290, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 1290fcf3609f2ec27a761c51ab74435d, type: 2}
+    - target: {fileID: 3991472828988598738, guid: 7d1714603f9d44e4d84c7b50f84b5290, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3994904759188065489, guid: 7d1714603f9d44e4d84c7b50f84b5290, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -77013,6 +77029,14 @@ PrefabInstance:
     - target: {fileID: 5515859059455285000, guid: 7d1714603f9d44e4d84c7b50f84b5290, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5518598195002159521, guid: 7d1714603f9d44e4d84c7b50f84b5290, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 1290fcf3609f2ec27a761c51ab74435d, type: 2}
+    - target: {fileID: 5518598195002159521, guid: 7d1714603f9d44e4d84c7b50f84b5290, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5531377409493534165, guid: 7d1714603f9d44e4d84c7b50f84b5290, type: 3}
       propertyPath: m_StaticEditorFlags
