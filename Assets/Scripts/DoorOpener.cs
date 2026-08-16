@@ -60,7 +60,10 @@ public class DoorOpener : MonoBehaviour
 
         foreach (var lay in layLines)
         {
-            lay.AddComponent<FaeQue>();
+            if (lay.GetComponent<Renderer>() != false)
+            {
+                lay.AddComponent<FaeQue>();
+            }
         }
         /*if (possiblePuzzleSpawns.Length > 0)
         {

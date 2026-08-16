@@ -136,7 +136,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (transform.position.y < -10f)
         {
-            GetComponent<Health>().Hurt(2147483647);
+            Pity fd = FindFirstObjectByType<Pity>();
+            sound.TriggerSound(worldManager.sounds[5]);
+            GetComponent<PlayerHealth>().Hurt(fd.fallDmg);
+            GetComponent<PlayerHealth>().ResetPos();
+            fd.UpdateDamage();
         }
 
         Debug.DrawLine(cam.transform.position, cam.transform.position + cam.transform.TransformDirection(Vector3.forward) * 1, Color.red);

@@ -51,7 +51,7 @@ public class Boss : MonoBehaviour
         healthSlider.value = health;
         healthSliderVis.value = health;
         
-        SpawnKey();
+        SpawnKey(true);
         Search();
 
         GameObject[] ec = FindObjectsByType<GameObject>(FindObjectsSortMode.None);
@@ -152,9 +152,12 @@ public class Boss : MonoBehaviour
         stage=0;
     }
 
-    public void SpawnKey()
+    public void SpawnKey(bool hw = false)
     {
-        FindFirstObjectByType<PlayerWeapons>().HideWeapons();
+        if (!hw)
+        {
+            FindFirstObjectByType<PlayerWeapons>(FindObjectsInactive.Include).HideWeapons();
+        }
         
         sound.TriggerSound(world.sounds[7]);
         int rng = Random.Range(0, cardSpawns.Length);
