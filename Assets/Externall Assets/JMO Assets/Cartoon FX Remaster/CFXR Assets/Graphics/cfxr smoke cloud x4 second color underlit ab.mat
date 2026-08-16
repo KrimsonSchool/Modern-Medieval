@@ -12,7 +12,8 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _ALPHATEST_ON
+  - _ALPHABLEND_ON
+  - _COLORCOLOR_ON
   m_InvalidKeywords:
   - _
   - _CFXR_DISSOLVE
@@ -23,9 +24,9 @@ Material:
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2450
+  m_CustomRenderQueue: 3000
   stringTagMap:
-    RenderType: TransparentCutout
+    RenderType: Transparent
   disabledShaderPasses:
   - GRABPASS
   m_LockedProperties: 
@@ -84,7 +85,7 @@ Material:
     - _CameraFadingEnabled: 0
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 1
-    - _ColorMode: 0
+    - _ColorMode: 4
     - _Cull: 2
     - _Cutoff: 0.1
     - _DebugDissolveTime: 0
@@ -97,7 +98,7 @@ Material:
     - _DistortionStrength: 1
     - _DistortionStrengthScaled: 0
     - _DoubleDissolve: 0
-    - _DstBlend: 0
+    - _DstBlend: 1
     - _EdgeFadePow: 1
     - _EmissionEnabled: 0
     - _FadeAlongU: 0
@@ -110,7 +111,7 @@ Material:
     - _LightingEnabled: 0
     - _LightingWorldPosStrength: 0.2
     - _Metallic: 0
-    - _Mode: 1
+    - _Mode: 4
     - _OVERLAYBLEND: 0
     - _OVERLAYTEX: 0
     - _ReceivedShadowsStrength: 0.5
@@ -122,7 +123,7 @@ Material:
     - _SoftParticlesFadeDistanceNear: 0
     - _SoftParticlesFarFadeDistance: 1
     - _SoftParticlesNearFadeDistance: 0
-    - _SrcBlend: 1
+    - _SrcBlend: 5
     - _UVDistortionAdd: 0
     - _UseAlphaClip: 0
     - _UseBackLighting: 0
@@ -140,7 +141,7 @@ Material:
     - _UseSecondColor: 1
     - _UseUV2Distortion: 0
     - _UseUVDistortion: 0
-    - _ZWrite: 1
+    - _ZWrite: 0
     m_Colors:
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 2, g: 2, b: 2, a: 1}

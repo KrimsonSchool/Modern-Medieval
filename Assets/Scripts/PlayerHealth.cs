@@ -66,7 +66,7 @@ public class PlayerHealth : Health
 
     public override bool Hurt(int damage)
     {
-        sound.TriggerSound(worldManager.sounds[2]);
+        sound.TriggerSound(worldManager.sounds[6]);
         
         base.Hurt(damage);
         hurtEffect.SetActive(true);
@@ -74,6 +74,17 @@ public class PlayerHealth : Health
     }
 
     public override void Death()
+    {
+        sound.TriggerSound(worldManager.sounds[5]);
+        GetComponent<PlayerMovement>().enabled = false;
+        worldManager.Death();
+        
+        enabled=false;
+        //FindFirstObjectByType<LayerManager>().Reset();
+        //base.Reset();
+    }
+
+    public void Resets()
     {
         FindFirstObjectByType<LayerManager>().Reset();
         base.Reset();

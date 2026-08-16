@@ -36,6 +36,13 @@ public class DoorManager : MonoBehaviour
 
     public IEnumerator PlayVid(string nextLevel)
     {
+        Canvas[] menus = FindObjectsByType<Canvas>(FindObjectsSortMode.None);
+
+        foreach (Canvas c in menus)
+        {
+            c.enabled = false;
+        }
+        
         _nextLevel = nextLevel;
         videoPlayer.Play();
         yield return new WaitForSeconds(0.1f);

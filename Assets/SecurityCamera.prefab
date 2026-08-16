@@ -50,7 +50,10 @@ MonoBehaviour:
   detectionPercent: 0
   light: {fileID: 1736722477532464591}
   hasDetected: 0
-  speed: 2
+  detectSpeed: 1
+  searchSpeed: 1
+  type: 0
+  alerter: 0
 --- !u!95 &3023517549695186248
 Animator:
   serializedVersion: 7
@@ -117,7 +120,7 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 14605407
+  m_Intensity: 131072
   m_Range: 10
   m_SpotAngle: 14.98
   m_InnerSpotAngle: 14.386665

@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class WorldManager : MonoBehaviour
@@ -30,6 +31,7 @@ public class WorldManager : MonoBehaviour
     public bool playerHasPDA;
     public int mapNo;
     public Texture map;
+    public string HardCodedGoal;
 
     public GameObject[] enemies;
 
@@ -46,6 +48,8 @@ public class WorldManager : MonoBehaviour
     public ZlorpStar[] gorbachevTheOmnisiah;
 
     public AudioClip[] sounds;
+
+    public GameObject deathScreen;
 
     private void Awake()
     {
@@ -88,6 +92,7 @@ public class WorldManager : MonoBehaviour
             player.GetComponent<PDA>().enabled = playerHasPDA;
             player.GetComponent<PDA>().map = map;
             player.GetComponent<PDA>().mapNo = mapNo;
+            player.GetComponent<PDA>().title.text = HardCodedGoal;
             player.GetComponent<PlayerWeapons>().enabled = playerHasWeapon;
             player.GetComponent<PlayerWeapons>().hasKeyboard = playerHasKeyboard;
         }
@@ -113,5 +118,22 @@ public class WorldManager : MonoBehaviour
 
     void Update()
     {
+    }
+
+    public void Death()
+    {
+        deathScreen.SetActive(true);
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+    }
+
+    public void Retry()
+    {
+        FindAnyObjectByType<PlayerHealth>().Resets();
+    }
+
+    public void Quit()
+    {
+        SceneManager.LoadScene(0);
     }
 }

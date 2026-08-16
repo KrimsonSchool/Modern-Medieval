@@ -45,6 +45,8 @@ public class DoorOpener : MonoBehaviour
     WorldManager worldManager;
     SoundBlaster98 sound;
 
+
+    public bool elevator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -58,7 +60,10 @@ public class DoorOpener : MonoBehaviour
 
         foreach (var lay in layLines)
         {
-            lay.AddComponent<FaeQue>();
+            if (lay.GetComponent<Renderer>() != false)
+            {
+                lay.AddComponent<FaeQue>();
+            }
         }
         /*if (possiblePuzzleSpawns.Length > 0)
         {
@@ -129,8 +134,11 @@ public class DoorOpener : MonoBehaviour
             {
                 open = true;
                 opening = false;
-                
-                sound.TriggerSound(worldManager.sounds[8]);
+
+                if (elevator)
+                {
+                    sound.TriggerSound(worldManager.sounds[12]);
+                }
             }
         }
     }
@@ -152,6 +160,7 @@ public class DoorOpener : MonoBehaviour
     {
         PlayerInventory inventory = FindFirstObjectByType<PlayerInventory>();
 
+        sound.TriggerSound(worldManager.sounds[8]);
         if (opening)
         {
             if (door != null)
@@ -258,5 +267,11 @@ public class DoorOpener : MonoBehaviour
     public bool HasKey()
     {
         return hasKey;
+    }
+
+    public void ResetDoor()
+    {
+        open = false;
+        opening = false;
     }
 }

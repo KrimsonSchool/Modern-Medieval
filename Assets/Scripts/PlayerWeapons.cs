@@ -39,6 +39,10 @@ public class PlayerWeapons : MonoBehaviour
     WorldManager worldManager;
     
     [Space] SoundBlaster98 sound;
+
+    public GameObject blood;    
+    public Camera cam;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -85,17 +89,18 @@ public class PlayerWeapons : MonoBehaviour
         
         if (attack && !hasAttacked)
         {
-            sound.TriggerSound(worldManager.sounds[3]);
+            sound.TriggerSound(worldManager.sounds[2]);
             hasAttacked = true;
             attackTimer = 0;
             weaponAnimator.Play("WeaponAttack");
             
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, hitDist))
+            if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out hit, hitDist))
             {
                 GameObject hitObj = hit.collider.gameObject;
                 if (hitObj.CompareTag("Enemy"))
                 {
+                    Instantiate(blood, hit.point,  Quaternion.LookRotation(hit.normal));
                     if (hitObj.GetComponent<Health>().Hurt(damage))
                     {
                         xp++;
@@ -109,6 +114,30 @@ public class PlayerWeapons : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    public void HideWeapons()
+    {
+        if (hasKeyboard)
+        {
+            keyboard.SetActive(false);
+        }
+        else
+        {
+            weapon.SetActive(false);
+        }
+    }
+
+    public void ShowWeapon()
+    {
+        if (hasKeyboard)
+        {
+            keyboard.SetActive(true);
+        }
+        else
+        {
+            weapon.SetActive(true);
         }
     }
 }

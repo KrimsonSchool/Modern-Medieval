@@ -123,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
             if (!startRun)
             {
                 startRun = true;
-                sound.TriggerSound(worldManager.sounds[1]);
+                sound.TriggerSound(worldManager.sounds[0]);
             }
             //sound.TriggerSound(pholder.sounds[1]);
         }
@@ -136,7 +136,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (transform.position.y < -10f)
         {
-            GetComponent<Health>().Hurt(2147483647);
+            Pity fd = FindFirstObjectByType<Pity>();
+            sound.TriggerSound(worldManager.sounds[5]);
+            GetComponent<PlayerHealth>().Hurt(fd.fallDmg);
+            GetComponent<PlayerHealth>().ResetPos();
+            fd.UpdateDamage();
         }
 
         Debug.DrawLine(cam.transform.position, cam.transform.position + cam.transform.TransformDirection(Vector3.forward) * 1, Color.red);
@@ -278,7 +282,7 @@ public class PlayerMovement : MonoBehaviour
 
         isJumping = 100;
 
-        sound.TriggerSound(worldManager.sounds[0]);
+        sound.TriggerSound(worldManager.sounds[1]);
         GetComponent<Rigidbody>().linearVelocity = new Vector3(GetComponent<Rigidbody>().linearVelocity.x, 0, GetComponent<Rigidbody>().linearVelocity.z);
         GetComponent<Rigidbody>().AddForce(transform.up * jumpAmount, ForceMode.Impulse);
     }
@@ -321,7 +325,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (other.CompareTag("Key"))
-        {
+        {sound.TriggerSound(worldManager.sounds[13]);
             GetComponent<PlayerInventory>().AddItem(other.gameObject.GetComponent<Key>().obj);
             Destroy(other.gameObject);
         }
@@ -348,7 +352,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.CompareTag("Kill"))
         {
-            GetComponent<PlayerHealth>().Hurt(999);
+            Pity fd = FindFirstObjectByType<Pity>();
+            sound.TriggerSound(worldManager.sounds[5]);
+            GetComponent<PlayerHealth>().Hurt(fd.fallDmg);
+            GetComponent<PlayerHealth>().ResetPos();
+            fd.UpdateDamage();
         }
         if (other.CompareTag("BDam"))
         {

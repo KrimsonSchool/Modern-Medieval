@@ -11,7 +11,9 @@ Material:
   m_Shader: {fileID: 211, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _ALPHABLEND_ON
+  - _COLORCOLOR_ON
   m_InvalidKeywords:
   - _
   - _CFXR_DITHERED_SHADOWS_OFF
@@ -26,8 +28,9 @@ Material:
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
   disabledShaderPasses:
   - DecalMeshForwardEmissive
   - DecalProjectorForwardEmissive
@@ -105,7 +108,7 @@ Material:
     - _CameraFadingEnabled: 0
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 1
-    - _ColorMode: 0
+    - _ColorMode: 4
     - _Cull: 2
     - _Cutoff: 0.1
     - _DecalBlend: 0.5
@@ -129,7 +132,7 @@ Material:
     - _DistortionStrengthScaled: 0
     - _DoubleDissolve: 0
     - _DrawOrder: 0
-    - _DstBlend: 0
+    - _DstBlend: 1
     - _EdgeFadePow: 1
     - _EmissionEnabled: 0
     - _EmissiveExposureWeight: 1
@@ -147,7 +150,7 @@ Material:
     - _Metallic: 0
     - _MetallicRemapMax: 1
     - _MetallicRemapMin: 0
-    - _Mode: 0
+    - _Mode: 4
     - _NormalBlendSrc: 0
     - _SecondColorSmooth: 0.2
     - _ShadowStrength: 1
@@ -160,7 +163,7 @@ Material:
     - _SoftParticlesFadeDistanceNear: 0
     - _SoftParticlesFarFadeDistance: 1
     - _SoftParticlesNearFadeDistance: 0
-    - _SrcBlend: 1
+    - _SrcBlend: 5
     - _UVDistortionAdd: 0
     - _Unity_Identify_HDRP_Decal: 1
     - _UseAlphaClip: 0
@@ -179,7 +182,7 @@ Material:
     - _UseSecondColor: 0
     - _UseUV2Distortion: 0
     - _UseUVDistortion: 0
-    - _ZWrite: 1
+    - _ZWrite: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 0, b: 0, a: 1}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
