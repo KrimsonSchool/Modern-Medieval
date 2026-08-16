@@ -26478,6 +26478,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rune_Rounded_02
       objectReference: {fileID: 0}
+    - target: {fileID: 106372, guid: 6bc582bf93468484ea9c25423850ecf6, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 498240, guid: 6bc582bf93468484ea9c25423850ecf6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.105

@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
 
     [HideInInspector] public bool chase;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();

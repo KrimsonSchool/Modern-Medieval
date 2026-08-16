@@ -1597,7 +1597,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3944652471516771215
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1645,7 +1645,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b868164d3eb0778799b4a1aff1bf947d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f7e0ead8b28f6861ca276f49d5a55831, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1920,6 +1920,10 @@ PrefabInstance:
     - target: {fileID: 158532, guid: 5f453323eb1cb374b98c94ab5004a413, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Vase_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 158532, guid: 5f453323eb1cb374b98c94ab5004a413, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 442842, guid: 5f453323eb1cb374b98c94ab5004a413, type: 3}
       propertyPath: m_LocalScale.x
